@@ -15,6 +15,11 @@ var ContactSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true
+    },
+    buying_date: {
+        type: Date,
+        required: true,
+        default: Date.now 
     }
 })
 //console.log(ContactSchema);

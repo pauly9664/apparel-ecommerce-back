@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var mongoose = require('mongoose');
 var config = require('./config/config');
-var port = process.env.PORT || 5000;
+var port = process.env.PORT || 500;
 var cors = require('cors');
 
 mongoose.connect(config.db, { useNewUrlParser: true , useCreateIndex: true});
@@ -42,4 +42,4 @@ var app = express();
  app.use('/api', routes);
 
  app.listen(port);
- console.log('pale :http://localhost:'+port);
+ console.log('Tuko http://localhost:'+port);

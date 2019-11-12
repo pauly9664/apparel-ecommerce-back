@@ -5,7 +5,7 @@ var config = require('../config/config');
 function createToken(user) {
     return jwt.sign({ id: user.id, email: user.email }, 
         config.jwtSecret, {
-        expiresIn: 200
+        expiresIn: 2000
     })
 }
 
@@ -17,7 +17,7 @@ function createToken(user) {
 exports.registerUser = (req, res) => {
 
         if(!req.body.email || !req.body.password || !req.body.names || !req.body.number) {
-            return res.status(400).json({'msg': 'Please fill all entries'
+            return res.status(400).json({'msg': 'Please fill all fields'
             });
         }
 

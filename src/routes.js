@@ -31,7 +31,7 @@ routes.get('/getItems', function(req, res) {
 })
 routes.get('/getPastActivities',passport.authenticate('jwt', {session: false}),
  function(req, res){
-     try{
+    //  try{
     console.log('Log previous sales');
     userLogged = `${req.user._id}`,
     Sales.find()
@@ -43,16 +43,16 @@ routes.get('/getPastActivities',passport.authenticate('jwt', {session: false}),
             return res.json({accounts: sale});
           }
     })
-}catch(ex){
-    console.log(ex);
-}
+// }catch(ex){
+//     console.log(ex);
+// }
 })
 
 //routes.post('/postItems', itemsController.postItems);
 routes.post('/postItems', itemsController.postItems);
 
 routes.get('/special', passport.authenticate('jwt', { session: false }), (req, res) => {
-    return res.json({ msg: `${req.user.names}, ${req.user.number}`, id : `${req.user._id}` });
+    return res.json({ name: `${req.user.names}`, number: `${req.user.number}`, email: `${req.user.email}`, id : `${req.user._id}` });
 })
 
 module.exports = routes;

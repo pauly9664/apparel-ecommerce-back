@@ -1,4 +1,5 @@
 var express = require('express');
+ const request = require('request');
 routes = express.Router();
 const Contact = require('./models/contact');
 const Sales = require('./models/sales');
@@ -7,16 +8,79 @@ var contactController = require('./controller/contact-controller');
 var itemsController = require('./controller/items-controller');
 var salesController = require('./controller/sales-controller');
 var passport = require('passport');
+//var obj = require('./mpesa-oauth');
+let obj = '';
+consumer_key = "WA3eGQeQe4MyGwmtyu1gH36q89BvrAg2",
+consumer_secret = "1lGDqfwHv60o1ttw",
+
+url = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"
+auth = "Basic " + new Buffer.from(consumer_key + ":" + consumer_secret).toString("base64");
+  
+var mpesaController = require('./mpesa-try');
+oauth_token = obj,
+url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
+auth = "Bearer " + oauth_token;
 
 routes.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
     return res.send('Hello stupid man!');
 });
-
+// request('')
 routes.post('/register', userController.registerUser);
 routes.post('/login', userController.loginUser);
 routes.post('/contact', contactController.saveFeedback);
+routes.post('/postSales', salesController.saveSale, );
+routes.all('/mpesa',  (req, res) => {
+    request(
+      {
+        url : url,
+        headers : {
+          "Authorization" : auth
+        }
+      },
+      function (error, response, body) {
+        // TODO: Use the body object to extract OAuth access token
+        let accTokenBody = JSON.parse(body);
+        //let accToken = JSON.stringify(accTokenBody);
+         obj = (accTokenBody.access_token);
+        console.log(obj);
+         
+      }
+)}
+);
+routes.all('/payments', passport.authenticate('jwt', {session: false}), (req, res) => request({
+  method: 'POST',
+  url : url,
+  headers : {
+    "Authorization" : auth,
+    'Accept': 'application/json'
+  },
+json : {
+    "BusinessShortCode": "174379",
+     "Password": "MTc0Mzc5YmZiMjc5ZjlhYTliZGJjZjE1OGU5N2RkNzFhNDY3Y2QyZTBjODkzMDU5YjEwZjc4ZTZiNzJhZGExZWQyYzkxOTIwMTkwODAyMjExMjU2",
+     "Timestamp": "20190802211256",
+     "TransactionType": "CustomerPayBillOnline",
+    "Amount": "1",
+    "PartyA": req.user.number,
+     "PartyB": "174379",
+    "PhoneNumber": req.user.number,
+     "CallBackURL": "https://webhook.site/b2a8c230-41e3-44cb-9c63-3c571e6736b6",
+    "AccountReference": "Lipa Pesa Jamaa",
+    "TransactionDesc": "Imelipwa"
+  }
+ 
+},
+  function (error, res, body) {
+    // TODO: Use the body object to extract the response
+    userLogged = `${req.user._id}`
+    if(error){
+      return console.error(error);
+    }
+    //console.error(error);
+    console.log(body);
+  }
+),
 
-routes.post('/postSales', salesController.saveSale);
+);
 
 routes.get('/getItems', function(req, res) {
     console.log('Get request for all contacts');

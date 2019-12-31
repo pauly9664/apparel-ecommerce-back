@@ -5,7 +5,9 @@ var mongoose = require('mongoose');
 var config = require('./config/config');
 var port = process.env.PORT || 500;
 var cors = require('cors');
-
+var multer = require('multer');
+var UPLOAD_PATH = 'uploads';
+var path = require('path');
 mongoose.connect(config.db, { useNewUrlParser: true , useCreateIndex: true});
 
 const connection = mongoose.connection;
@@ -17,11 +19,23 @@ connection.on('error', (err) => {
     console.log('MongoDB, no connection' +err);
     process.exit();
 });
+var storage = multer.diskStorage({
+    destination: function(req, file, callback) {
+      callback(null, UPLOAD_PATH);
+    },
+    filename: function(req, file, callback){
+      callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+  });
+  var upload = multer({ storage: storage});
+  module.exports = upload;
+ 
 
 var app = express();
 
  app.use(bodyParser.urlencoded({ extended: false}));
  app.use(bodyParser.json());
+ app.use(express.static(UPLOAD_PATH));
 
  app.use(cors());
  app.use(function (req, res, next) {

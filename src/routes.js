@@ -35,7 +35,6 @@ routes.get('/', passport.authenticate('jwt', { session: false }), (req, res) => 
 routes.post('/register', userController.registerUser);
 routes.post('/login', userController.loginUser);
 routes.post('/contact', contactController.saveFeedback);
-<<<<<<< HEAD
 routes.post('/postSales', salesController.saveSale, );
 routes.all('/mpesa',  (req, res) => {
     request(
@@ -89,7 +88,6 @@ json : {
 ),
 
 );
-=======
 routes.post('/images', upload.single('image'), imagesController.savePost, (req, res, next) =>{
     let newPost = new Image();
        newPost.filename = req.file.filename;
@@ -128,7 +126,6 @@ routes.delete('images/:id', (req, res, next) =>{
 
 })
 routes.post('/postSales', salesController.saveSale);
->>>>>>> f67290cb909e38ee6037286c856217a43ae64362
 
 routes.get('/getItems', function(req, res) {
     console.log('Get request for all contacts');

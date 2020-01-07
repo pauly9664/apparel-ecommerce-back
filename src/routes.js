@@ -5,6 +5,7 @@ const Sales = require('./models/sales');
 const Image = require('./models/images');
 var UPLOAD_PATH = require('./server');
 var upload = require('./server');
+var request = require('./mpesa-try');
 var path = require('path');
 var filesyst = require('fs');
 var del = require('del');

@@ -1,4 +1,4 @@
 module.exports = {
-    jwtSecret: 'long-live-pcretsal',
+    jwtSecret: 'long-live-pretsal',
     db: 'mongodb://localhost/new-auth'
 };

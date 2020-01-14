@@ -8,7 +8,6 @@ function createToken(user) {
         expiresIn: 2000
     })
 }
-
 // exports.registerUser = (req, res) => {
 //     if(!req.body.email || !req.body.password || !req.body.names || !req.body.number) {
 //         return res.status(400).json({'msg': 'Please fill all entries'
@@ -20,16 +19,13 @@ exports.registerUser = (req, res) => {
             return res.status(400).json({'msg': 'Please fill all fields'
             });
         }
-
     User.findOne({ email: req.body.email }, (err, user) =>{
         if(err) {
             return res.status(400).json({ 'msg':err});
         }
-
         if(user) {
             return res.status(400).json({ 'msg': 'User already exists' });
         }
-        
         let newUser = User(req.body);
         newUser.save((err, user) => {
             if(err) {
@@ -48,7 +44,6 @@ exports.loginUser = (req, res) => {
         if(err) {
             return res.status(400).json({ 'msg':err});
         }
-
         if(!user) {
             return res.status(400).json({ 'msg': 'Wrong credentials' });
         }

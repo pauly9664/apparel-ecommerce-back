@@ -1,5 +1,6 @@
 var express = require('express');
- const request = require('request');
+const session = require('express-session');
+//  const request = require('request');
 routes = express.Router();
 const Contact = require('./models/contact');
 const Sales = require('./models/sales');
@@ -9,25 +10,25 @@ var upload = require('./server');
 var path = require('path');
 var filesyst = require('fs');
 var del = require('del');
+const app = express();
 var userController = require('./controller/user-controller');
 var imagesController = require('./controller/images-controller')
 var contactController = require('./controller/contact-controller');
 var itemsController = require('./controller/items-controller');
 var salesController = require('./controller/sales-controller');
 var passport = require('passport');
-//var obj = require('./mpesa-oauth');
-let obj = '';
-consumer_key = "WA3eGQeQe4MyGwmtyu1gH36q89BvrAg2",
-consumer_secret = "1lGDqfwHv60o1ttw",
+app.use(session({secret: 'ssshhhhh',saveUninitialized: true,resave: true}));
+var request = require('request'),
+    consumer_key = "WA3eGQeQe4MyGwmtyu1gH36q89BvrAg2",
+    consumer_secret = "1lGDqfwHv60o1ttw",
+    url = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"
+    auth = "Basic " + new Buffer.from(consumer_key + ":" + consumer_secret).toString("base64");
+ var obj = '';
+oauth_token = obj;
+durl = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
+auth1 = "Bearer " + oauth_token;
 
-url = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"
-auth = "Basic " + new Buffer.from(consumer_key + ":" + consumer_secret).toString("base64");
-  
-var mpesaController = require('./mpesa-try');
-oauth_token = obj,
-url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
-auth = "Bearer " + oauth_token;
-
+app.use(session({secret: 'skrr',saveUninitialized: true,resave: true}));
 routes.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
     return res.send('Hello stupid man!');
 });
@@ -36,29 +37,33 @@ routes.post('/register', userController.registerUser);
 routes.post('/login', userController.loginUser);
 routes.post('/contact', contactController.saveFeedback);
 routes.post('/postSales', salesController.saveSale, );
-routes.all('/mpesa',  (req, res) => {
-    request(
-      {
-        url : url,
-        headers : {
-          "Authorization" : auth
-        }
-      },
-      function (error, response, body) {
-        // TODO: Use the body object to extract OAuth access token
-        let accTokenBody = JSON.parse(body);
-        //let accToken = JSON.stringify(accTokenBody);
-         obj = (accTokenBody.access_token);
-        console.log(obj);
-         
+routes.all('/mpesa', (req, res) => {
+  request(
+    {
+      url : url,
+      headers : {
+        "Authorization" : auth
       }
+    },
+    function (error, response, body) {
+      // TODO: Use the body object to extract  OAuth access token
+      let accTokenBody = JSON.parse(body);
+      //let accToken = JSON.stringify(accTokenBody);
+       obj = (accTokenBody.access_token);
+            if(error){
+        return console.error(error);
+      }
+      console.log(obj);
+      //module.exports = obj;
+    }
 )}
 );
-routes.all('/payments', passport.authenticate('jwt', {session: false}), (req, res) => request({
+routes.all('/payments', passport.authenticate('jwt', {session: false}), (req, res) => 
+request({
   method: 'POST',
-  url : url,
+  url : durl,
   headers : {
-    "Authorization" : auth,
+    "Authorization" : auth1,
     'Accept': 'application/json'
   },
 json : {
@@ -74,7 +79,6 @@ json : {
     "AccountReference": "Lipa Pesa Jamaa",
     "TransactionDesc": "Imelipwa"
   }
- 
 },
   function (error, res, body) {
     // TODO: Use the body object to extract the response
@@ -86,7 +90,6 @@ json : {
     console.log(body);
   }
 ),
-
 );
 routes.post('/images', upload.single('image'), imagesController.savePost, (req, res, next) =>{
     let newPost = new Image();
@@ -123,7 +126,6 @@ routes.get('/images/:id', (req, res, next) =>{
     });
 });
 routes.delete('images/:id', (req, res, next) =>{
-
 })
 routes.post('/postSales', salesController.saveSale);
 
@@ -163,5 +165,4 @@ routes.post('/postItems', itemsController.postItems);
 routes.get('/special', passport.authenticate('jwt', { session: false }), (req, res) => {
     return res.json({ name: `${req.user.names}`, number: `${req.user.number}`, email: `${req.user.email}`, id : `${req.user._id}` });
 })
-
 module.exports = routes;

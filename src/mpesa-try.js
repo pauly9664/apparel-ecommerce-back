@@ -32,7 +32,7 @@ var Mpesa = require('./models/mpesa');
             "TransactionDesc": "Imelipwa"
         }
       }),
-      exports.payments = function (error, res, body){
+    function (error, res, body){
       if(error){
         return console.error(error);
       }

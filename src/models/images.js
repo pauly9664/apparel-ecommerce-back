@@ -6,6 +6,14 @@ var ImageSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    description: {
+        type: String,
+        required: true
+    },
+    price: {
+        type: String,
+        required: true
+    },
     created: {
         type: Date,
         required: true,

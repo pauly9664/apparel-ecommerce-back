@@ -57,12 +57,12 @@ auth = "Basic " + new Buffer.from(consumer_key + ":" + consumer_secret).toString
         let accTokenBody = JSON.parse(body);
         //let accToken = JSON.stringify(accTokenBody);
         // oauth_token = req.session;
-         obj = accTokenBody.access_token;
+         oauth_token = accTokenBody.access_token;
         if(error){
           return console.error(error, 'Session Expired');
         }
-        console.log(obj);
-        return res.json({access_token: obj});           
+        console.log(oauth_token);
+        return res.json({access_token: oauth_token});           
                 }
 )}
 );
@@ -72,7 +72,8 @@ routes.get('/tokenGetter', (req, res)=>{
   return res.json({access_token: obj});
 })
 routes.all('/payments', passport.authenticate('jwt', {session: false}), (req, res, next) => {
-let oauth_token = Mpesa(req.body);
+//let token_body = Mpesa(obj);
+//oauth_token = token_body._id;
 url1 = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
 auth1 = "Bearer " + oauth_token;
  // oauth_token = '5e3b096d3daa6c2538365a55';
@@ -104,7 +105,7 @@ json : {
       return console.error(error);
     }
     //console.error(error);
-    console.log(oauth_token);
+    console.log(body);
   }
 )
 }

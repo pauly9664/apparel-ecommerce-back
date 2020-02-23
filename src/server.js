@@ -8,6 +8,7 @@ var cors = require('cors');
 var multer = require('multer');
 var UPLOAD_PATH = 'uploads';
 var path = require('path');
+var adminbro = require('./admin-bro');
 mongoose.connect(config.db, { useNewUrlParser: true , useCreateIndex: true});
 
 const connection = mongoose.connection;
@@ -48,13 +49,14 @@ var app = express();
  var passportMiddleware = require('./middleware/passport');
  passport.use(passportMiddleware);
 
- app.get('/', function(req, res) {
+ app.get('/home', function(req, res) {
      return res.send('Hello! The API is at http://localhost:'+ port + '/api');
  });
 
  var routes = require('./routes.js');
 //  var request = require('./routes.js');
  app.use('/api', routes);
+ app.use('/admin', adminbro);
 
  app.listen(port);
  console.log('Tuko http://localhost:'+port);

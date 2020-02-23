@@ -4,15 +4,15 @@ var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: 'gichaga1996@gmail.com',
-    pass: 'FIFA2020'
+    pass: 'G#719312830'
   }
 });
 
 var mailOptions = {
-  from: 'gichagapaulz@gmail.com',
-  to: 'gichaga1996@gmail.com',
-  subject: 'Sending Email using Node.js',
-  text: 'Fanya Kazi nanii!'
+  from: 'gichaga1996@gmail.com',
+  to: 'gichagapaulz@gmail.com',
+  subject: 'Preeti Fashions',
+  text: 'Your Account has been successfully created!'
 };
 
 transporter.sendMail(mailOptions, function(error, info){

@@ -11,14 +11,13 @@ var ItemSchema = new mongoose.Schema({
         required: false,
         trim: true
     },
-    total: {
-        type: String,
+    count: {
+        type: Number,
         required: true,
         trim: true
     },
-    url: {
+    description: {
         type: String,
-        required: true,
         trim: true
     },
     posting_date: {

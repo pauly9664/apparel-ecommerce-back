@@ -3,20 +3,30 @@ var mongoose = require('mongoose');
 var ImageSchema = new mongoose.Schema({
     filename: {
         type: String,
-        required: true,
+       // required: true,
         trim: true
     },
     description: {
         type: String,
-        required: true
+        // required: true
     },
     price: {
-        type: String,
-        required: true
+        type: Number,
+        //required: true
     },
-    created: {
+    category: {
+        type: String,
+
+    },
+    count: {
+        type: Number,
+    },
+    amount: {
+        type: Number,
+    },
+    created_at: {
         type: Date,
-        required: true,
+        // required: true,
         default: Date.now 
     }
 })

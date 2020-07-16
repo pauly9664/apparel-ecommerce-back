@@ -1,5 +1,6 @@
 var User = require('../models/user');
 var Sales = require('../models/sales');
+var Cart = require('../models/cart');
 var Contact = require('../models/contact');
 var Items = require('../models/items');
 var JwtStrategy = require('passport-jwt').Strategy;
@@ -50,6 +51,17 @@ module.exports = new JwtStrategy(opts, function (jwt_payload, done){
             return done(err, false);
         }
         if(sale){
+            
+            return done(null, sale);
+        }else {
+            return done(null, false);
+        }
+    });
+    Cart.findById( function (err, cart) {
+        if(err) {
+            return done(err, false);
+        }
+        if(cart){
             
             return done(null, sale);
         }else {

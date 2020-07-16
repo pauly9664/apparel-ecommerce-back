@@ -4,8 +4,11 @@ const session = require('express-session');
 routes = express.Router();
 const Contact = require('./models/contact');
 const Sales = require('./models/sales');
+const categories = require('./models/productCategories');
 var Mpesa = require('./models/images');
 const Image = require('./models/images');
+const Cart = require('./models/cart');
+const hbs = require('nodemailer-express-handlebars');
 var UPLOAD_PATH = require('./server');
 var upload = require('./server');
 var path = require('path');
@@ -17,6 +20,7 @@ var imagesController = require('./controller/images-controller')
 var contactController = require('./controller/contact-controller');
 var itemsController = require('./controller/items-controller');
 var salesController = require('./controller/sales-controller');
+var categoriesController = require('./controller/categories-controller');
 var passport = require('passport');
 
 //var obj = require('./mpesa-oauth');
@@ -39,7 +43,7 @@ routes.get('/', passport.authenticate('jwt', { session: false }), (req, res) => 
 routes.post('/register', userController.registerUser);
 routes.post('/login', userController.loginUser);
 routes.post('/contact', contactController.saveFeedback);
-routes.post('/postSales', salesController.saveSale, );
+routes.post('/postSales', passport.authenticate('jwt', {session: false}), salesController.saveSale);
 
 routes.all('/mpesa', passport.authenticate('jwt', { session: false }), (req, res, next) => {
 url = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"
@@ -113,19 +117,126 @@ json : {
 }
 
 );
-routes.post('/images', upload.single('image'), imagesController.savePost, (req, res, next) =>{
-    let newPost = new Image();
-       newPost.filename = req.file.filename;
-       newPost.description = req.body.description;
-       newPost.price = req.body.price; 
-       newPost.save((err) =>{
+routes.all('/sendtexts', (req, res) => {
+  const credentials = {
+    apiKey: '50cfc47db6e731f241011b5c9f8e148c51ae20ba438ce7027aae439451c6fbe6',
+    username: 'sandbox',
+}
+
+// Initialize the SDK
+const AfricasTalking = require('africastalking')(credentials);
+// Sales.find()
+// Get the SMS service
+const sms = AfricasTalking.SMS;
+function sendMessage() {
+    const options = {
+        // Set the numbers you want to send to in international format
+        to: ['+254717444970'],
+        // Set your message
+        message: "Welcome to Varsity",
+        // Set your shortCode or senderId
+        from: '6991'
+    }
+    // That’s it, hit send and we’ll take care of the rest
+    sms.send(options)
+        .then(console.log)
+        .catch(console.log);
+}
+sendMessage();
+})
+routes.get('/fetchCategories', function(req, res) {
+  console.log('Get all items');
+  categories.find({}, '-_v').lean()
+  .exec(function(err, categories){
+      if(err){
+          console.log("Error fetching orders");
+      }
+      for(let i = 0; i < categories.length; i++){
+          var img = categories[i];
+          
+      }
+      res.json(categories);
+  })
+
+})
+routes.post('/images', upload.single('image'), imagesController.savePost,
+ (req, res, next) =>{
+    // let newPost = new Image();
+      //  
+    //    newPost.description = req.body.description;
+    //    newPost.price = req.body.price; 
+    //    newPost.count = req.body.count;
+    //    newPost.category = req.body.category;
+    //    newPost.save((err) =>{
+    //     if(err){
+    //         return res.status(400);
+    //     }
+    //     console.log(newPost);
+    //         return res.status(201).json(newPost);
+    // });
+    }); 
+    routes.post('/mailer', passport.authenticate('jwt', {session: false}), (req, res, next) => {
+      var nodemailer = require('nodemailer');
+      let newItem =  Sales(req.body);
+      // newItem.description = req.body.description;
+      // newItem.amount = req.body.amount;
+      // newItem.count = req.body.count;
+      // newItem.price = req.body.price;
+      // newItem.item = req.body.item;
+      console.log(newItem);
+      newItem.save((err, cart) =>{
         if(err){
             return res.status(400);
         }
-        console.log(newPost);
-            return res.status(201).json(newPost);
+            return res.status(201).json(cart);
     });
-    }); 
+      
+    let transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'gichaga1996@gmail.com',
+        pass: 'G#719312830'
+      }
+    });
+    // transporter.use('compile', hbs({
+    //   viewEngine: 'express-handlebars',
+    //   viewPath: './views/'
+    // }))
+    
+    var mailOptions = {
+      from: 'gichaga1996@gmail.com',
+      to: req.user.email,
+      subject: 'Preeti Fashions',
+      attachments: [
+        {filename: 'preetiLogo1.png', path:'./src/preetiLogo1.png'}
+      ],
+       html: '<h3>Hi ' +req.user.names+'<br>Your order has been received and is being processed. Login to the app to follow up on the order placed. Your goods will be delivered in 3 days. Thanks</h3>',
+    };
+    
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
+  }
+    );
+routes.post('/forgot', (req, res)=>{
+  const thisUser = getUser(req.body.email);
+  if(thisUser){
+    const request = {
+      email: thisUser.email,
+    };
+    createResetRequest(request);
+    sendResetLink(thisUser.email);
+  }
+  res.status(200).json();
+});
+// routes.patch('/reset-password', (req, res)=>{
+//   const thisRequest= getResetRequest(req.body);
+//   if
+// })
 routes.get('/images', (req, res, next)=>{
     Image.find({}, '-_v').lean().exec((err, images)=>{
         if(err){
@@ -151,7 +262,41 @@ routes.get('/images/:id', (req, res, next) =>{
 });
 routes.delete('images/:id', (req, res, next) =>{
 })
-routes.post('/postSales', salesController.saveSale);
+// routes.post('/postSales', passport.authenticate('jwt', {session: false}), (req, res, next) => {
+  
+//   let newSale = Sales(req.body);
+//   // console.log(newSale);
+//   newSale.save((err, sale) => {
+//     if(err) {
+//         return res.status(400).json({ 'msg': err });
+//     }
+//     return res.status(201).json(sale);
+// });
+//   var nodemailer = require('nodemailer');
+//   var transporter = nodemailer.createTransport({
+//       service: 'gmail',
+//       auth: {
+//         user: 'gichaga1996@gmail.com',
+//         pass: 'G#719312830'
+//       }
+//     });
+    
+//     var mailOptions = {
+//       from: 'gichaga1996@gmail.com',
+//       to: req.user.email,
+//       subject: 'Preeti Fashions',
+//       text: 'Your order has been processe'
+//     };
+    
+//     transporter.sendMail(mailOptions, function(error, info){
+//       if (error) {
+//         console.log(error);
+//       } else {
+//         console.log('Email sent: ' + info.response);
+//       }
+//     });
+
+// } );
 
 routes.get('/getItems', function(req, res) {
     console.log('Get request for all contacts');
@@ -163,6 +308,21 @@ routes.get('/getItems', function(req, res) {
             res.json({item: contact});
         }
     })
+})
+routes.get('/getOrders', function(req, res) {
+  console.log('Get all items');
+  Sales.find({}, '-_v').lean()
+  .exec(function(err, order){
+      if(err){
+          console.log("Error fetching orders");
+      }
+      // for(let i = 0; i < items.length; i++){
+      //     var order = items[i];
+      //     order.url = req.protocol + '://' +req.get('host')  + '/' + order._id;
+      // }
+      res.json(order);
+  })
+
 })
 routes.get('/getPastActivities',passport.authenticate('jwt', {session: false}),
  function(req, res){
@@ -181,6 +341,7 @@ routes.get('/getPastActivities',passport.authenticate('jwt', {session: false}),
 // }catch(ex){
 //     console.log(ex);
 // }
+
 })
 
 //routes.post('/postItems', itemsController.postItems);

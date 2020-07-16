@@ -1,3 +1,4 @@
+
 var nodemailer = require('nodemailer');
 
 var transporter = nodemailer.createTransport({
@@ -12,7 +13,7 @@ var mailOptions = {
   from: 'gichaga1996@gmail.com',
   to: 'gichagapaulz@gmail.com',
   subject: 'Preeti Fashions',
-  text: 'Your Account has been successfully created!'
+  html: '<h1>Your Account has been successfully created!</h1>'
 };
 
 transporter.sendMail(mailOptions, function(error, info){

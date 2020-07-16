@@ -23,10 +23,13 @@ var storage = multer.diskStorage({
   var upload = multer({ storage: storage});
 exports.savePost = (req, res) => {
     upload.single('image');
-    let newPost = new Images(req.file);
-     newPost.filename = req.file.filename;
+    let newPost = new Images();
+      newPost.filename = req.file.filename;
      newPost.price= req.body.price;
-     newPost.description = req.body.description;
+     newPost.description = req.body.description; 
+     newPost.count = req.body.count;
+     newPost.amount = req.body.amount;
+     newPost.category = req.body.category;
 
     newPost.save((err, posts) =>{
         if(err){

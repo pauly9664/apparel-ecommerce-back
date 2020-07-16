@@ -8,6 +8,7 @@ var config = require('../config/config');
 // }
 exports.saveFeedback = (req, res) => {
         let newContact =Contact(req.body);
+         console.log('Sample contact object:', newContact);
         newContact.save((err, contact) => {
             if(err) {
                 return res.status(400).json({ 'msg': err });

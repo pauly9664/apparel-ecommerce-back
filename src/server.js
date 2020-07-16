@@ -3,12 +3,16 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var mongoose = require('mongoose');
 var config = require('./config/config');
-var port = process.env.PORT || 500;
+var port = process.env.PORT || 501;
 var cors = require('cors');
 var multer = require('multer');
+var session = require('express-session');
 var UPLOAD_PATH = 'uploads';
 var path = require('path');
 var adminbro = require('./admin-bro');
+var cookieParser = require('cookie-parser');
+// app.use(cookieparser(config.cookieSecret));
+
 mongoose.connect(config.db, { useNewUrlParser: true , useCreateIndex: true});
 
 const connection = mongoose.connection;
@@ -34,9 +38,13 @@ var storage = multer.diskStorage({
 
 var app = express();
 
- app.use(bodyParser.urlencoded({ extended: false}));
- app.use(bodyParser.json());
+
  app.use(express.static(UPLOAD_PATH));
+ app.use(cookieParser( config.cookieSecret));
+ app.use(session({secret: "akjjkjnisaiuu8998323jdkadsih892rhoisdfasl", resave: true,
+ saveUninitialized: true,}));
+ app.use(/^\/(?!admin).*/,bodyParser.urlencoded({ extended: false}));
+ app.use(bodyParser.json());
 
  app.use(cors());
  app.use(function (req, res, next) {

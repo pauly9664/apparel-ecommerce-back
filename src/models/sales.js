@@ -15,6 +15,10 @@ var SaleSchema = new mongoose.Schema({
     //     required: true,
     //     trim: true
     // },
+    description: {
+        type: String,
+        required: true,
+    },
     amount: {
         type: String,
         required: true,

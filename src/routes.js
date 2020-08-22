@@ -3,7 +3,9 @@ const session = require('express-session');
 //  const request = require('request');
 routes = express.Router();
 const Contact = require('./models/contact');
+const Reset = require('./models/PasswordReset');
 const Sales = require('./models/sales');
+const User = require('./models/user');
 const categories = require('./models/productCategories');
 var Mpesa = require('./models/images');
 const Image = require('./models/images');
@@ -22,6 +24,10 @@ var itemsController = require('./controller/items-controller');
 var salesController = require('./controller/sales-controller');
 var categoriesController = require('./controller/categories-controller');
 var passport = require('passport');
+const uuidv1 = require('uuid/v1');
+var bcrypt = require('bcrypt');
+const { getResetRequest, getUser, updateUser, createResetRequest } = require("./models/resetRequests");
+const { count } = require('console');
 
 //var obj = require('./mpesa-oauth');
 // let obj,
@@ -128,10 +134,16 @@ const AfricasTalking = require('africastalking')(credentials);
 // Sales.find()
 // Get the SMS service
 const sms = AfricasTalking.SMS;
-function sendMessage() {
+const contacts = User.find({}, 'number').exec((err, resp)=>{
+
+  if(err){
+    console.log("Errrror");
+  }
+  
+  function sendMessage() {
     const options = {
         // Set the numbers you want to send to in international format
-        to: ['+254717444970'],
+        to: [''],
         // Set your message
         message: "Welcome to Varsity",
         // Set your shortCode or senderId
@@ -143,6 +155,26 @@ function sendMessage() {
         .catch(console.log);
 }
 sendMessage();
+console.log("Contact List ->", resp)
+  return res.json(resp);
+});
+
+
+// function sendMessage() {
+//     const options = {
+//         // Set the numbers you want to send to in international format
+//         to: ['+254717444970'],
+//         // Set your message
+//         message: "Welcome to Varsity",
+//         // Set your shortCode or senderId
+//         from: '6991'
+//     }
+//     // That’s it, hit send and we’ll take care of the rest
+//     sms.send(options)
+//         .then(console.log)
+//         .catch(console.log);
+// }
+// sendMessage();
 })
 routes.get('/fetchCategories', function(req, res) {
   console.log('Get all items');
@@ -222,21 +254,95 @@ routes.post('/images', upload.single('image'), imagesController.savePost,
     });
   }
     );
-routes.post('/forgot', (req, res)=>{
-  const thisUser = getUser(req.body.email);
-  if(thisUser){
-    const request = {
-      email: thisUser.email,
-    };
-    createResetRequest(request);
-    sendResetLink(thisUser.email);
+routes.post('/forgot',(req, res)=>{
+  const thisUser = req.body.email;
+  console.log(thisUser)
+  User.findOne({email: thisUser}, '-_v').lean()
+  .exec(function(err, result){
+    if(err) {
+      return res.status(400).json({ 'msg':err});
   }
-  res.status(200).json();
+    if(result === null){
+      console.log('Hakuna any');
+      return res.status(400).json({ 'msg': 'User does not exist, kindly confirm if this is the email used' });
+    }
+    console.log("Exists", result);
+    const id = uuidv1();
+    const request = {
+      request_id: id,
+      email: thisUser
+    };
+    // createResetRequest(request);
+    let resetBody = Reset(request);
+    // console.log("Reset ID", resetBody);
+    resetBody.save((request));
+    var nodemailer = require('nodemailer');
+   let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'gichaga1996@gmail.com',
+      pass: 'G#719312830'
+    }
+  });
+
+  var mailOptions = {
+    from: 'gichaga1996@gmail.com',
+    to: thisUser,
+    subject: 'Preeti Fashions',
+    attachments: [
+      {filename: 'preetiLogo1.png', path:'./src/preetiLogo1.png'}
+    ],
+     html: `<h3>Hi <br>To reset your password, please click on this link which http://192.168.100.35:8100/menu/sendmail-reset/${id}, which will direct you to the reset password page</h3>`,
+  };
+  
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  });
+
+    return res.status(200).json({ 'msg': 'Your request has been received. Please check your email for further instructions' });
+    
+  })
+})
+
+routes.patch("/reset", (req, res) => {
+  const thisRequestId = req.body.id;
+  const thisRequestMail = req.body.email;
+  const thisRequestPass = req.body.password;
+  console.log("Ndo ii mail nimetuma", thisRequestMail);
+  const reseter = Reset.find({},).where('request_id').equals(thisRequestId).exec((err, resets)=>{
+    if(err){
+      return res.status(400).json({'msg': err})
+    }
+    // let resul = new ;
+    console.log("Ndo ii mail", resets);
+  
+     return res.status(201).json(resets);
+     
+  })
+      User.find({},).where('email').equals(thisRequestMail).exec((err, resp)=>{
+        if(err){
+          return res.status(400).json({'msg': "The Email Address used does not exit in our system"})
+        }
+        console.log("User", resp)
+        bcrypt.hash(thisRequestPass, 10).then(hashed => {
+         
+              resp.password = hashed;
+              console.log("hashed", hashed)
+         User.updateOne({},{password: hashed}).where('email').equals(thisRequestMail).exec((err, res)=>{
+          if(err){
+            return res.status(400).json({'msg': 'Network Error, try again'});
+          }
+          return res.status(201).json({'msg': 'Password reset successful'})
+          // console.log("Updated");
+        })
+        })
+        return resp;
+      });
 });
-// routes.patch('/reset-password', (req, res)=>{
-//   const thisRequest= getResetRequest(req.body);
-//   if
-// })
 routes.get('/images', (req, res, next)=>{
     Image.find({}, '-_v').lean().exec((err, images)=>{
         if(err){
@@ -251,6 +357,7 @@ routes.get('/images', (req, res, next)=>{
 });
 routes.get('/images/:id', (req, res, next) =>{
     let imgId = req.params.id;
+    console.log("This is the object id", imgId);
     Image.findById(imgId, (err, image)=>{
         if(err){
             return res.status(400);
@@ -260,7 +367,7 @@ routes.get('/images/:id', (req, res, next) =>{
         
     });
 });
-routes.delete('images/:id', (req, res, next) =>{
+routes.delete('/images/:id', (req, res, next) =>{
 })
 // routes.post('/postSales', passport.authenticate('jwt', {session: false}), (req, res, next) => {
   
@@ -309,21 +416,31 @@ routes.get('/getItems', function(req, res) {
         }
     })
 })
-routes.get('/getOrders', function(req, res) {
+routes.get('/getOrders', (req, res)=> {
   console.log('Get all items');
   Sales.find({}, '-_v').lean()
   .exec(function(err, order){
       if(err){
           console.log("Error fetching orders");
       }
-      // for(let i = 0; i < items.length; i++){
-      //     var order = items[i];
-      //     order.url = req.protocol + '://' +req.get('host')  + '/' + order._id;
-      // }
+      for(let i = 0; i < order.length; i++){
+          var orders = order[i];
+          orders.url = req.protocol + '://' +req.get('host')  + '/api/getOrder/' + orders._id;
+      }
       res.json(order);
   })
 
 })
+routes.get('/getOrder/:id', function(req,res){
+let orderId = req.params.id;
+Sales.findById(orderId, (err, order)=>{
+  if(err){
+      return res.status(400);
+  }
+     res.json(order);
+  
+});
+});
 routes.get('/getPastActivities',passport.authenticate('jwt', {session: false}),
  function(req, res){
     //  try{
@@ -338,13 +455,9 @@ routes.get('/getPastActivities',passport.authenticate('jwt', {session: false}),
             return res.json({accounts: sale});
           }
     })
-// }catch(ex){
-//     console.log(ex);
-// }
+
 
 })
-
-//routes.post('/postItems', itemsController.postItems);
 routes.post('/postItems', itemsController.postItems);
 
 routes.get('/special', passport.authenticate('jwt', { session: false }), (req, res) => {

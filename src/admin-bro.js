@@ -1,7 +1,7 @@
 const AdminBro = require('admin-bro')
 const AdminBroExpress = require('admin-bro-expressjs')
 const AdminBroMongoose = require('admin-bro-mongoose')
-//const DashboardPage = require('./dashboard-page')
+// const DashboardPage = require('./my-dashboard-component')
 
 const User = require('./models/user');
 const sales = require('./models/sales');
@@ -11,6 +11,7 @@ const items = require('./models/items');
 const cart = require('./models/cart');
 const bookings = require('./models/bookings');
 const categories = require('./models/productCategories');
+const reset = require('./models/PasswordReset');
 
 AdminBro.registerAdapter(AdminBroMongoose)
 const ADMIN = {
@@ -22,17 +23,17 @@ const adminBro = new AdminBro({
   // dashboard: {
   //   component: AdminBro.bundle('./imageUpload.jsx')
   // },
-  resources: [User, sales, products, contacts, items, cart, bookings, categories],
+  resources: [User, sales, products, contacts, items, cart, bookings, categories, reset],
   branding: {
     // logo: 'http://localhost:500/uploads/preetiLoo1.png',
     companyName: 'Preeti Fashions Admin',
     softwareBrothers: true   // if Software Brothers logos should be shown in the sidebar footer
   },
-//   dashboard: {
-//     handler: async () => {
-//     },
-//     component: AdminBro.bundle('./my-dashboard-component')
-//   },
+  dashboard: {
+    handler: async () => {
+    },
+    component: AdminBro.bundle('./my-dashboard-component')
+  },
 })
 
 module.exports = adminRouter = AdminBroExpress.buildAuthenticatedRouter(adminBro, {

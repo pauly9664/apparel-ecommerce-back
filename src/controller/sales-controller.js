@@ -36,7 +36,10 @@ exports.saveSale = (req, res, next) => {
             from: 'gichaga1996@gmail.com',
             to: req.user.email,
             subject: 'Preeti Fashions',
-            text: 'Your order has been processe'
+            attachments: [
+              {filename: 'preetiLogo1.png', path:'./src/preetiLogo1.png'}
+            ],
+             html: '<h3>Hi ' +req.user.names+'<br>Your order has been received and is being processed. Login to the app to follow up on the order placed. Your goods will be delivered in 3 days. Thanks</h3>',    
           };
           
           transporter.sendMail(mailOptions, function(error, info){

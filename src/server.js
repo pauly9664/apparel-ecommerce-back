@@ -58,6 +58,7 @@ var app = express();
  passport.use(passportMiddleware);
 
  app.get('/home', function(req, res) {
+  res.setHeader('Content-Type', 'text/html');
      return res.send('Hello! The API is at http://localhost:'+ port + '/api');
  });
 

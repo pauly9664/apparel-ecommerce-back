@@ -48,7 +48,19 @@ routes.get('/', passport.authenticate('jwt', { session: false }), (req, res) => 
 // request('')
 routes.post('/register', userController.registerUser);
 routes.post('/login', userController.loginUser);
+routes.post('/registerInternal', userController.registerInternalUser);
+routes.post('/loginInternal', userController.loginInternalUser);
 routes.post('/contact', contactController.saveFeedback);
+routes.post('/user_details', (req, res)=>{
+  const user_id = req.body.id;
+  User.find({}, '-_v').lean().where('_id').equals(user_id).exec((err, user)=>{
+    if(err){
+        return res.status(400);
+    }
+    console.log("User", user);
+    res.json(user);
+});
+})
 routes.post('/postSales', passport.authenticate('jwt', {session: false}), salesController.saveSale);
 
 routes.all('/mpesa', passport.authenticate('jwt', { session: false }), (req, res, next) => {
@@ -218,10 +230,17 @@ routes.post('/images', upload.single('image'), imagesController.savePost,
       console.log(newItem);
       newItem.save((err, cart) =>{
         if(err){
-            return res.status(400);
+            // return res.status(400);
+            console.log('Error')
         }
-            return res.status(201).json(cart);
+        console.log("True");
+            // return res.status(201).json(cart);
     });
+   
+// var filename = req.body._id;
+// fs.writeFile(filename, doc.output(), function(err, data){
+// console.log("file iko");
+// })
       
     let transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -240,7 +259,7 @@ routes.post('/images', upload.single('image'), imagesController.savePost,
       to: req.user.email,
       subject: 'Preeti Fashions',
       attachments: [
-        {filename: 'preetiLogo1.png', path:'./src/preetiLogo1.png'}
+        {filename: filename, path:'./src/'+filename+'.jpg'}
       ],
        html: '<h3>Hi ' +req.user.names+'<br>Your order has been received and is being processed. Login to the app to follow up on the order placed. Your goods will be delivered in 3 days. Thanks</h3>',
     };
@@ -440,22 +459,20 @@ Sales.findById(orderId, (err, order)=>{
      res.json(order);
   
 });
-});
-routes.get('/getPastActivities',passport.authenticate('jwt', {session: false}),
- function(req, res){
+})
+routes.get('/getPastActivities', passport.authenticate('jwt', {session: false}),(req, res)=>{
     //  try{
-    console.log('Log previous sales');
-    userLogged = `${req.user._id}`,
-    Sales.find()
-    .where('user_id').equals(userLogged)
-    .exec(function(err, sale){
+   
+    userLogged = `${req.user._id}`;
+    console.log('Log previous sales', userLogged);
+    Sales.find({}, '-v').lean().where('user_id').equals(userLogged).exec((err, sale)=>{
         if(err){
-            console.log(err);
-         }else{
-            return res.json({accounts: sale});
-          }
+           console.log(err);
+         }
+           console.log("Orders for this:", sale)
+            return res.status({accounts:sale});
+          
     })
-
 
 })
 routes.post('/postItems', itemsController.postItems);

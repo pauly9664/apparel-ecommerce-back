@@ -1,5 +1,6 @@
 var User = require('../models/user');
 var Sales = require('../models/sales');
+var InternalUser = require('../models/internal_user');
 var Cart = require('../models/cart');
 var Contact = require('../models/contact');
 var Items = require('../models/items');
@@ -14,6 +15,17 @@ var opts = {
 module.exports = new JwtStrategy(opts, function (jwt_payload, done){
 
     User.findById(jwt_payload.id, function (err, user) {
+        if(err) {
+            return done(err, false);
+        }
+        if(user){
+            // console.log(jwt_payload.id);
+            return done(null, user);
+        }else {
+            return done(null, false);
+        }
+    });
+    InternalUser.findById(jwt_payload.id, function (err, user) {
         if(err) {
             return done(err, false);
         }

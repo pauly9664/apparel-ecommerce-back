@@ -40,12 +40,13 @@ var app = express();
 
 
  app.use(express.static(UPLOAD_PATH));
+ app.use(express.static("public"));
  app.use(cookieParser( config.cookieSecret));
  app.use(session({secret: "akjjkjnisaiuu8998323jdkadsih892rhoisdfasl", resave: true,
  saveUninitialized: true,}));
  app.use(/^\/(?!admin).*/,bodyParser.urlencoded({ extended: false}));
  app.use(bodyParser.json());
-
+ 
  app.use(cors());
  app.use(function (req, res, next) {
      res.header('Access-Control-Allow-Origin', "*");

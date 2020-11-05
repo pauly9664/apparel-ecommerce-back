@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "engines": {
-    "node": "10.16.2"
+    "node": "10.16.2",
+    "npm": "6.9.0"
   },
   "scripts": {
+    "build": "ng build ",
     "heroku-postbuild": "ng-build --prod",
-    "build": "ng build --prod --aot",
     "prestart": "tsc",
     "start": "node src/server.js",
     "dev": "ts-node-dev src/server.ts",

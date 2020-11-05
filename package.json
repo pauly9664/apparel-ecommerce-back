@@ -9,7 +9,6 @@
   },
   "scripts": {
     "build": "ng-build ",
-    "heroku-postbuild": "ng-build --prod",
     "prestart": "tsc",
     "start": "node src/server.js",
     "dev": "ts-node-dev src/server.ts",

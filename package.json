@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "engines": {
-    "node": "10.16.2",
-    "npm": "6.9.0"
+    "node": "10.x",
+    "npm": "6.9.x"
   },
   "scripts": {
-    "build": "npm run build ",
+    "build": "npm runbuild ",
     "prestart": "tsc",
     "start": "node src/server.js",
     "dev": "ts-node-dev src/server.ts",

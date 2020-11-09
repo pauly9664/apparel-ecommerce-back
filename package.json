@@ -8,7 +8,7 @@
     "npm": "6.9.x"
   },
   "scripts": {
-    "build": "ng build ",
+    "build": "npm run build ",
     "prestart": "tsc",
     "start": "node src/server.js",
     "dev": "ts-node-dev src/server.ts",

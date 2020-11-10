@@ -962,7 +962,7 @@ var AuthService = /** @class */ (function () {
         });
     }
     AuthService.prototype.oauthTok = function (oauth_token) {
-        return this.http.post(this.url + "/api/payments", oauth_token);
+        return this.http.post('/api/payments', oauth_token);
     };
     AuthService.prototype.checkToken = function () {
         var _this = this;
@@ -985,7 +985,7 @@ var AuthService = /** @class */ (function () {
         // if(credentials){
         //   console.log(credentials);
         // }
-        return this.http.post(this.url + "/api/register", credentials).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
+        return this.http.post('/api/register', credentials).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
             _this.showAlert(e.error.msg);
             throw new Error(e);
         }));
@@ -993,7 +993,7 @@ var AuthService = /** @class */ (function () {
     AuthService.prototype.resetPassword = function (pass) {
         var _this = this;
         console.log(pass);
-        return this.http.patch(this.url + "/api/reset", pass).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
+        return this.http.patch('/api/reset', pass).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
             _this.showAlert(e.error.msg);
             throw new Error(e);
         }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["tap"])(function (res) {
@@ -1002,11 +1002,11 @@ var AuthService = /** @class */ (function () {
         }));
     };
     AuthService.prototype.getImages = function () {
-        return this.http.get(this.url + 'api/images');
+        return this.http.get('/api/images');
     };
     AuthService.prototype.forgotPassword = function (creds) {
         var _this = this;
-        return this.http.post(this.url + "/api/forgot", creds).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
+        return this.http.post('/api/forgot', creds).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
             _this.showAlert(e.error.msg);
             throw new Error(e);
         }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["tap"])(function (res) {
@@ -1015,7 +1015,7 @@ var AuthService = /** @class */ (function () {
     };
     AuthService.prototype.login = function (credentials) {
         var _this = this;
-        return this.http.post(this.url + "/api/login", credentials).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["tap"])(function (res) {
+        return this.http.post('/api/login', credentials).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["tap"])(function (res) {
             _this.storage.set(TOKEN_KEY, res['token']);
             _this.user = _this.helper.decodeToken(res['token']);
             _this.authenticationState.next(true);
@@ -1027,7 +1027,7 @@ var AuthService = /** @class */ (function () {
     AuthService.prototype.saveFeedback = function (contact) {
         var _this = this;
         //console.log(contact);
-        return this.http.post(this.url + "/api/contact", contact).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
+        return this.http.post('/api/contact', contact).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
             _this.showAlert(e.error.msg);
             //this.authenticationState.next(false);
             throw new Error(e);
@@ -1035,32 +1035,32 @@ var AuthService = /** @class */ (function () {
     };
     AuthService.prototype.updateSales = function (sale) {
         var _this = this;
-        return this.http.post(this.url + "/api/postSales", sale).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
+        return this.http.post('/api/postSales', sale).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
             _this.showAlert(e.error.msg);
             throw new Error(e);
         }));
     };
     AuthService.prototype.postItems = function (item) {
         var _this = this;
-        return this.http.post(this.url + "/api/postItems", item).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
+        return this.http.post('/api/postItems', item).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
             _this.showAlert(e.error.msg);
             //this.authenticationState.next(false);
             throw new Error(e);
         }));
     };
     AuthService.prototype.getItems = function () {
-        return this.http.get(this.url + "/api/getItems");
+        return this.http.get('/api/getItems');
     };
     AuthService.prototype.mpesaOauth = function () {
         var _this = this;
-        return this.http.get(this.url + "/api/mpesa").pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
+        return this.http.get('/api/mpesa').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
             _this.showAlert(e.error.msg);
             //this.authenticationState.next(false);
             throw new Error(e);
         }));
     };
     AuthService.prototype.lipaMpesaOnline = function () {
-        return this.http.get(this.url + "/api/tokenGetter");
+        return this.http.get('/api/tokenGetter');
     };
     AuthService.prototype.logout = function () {
         var _this = this;
@@ -1075,7 +1075,7 @@ var AuthService = /** @class */ (function () {
     };
     AuthService.prototype.getSpecialData = function () {
         var _this = this;
-        return this.http.get(this.url + "/api/special").pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
+        return this.http.get('/api/special').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
             var status = e.status;
             if (status == 401) {
                 _this.showAlert('Please login first');
@@ -1090,7 +1090,7 @@ var AuthService = /** @class */ (function () {
     };
     AuthService.prototype.getSalesActivities = function () {
         var _this = this;
-        return this.http.get(this.url + "/api/getPastActivities").pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
+        return this.http.get('/api/getPastActivities').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
             var status = e.status;
             if (status == 401) {
                 _this.showAlert('Please login first');
@@ -1101,7 +1101,7 @@ var AuthService = /** @class */ (function () {
         }));
     };
     AuthService.prototype.getSalesActivity = function () {
-        return this.http.get(this.url + "/api/getOrders");
+        return this.http.get('/api/getOrders');
     };
     AuthService.prototype.showAlert = function (msg) {
         var alert = this.alertController.create({
@@ -1889,15 +1889,15 @@ var ShoppersCartService = /** @class */ (function () {
         //       return this.items;
         //      }));
         // }
-        return this.http.get(this.url + '/api/images').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (response) { return response; }));
+        return this.http.get('/api/images').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (response) { return response; }));
         // getProducts() {
         //    return this.data;
     };
     ShoppersCartService.prototype.getItems = function () {
-        return this.http.get(this.url + '/api/images');
+        return this.http.get('/api/images');
     };
     ShoppersCartService.prototype.getCategories = function () {
-        return this.http.get(this.url + '/api/fetchCategories').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (response) { return response; }));
+        return this.http.get('/api/fetchCategories').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (response) { return response; }));
     };
     ShoppersCartService.prototype.showAlert = function (msg) {
         var alert = this.alertController.create({
@@ -1908,7 +1908,7 @@ var ShoppersCartService = /** @class */ (function () {
         alert.then(function (alert) { return alert.present(); });
     };
     ShoppersCartService.prototype.postCart = function (order) {
-        return this.http.post(this.url + "/api/postSales", order);
+        return this.http.post('/api/postSales', order);
         // .pipe(
         //   catchError(e => {
         //     this.showAlert(e.error.msg);

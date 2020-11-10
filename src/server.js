@@ -40,7 +40,7 @@ var app = express();
 
 
  app.use(express.static(UPLOAD_PATH));
- app.use(express.static("public"));
+ app.use('/app', express.static("public"));
  app.use(cookieParser( config.cookieSecret));
  app.use(session({secret: "akjjkjnisaiuu8998323jdkadsih892rhoisdfasl", resave: true,
  saveUninitialized: true,}));

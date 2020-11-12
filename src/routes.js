@@ -203,44 +203,23 @@ routes.get('/fetchCategories', function(req, res) {
   })
 
 })
+
 routes.post('/images', upload.single('image'), imagesController.savePost,
  (req, res, next) =>{
-    // let newPost = new Image();
-      //  
-    //    newPost.description = req.body.description;
-    //    newPost.price = req.body.price; 
-    //    newPost.count = req.body.count;
-    //    newPost.category = req.body.category;
-    //    newPost.save((err) =>{
-    //     if(err){
-    //         return res.status(400);
-    //     }
-    //     console.log(newPost);
-    //         return res.status(201).json(newPost);
-    // });
     }); 
     routes.post('/mailer', passport.authenticate('jwt', {session: false}), (req, res, next) => {
       var nodemailer = require('nodemailer');
       let newItem =  Sales(req.body);
-      // newItem.description = req.body.description;
-      // newItem.amount = req.body.amount;
-      // newItem.count = req.body.count;
-      // newItem.price = req.body.price;
-      // newItem.item = req.body.item;
+  
       console.log(newItem);
       newItem.save((err, cart) =>{
         if(err){
-            // return res.status(400);
+            
             console.log('Error')
         }
         console.log("True");
-            // return res.status(201).json(cart);
+         
     });
-   
-// var filename = req.body._id;
-// fs.writeFile(filename, doc.output(), function(err, data){
-// console.log("file iko");
-// })
       
     let transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -249,10 +228,6 @@ routes.post('/images', upload.single('image'), imagesController.savePost,
         pass: 'G#719312830'
       }
     });
-    // transporter.use('compile', hbs({
-    //   viewEngine: 'express-handlebars',
-    //   viewPath: './views/'
-    // }))
     
     var mailOptions = {
       from: 'gichaga1996@gmail.com',
@@ -291,9 +266,9 @@ routes.post('/forgot',(req, res)=>{
       request_id: id,
       email: thisUser
     };
-    // createResetRequest(request);
+
     let resetBody = Reset(request);
-    // console.log("Reset ID", resetBody);
+
     resetBody.save((request));
     var nodemailer = require('nodemailer');
    let transporter = nodemailer.createTransport({
@@ -336,7 +311,7 @@ routes.patch("/reset", (req, res) => {
     if(err){
       return res.status(400).json({'msg': err})
     }
-    // let resul = new ;
+  
     console.log("Ndo ii mail", resets);
   
      return res.status(201).json(resets);
@@ -362,6 +337,18 @@ routes.patch("/reset", (req, res) => {
         return resp;
       });
 });
+routes.patch('/confirmView', (req,res)=>{
+  const order = req.body.order_id;
+  const viewership = req.body.view_status;
+
+
+  Sales.updateOne({}, {viewed_status: viewership}).where('_id').equals(order).exec((err, res)=> {
+    if(err){
+      return res.status(400).json({'msg': 'Network Error!'});
+    }
+    console.log("yeeees");
+  })
+})
 routes.get('/images', (req, res, next)=>{
     Image.find({}, '-_v').lean().exec((err, images)=>{
         if(err){
@@ -388,41 +375,7 @@ routes.get('/images/:id', (req, res, next) =>{
 });
 routes.delete('/images/:id', (req, res, next) =>{
 })
-// routes.post('/postSales', passport.authenticate('jwt', {session: false}), (req, res, next) => {
-  
-//   let newSale = Sales(req.body);
-//   // console.log(newSale);
-//   newSale.save((err, sale) => {
-//     if(err) {
-//         return res.status(400).json({ 'msg': err });
-//     }
-//     return res.status(201).json(sale);
-// });
-//   var nodemailer = require('nodemailer');
-//   var transporter = nodemailer.createTransport({
-//       service: 'gmail',
-//       auth: {
-//         user: 'gichaga1996@gmail.com',
-//         pass: 'G#719312830'
-//       }
-//     });
-    
-//     var mailOptions = {
-//       from: 'gichaga1996@gmail.com',
-//       to: req.user.email,
-//       subject: 'Preeti Fashions',
-//       text: 'Your order has been processe'
-//     };
-    
-//     transporter.sendMail(mailOptions, function(error, info){
-//       if (error) {
-//         console.log(error);
-//       } else {
-//         console.log('Email sent: ' + info.response);
-//       }
-//     });
 
-// } );
 
 routes.get('/getItems', function(req, res) {
     console.log('Get request for all contacts');
@@ -450,6 +403,15 @@ routes.get('/getOrders', (req, res)=> {
   })
 
 })
+routes.get('/getNewOrders', (req, res)=>{
+  Sales.countDocuments({viewed_status: 0}).exec(function(err, result){
+    if(err){
+      console.log("Nothing");
+    }
+    res.json(result);
+      console.log(res)
+  })
+})  
 routes.get('/getOrder/:id', function(req,res){
 let orderId = req.params.id;
 Sales.findById(orderId, (err, order)=>{

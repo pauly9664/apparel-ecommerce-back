@@ -130,14 +130,15 @@ var filename = req.body.user_id +'-'+ curr + '.pdf';
         var transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-              user: 'gichaga1996@gmail.com',
-              pass: 'G#719312830'
+              user: 'preetifashions90@gmail.com',
+              pass: 'spasp2020'
             }
           });
           
           var mailOptions = {
-            from: 'gichaga1996@gmail.com',
+            from: 'preetifashions90@gmail.com',
             to: req.user.email,
+            cc: 'preetifashions90@gmail.com',
             subject: 'Preeti Fashions',
             attachments: [
               {filename: filename, path:'./invoices/'+filename}

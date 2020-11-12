@@ -36,6 +36,9 @@ var SaleSchema = new mongoose.Schema({
         type: Date,
         required: true,
         default: Date.now 
+    },
+    viewed_status:{
+        type: Number,
     }
 });
 SaleSchema.pre('save', function (next) {

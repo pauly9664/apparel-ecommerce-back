@@ -34,13 +34,12 @@ var storage = multer.diskStorage({
   });
   var upload = multer({ storage: storage});
   module.exports = upload;
- 
 
 var app = express();
 
-
  app.use(express.static(UPLOAD_PATH));
- app.use('/app', express.static("public"));
+ app.use(express.static('public'));
+ app.use("/menu/home", express.static("public"))
  app.use(cookieParser( config.cookieSecret));
  app.use(session({secret: "akjjkjnisaiuu8998323jdkadsih892rhoisdfasl", resave: true,
  saveUninitialized: true,}));
@@ -62,6 +61,10 @@ var app = express();
   res.setHeader('Content-Type', 'text/html');
      return res.send('Hello! The API is at http://localhost:'+ port + '/api');
  });
+//  app.use('*', (req, res) => 
+// {
+//   res.sendFile(__dirname +'/public/index.html');
+//  });
 
  var routes = require('./routes.js');
 //  var request = require('./routes.js');

@@ -1422,6 +1422,7 @@ var ConfirmationPopoverPage = /** @class */ (function () {
         this.arrArr = [];
         this.cart = [];
         this.desc = '';
+        this.viewer = 0;
     }
     ConfirmationPopoverPage.prototype.ngOnInit = function () {
         var _this = this;
@@ -1460,6 +1461,7 @@ var ConfirmationPopoverPage = /** @class */ (function () {
             payment_status: [this.passedDelivery],
             user_id: [this.loggedInUser],
             description: [this.arrObj],
+            viewed_status: [this.viewer],
         });
         this.productsForm = this.formBuild.group({
             description: [this.desc],
@@ -1473,6 +1475,7 @@ var ConfirmationPopoverPage = /** @class */ (function () {
         this.setval = this.salesForm.get('amount').setValue(this.totalCartItems);
         this.setval = this.salesForm.get('delivery_status').setValue(this.passedDelivery);
         this.setval = this.salesForm.get('payment_status').setValue(this.passedPayment);
+        this.setval = this.salesForm.get('viewed_status').setValue(this.viewer);
     };
     ConfirmationPopoverPage.prototype.saleUpdate = function () {
         console.log(this.salesForm.value);

@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-title>\n      Tab 1\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\">\n  <h3 [hidden]=\"images.length !== 0\" text-center>No Images found!</h3>\n \n  <ion-list>\n    <ion-item-sliding *ngFor=\"let img of images\">\n \n      <ion-item tappable (click)=\"openImage(img)\">\n        <ion-thumbnail item-start>\n          <img [src]=\"img.url\">\n        </ion-thumbnail>\n        <h2>{{ img.desc }}</h2>\n        <button ion-button clear icon-only item-end> <ion-icon name=\"arrow-forward\"></ion-icon></button>\n      </ion-item>\n \n      <ion-item-options slot=\"end\">\n        <button ion-button icon-only color=\"danger\" (click)=\"deleteImage(img)\">\n        <ion-icon name=\"trash\"></ion-icon>\n      </button>\n      </ion-item-options>\n \n    </ion-item-sliding>\n  </ion-list>\n \n  <ion-fab right bottom>\n    <button ion-fab (click)=\"presentActionSheet()\"><ion-icon name=\"camera\"></ion-icon></button>\n  </ion-fab>\n  <!-- <app-explore-container name=\"Tab 1 page\"></app-explore-container> -->\n </ion-content> -->";
+    __webpack_exports__["default"] = "\r\n<ion-content >\r\n\r\n  <div class=\"bg-image\">\r\n  <img src=\"/assets/PreetiLogo.png\" style=\"height:140px; width: 140px; margin-left: 40%\" />\r\n  <h2 text center style=\"font-family: Open Sans; margin-left: 40%\">Products List</h2>\r\n  <ion-button color=\"danger\" size=\"small\"(click)=\"logout()\" routerLink=\"/login\" style=\"margin-top: -5%;margin-left: 80%\"><ion-icon slot=\"start\" name=\"log-out\"></ion-icon>Logout</ion-button>\r\n</div>\r\n <p style=\"font-weight: bold; font-family: Open Sans; margin-left: 40%; margin-bottom: -3%\"> Search by name</p> \r\n    <ion-searchbar style=\"max-width:50%; margin-left: 50%; margin-top: -1%;\" (ionChange)=\"FilterArrayObjects($event)\" (ionClear)=\" reloadImages()\"></ion-searchbar>  \r\n    <!-- <p style=\"font-family: Open Sans;font-weight: bold; margin-top: 5%\">Actions</p>  -->\r\n    <ion-icon  style=\"font-size: 30px; margin-top: -8%; margin-left: 7%;\"  (click)=\"presentActionSheet()\" name=\"camera\"></ion-icon>\r\n  <h3 [hidden]=\"images.length !== 0\" text-center>No Items found!</h3>\r\n\r\n  \r\n  <ion-list>\r\n    <ion-item-sliding  *ngFor=\"let img of images\">\r\n \r\n      <ion-item tappable (click)=\"openImage(img)\" lines=\"none\">\r\n        <ion-thumbnail item-start>\r\n          <img [src]=\"img.url\">\r\n        </ion-thumbnail>\r\n        <p class=\"styling\"><span style=\"font-weight:bold\">{{ img.description }}</span><br>\r\n        {{img.category}}<br>\r\n        <span style=\"color: green; font-weight: bold;\"><i>KES {{img.price}}</i></span></p>\r\n\r\n        <button ion-button clear icon-only item-end> <ion-icon name=\"arrow-forward\"></ion-icon></button>\r\n      </ion-item>\r\n \r\n      <ion-item-options slot=\"end\">\r\n        <button ion-button icon-only color=\"danger\" (click)=\"deleteImage(img)\">\r\n        <ion-icon name=\"cancel\"></ion-icon>\r\n      </button>\r\n      </ion-item-options>\r\n \r\n    </ion-item-sliding>\r\n  </ion-list>\r\n \r\n \r\n  <!-- <app-explore-container name=\"Tab 1 page\"></app-explore-container> -->\r\n </ion-content>";
     /***/
   },
 
@@ -98,7 +98,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     Tab1PageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["NgModule"])({
-      imports: [_ionic_angular__WEBPACK_IMPORTED_MODULE_1__["IonicModule"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"], _explore_container_explore_container_module__WEBPACK_IMPORTED_MODULE_7__["ExploreContainerComponentModule"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild([{
+      imports: [_ionic_angular__WEBPACK_IMPORTED_MODULE_1__["IonicModule"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["ReactiveFormsModule"], _explore_container_explore_container_module__WEBPACK_IMPORTED_MODULE_7__["ExploreContainerComponentModule"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild([{
         path: '',
         component: _tab1_page__WEBPACK_IMPORTED_MODULE_6__["Tab1Page"]
       }])],
@@ -123,7 +123,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "ion-content ion-toolbar {\n  --background: translucent;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdGFiMS9DOlxcVXNlcnNcXEF0dGFpblxcRGVza3RvcFxcUHJvamVjdHNcXHByZXRzYWwtYWRtaW5cXGFwcGFyZWwtZWNvbW1lcmNlLWFkbWluL3NyY1xcYXBwXFx0YWIxXFx0YWIxLnBhZ2Uuc2NzcyIsInNyYy9hcHAvdGFiMS90YWIxLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHlCQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC90YWIxL3RhYjEucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWNvbnRlbnQgaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHRyYW5zbHVjZW50O1xufSIsImlvbi1jb250ZW50IGlvbi10b29sYmFyIHtcbiAgLS1iYWNrZ3JvdW5kOiB0cmFuc2x1Y2VudDtcbn0iXX0= */";
+    __webpack_exports__["default"] = "ion-content ion-toolbar {\n  --background: translucent;\n}\n\n.styling {\n  font-family: Open Sans;\n}\n\n.align-logo {\n  margin-left: auto;\n  margin-right: auto;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdGFiMS9DOlxcVXNlcnNcXEF0dGFpblxcZGVza3RvcFxccHJvamVjdHNcXHByZXRzYWwtYWRtaW5cXGFwcGFyZWwtZWNvbW1lcmNlLWFkbWluL3NyY1xcYXBwXFx0YWIxXFx0YWIxLnBhZ2Uuc2NzcyIsInNyYy9hcHAvdGFiMS90YWIxLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHlCQUFBO0FDQ0Y7O0FEQ0E7RUFDRSxzQkFBQTtBQ0VGOztBREFBO0VBQ0UsaUJBQUE7RUFDQSxrQkFBQTtBQ0dGIiwiZmlsZSI6InNyYy9hcHAvdGFiMS90YWIxLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1jb250ZW50IGlvbi10b29sYmFyIHtcbiAgLS1iYWNrZ3JvdW5kOiB0cmFuc2x1Y2VudDtcbn1cbi5zdHlsaW5ne1xuICBmb250LWZhbWlseTogT3BlbiBTYW5zO1xufVxuLmFsaWduLWxvZ297XG4gIG1hcmdpbi1sZWZ0OiBhdXRvO1xuICBtYXJnaW4tcmlnaHQ6IGF1dG87XG59XG4vLyAuYmctaW1hZ2V7XG4vLyAgIGJhY2tncm91bmQtY29sb3I6IGJsYW5jaGVkYWxtb25kO1xuLy8gfSIsImlvbi1jb250ZW50IGlvbi10b29sYmFyIHtcbiAgLS1iYWNrZ3JvdW5kOiB0cmFuc2x1Y2VudDtcbn1cblxuLnN0eWxpbmcge1xuICBmb250LWZhbWlseTogT3BlbiBTYW5zO1xufVxuXG4uYWxpZ24tbG9nbyB7XG4gIG1hcmdpbi1sZWZ0OiBhdXRvO1xuICBtYXJnaW4tcmlnaHQ6IGF1dG87XG59Il19 */";
     /***/
   },
 
@@ -185,16 +185,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _upload_modal_upload_modal_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-    /*! ../upload-modal/upload-modal.page */
-    "./src/app/upload-modal/upload-modal.page.ts");
+    var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _authservice_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! ../authservice.service */
+    "./src/app/authservice.service.ts"); // import { UploadModalPage } from '../upload-modal/upload-modal.page';
+
 
     var Tab1Page = /*#__PURE__*/function () {
-      function Tab1Page(navCtrl, imagesProvider, camera, actionSheetCtrl, modalCtrl) {
+      function Tab1Page(navCtrl, authService, imagesProvider, router, camera, actionSheetCtrl, modalCtrl) {
         _classCallCheck(this, Tab1Page);
 
         this.navCtrl = navCtrl;
+        this.authService = authService;
         this.imagesProvider = imagesProvider;
+        this.router = router;
         this.camera = camera;
         this.actionSheetCtrl = actionSheetCtrl;
         this.modalCtrl = modalCtrl;
@@ -203,21 +212,37 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       _createClass(Tab1Page, [{
-        key: "reloadImages",
-        value: function reloadImages() {
+        key: "FilterArrayObjects",
+        value: function FilterArrayObjects(ev) {
           var _this = this;
 
+          this.prods = ev.target.value;
+          console.log("event data", this.prods);
+
+          if (this.prods && this.prods.trim() != '') {
+            this.images = this.images.filter(function (item) {
+              // this.productCategory.push(item.category);
+              return item.description.toLowerCase().indexOf(_this.prods.toLowerCase()) > -1;
+            });
+          }
+        }
+      }, {
+        key: "reloadImages",
+        value: function reloadImages() {
+          var _this2 = this;
+
           this.imagesProvider.getImages().subscribe(function (data) {
-            _this.images = data;
+            _this2.images = data;
+            console.log(_this2.images);
           });
         }
       }, {
         key: "deleteImage",
         value: function deleteImage(img) {
-          var _this2 = this;
+          var _this3 = this;
 
           this.imagesProvider.deleteImage(img).subscribe(function (data) {
-            _this2.reloadImages();
+            _this3.reloadImages();
           });
         }
       }, {
@@ -229,7 +254,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               while (1) {
                 switch (_context.prev = _context.next) {
                   case 0:
-                    _context.next = 2;
+                    console.log("This is the image", img);
+                    _context.next = 3;
                     return this.modalCtrl.create({
                       component: _preview_modal_preview_modal_page__WEBPACK_IMPORTED_MODULE_5__["PreviewModalPage"],
                       componentProps: {
@@ -237,11 +263,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       }
                     });
 
-                  case 2:
+                  case 3:
                     modal = _context.sent;
                     modal.present();
 
-                  case 4:
+                  case 5:
                   case "end":
                     return _context.stop();
                 }
@@ -250,10 +276,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }));
         }
       }, {
+        key: "logout",
+        value: function logout() {
+          this.authService.logout();
+        }
+      }, {
         key: "presentActionSheet",
         value: function presentActionSheet() {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-            var _this3 = this;
+            var _this4 = this;
 
             var actionSheet;
             return regeneratorRuntime.wrap(function _callee2$(_context2) {
@@ -264,16 +295,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     return this.actionSheetCtrl.create({
                       // title: 'Select Image Source',
                       buttons: [{
-                        text: 'Load from Library',
+                        text: 'Upload new items',
                         handler: function handler() {
-                          _this3.takePicture(_this3.camera.PictureSourceType.PHOTOLIBRARY);
+                          _this4.router.navigate(["/products-upload"]); //this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
+
                         }
-                      }, {
-                        text: 'Use Camera',
-                        handler: function handler() {
-                          _this3.takePicture(_this3.camera.PictureSourceType.CAMERA);
-                        }
-                      }, {
+                      }, // {
+                      //   text: 'Use Camera',
+                      //   handler: () => {
+                      //     this.takePicture(this.camera.PictureSourceType.CAMERA);
+                      //   }
+                      // },
+                      {
                         text: 'Cancel',
                         role: 'cancel'
                       }]
@@ -291,37 +324,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }, _callee2, this);
           }));
         }
-      }, {
-        key: "takePicture",
-        value: function takePicture(sourceType) {
-          var _this4 = this;
-
-          // Create options for the Camera Dialog
-          var options = {
-            quality: 100,
-            destinationType: this.camera.DestinationType.FILE_URI,
-            sourceType: sourceType,
-            saveToPhotoAlbum: false,
-            correctOrientation: true
-          }; // Get the data of an image
-
-          this.camera.getPicture(options).then(function (imagePath) {
-            var modal = _this4.modalCtrl.create({
-              component: _upload_modal_upload_modal_page__WEBPACK_IMPORTED_MODULE_6__["UploadModalPage"],
-              componentProps: {
-                data: imagePath
-              }
-            }); //modal.present();
-            // modal.onDidDismiss(data => {
-            //   if (data && data.reload) {
-            //     this.reloadImages();
-            //   }
-            // });
-
-          }, function (err) {
-            console.log('Error: ', err);
-          });
-        }
       }]);
 
       return Tab1Page;
@@ -331,7 +333,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return [{
         type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"]
       }, {
+        type: _authservice_service__WEBPACK_IMPORTED_MODULE_7__["AuthserviceService"]
+      }, {
         type: _products_service__WEBPACK_IMPORTED_MODULE_2__["ProductsService"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]
       }, {
         type: _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_4__["Camera"]
       }, {
@@ -349,7 +355,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./tab1.page.scss */
       "./src/app/tab1/tab1.page.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"], _products_service__WEBPACK_IMPORTED_MODULE_2__["ProductsService"], _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_4__["Camera"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ActionSheetController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"]])], Tab1Page);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"], _authservice_service__WEBPACK_IMPORTED_MODULE_7__["AuthserviceService"], _products_service__WEBPACK_IMPORTED_MODULE_2__["ProductsService"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"], _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_4__["Camera"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ActionSheetController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"]])], Tab1Page);
     /***/
   }
 }]);

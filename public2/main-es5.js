@@ -171,6 +171,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/orderview/orderview.page.html":
+  /*!*************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/orderview/orderview.page.html ***!
+    \*************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppOrderviewOrderviewPageHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "\n<ion-content>\n    <img src=\"/assets/PreetiLogo.png\" style=\"height:140px; width: 140px; margin-left: 40%\" />\n  <ion-card style=\"margin-top: 10%;background-image: url('/assets/wood.jpg') ;\">\n    <ion-card-header>\n      <span style=\"font-weight: bold;color: #fff\">Order Details #{{order}}</span>\n    </ion-card-header>\n    <ion-card-content>\n\n      <!-- <p>Payment Option -> {{order.payment_status}}</p><br> \n      <p>Delivery Option ->  {{order.delivery_status}}</p><br>\n      <p>Order Date -> {{order.buying_date | date}}</p>\n      <p></p><br> -->\n      <ion-button color=\"success\" style=\"margin-left: 50%;\" (click)=\"getDetails()\" >View Details</ion-button>\n      <div *ngIf=\"orderDetail;\">  \n    \n        <!-- <ng-template #orderDetail> -->\n          <ion-input></ion-input>\n    \n      <p><span class=\"detailsStyle\">Items Ordered</span></p><br>\n        <p *ngFor=\"let item of items\" style=\"color:#fff\">{{item}}</p><br>\n        <!-- <p><span class=\"detailsStyle\">Customer</span> ->{{user}} <ion-button  size=\"small\" fill=\"outline\" (click)=\"getUser\">USER DETAILS</ion-button></p> <br>  -->\n        <div *ngIf=\"userDetails\">\n          <p><span class=\"detailsStyle\">Name</span> -> {{name}}</p><br>    \n          <p><span class=\"detailsStyle\">Cell</span> -> {{number}}</p><br>\n          <p><span class=\"detailsStyle\">Email</span> -> {{email}}</p><br>        \n        </div>\n      <p><span class=\"detailsStyle\">Amount -> KES {{amount}}</span> </p><br>    \n      <p><span class=\"detailsStyle\">Payment Option -> {{payment}}</span></p><br> \n      <p><span class=\"detailsStyle\">Delivery Option -> {{delivery}}</span></p><br>\n      <p><span class=\"detailsStyle\">Order Date -> {{dday}}</span></p>\n    <!-- </ng-template> -->\n  </div>\n\n    </ion-card-content>\n    \n  </ion-card>\n  <ion-button color=\"danger\" size=\"small\" style=\"margin-right: auto; margin-left: auto; color: blanchedalmond;\" routerLink=\"/tabs/tab3\">BACK</ion-button>\n\n</ion-content>\n";
+    /***/
+  },
+
+  /***/
   "./node_modules/raw-loader/dist/cjs.js!./src/app/preview-modal/preview-modal.page.html":
   /*!*********************************************************************************************!*\
     !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/preview-modal/preview-modal.page.html ***!
@@ -186,27 +206,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-content>\n  <div class=\"image-modal transparent\">\n    <ion-item class=\"close-fake\" no-lines (click)=\"close()\">\n      <ion-icon name=\"close\"></ion-icon>\n    </ion-item>\n    <img [src]=\"img.url\" class=\"fullscreen-image transparent\" (click)=\"close()\">\n    <ion-card>\n      <ion-card-content class=\"img-info\" *ngIf=\"img.desc\">\n        <div class=\"desc-text\">\"{{ img.desc }}\"</div>\n        <p>\n          <ion-icon name=\"calendar\" item-left *ngIf=\"img.created\"></ion-icon>\n          {{ img.created | date: 'short' }}\n        </p>\n      </ion-card-content>\n    </ion-card>\n  </div>\n</ion-content>";
-    /***/
-  },
-
-  /***/
-  "./node_modules/raw-loader/dist/cjs.js!./src/app/upload-modal/upload-modal.page.html":
-  /*!*******************************************************************************************!*\
-    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/upload-modal/upload-modal.page.html ***!
-    \*******************************************************************************************/
-
-  /*! exports provided: default */
-
-  /***/
-  function node_modulesRawLoaderDistCjsJsSrcAppUploadModalUploadModalPageHtml(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony default export */
-
-
-    __webpack_exports__["default"] = "<ion-header>\n  <!-- <ion-navbar color=\"primary\">  -->\n    <ion-buttons start>\n      <button ion-button icon-only (click)=\"dismiss()\"><ion-icon name=\"close\"></ion-icon></button>\n    </ion-buttons>\n    <ion-title>Upload Image</ion-title>\n   <!-- </ion-navbar>  -->\n</ion-header>\n \n<ion-content padding>\n  <img [src]=\"imageData\" style=\"width: 100%\">\n  <ion-item>\n    <ion-input placeholder=\"My Awesome Image\" [(ngModel)]=\"desc\"></ion-input>\n  </ion-item>\n \n  <button ion-button full icon-left (click)=\"saveImage()\">\n          <ion-icon name=\"checkmark\"></ion-icon>\n          Save & Upload Image\n  </button>\n  <button routerLink=\"/tabs/tab1\">\n  <ion-icon name=\"cancel\"></ion-icon>\n  Back\n</button>\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-content>\n  <div class=\"image-modal transparent\">\n    <ion-item class=\"close-fake\" no-lines (click)=\"close()\">\n      <ion-icon name=\"close\"></ion-icon>\n    </ion-item>\n    <img [src]=\"img.url\" class=\"fullscreen-image transparent\" (click)=\"close()\">\n    <ion-card>\n      <ion-card-content class=\"img-info\" *ngIf=\"img.description\">\n        <div class=\"desc-text\">{{ img.description }}</div>\n        <p>\n          <ion-icon name=\"calendar\"  *ngIf=\"img.created_at\"></ion-icon>\n          {{ img.created_at | date: 'short' }}\n        </p>\n      </ion-card-content>\n    </ion-card>\n  </div>\n</ion-content>";
     /***/
   },
 
@@ -852,22 +852,65 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return m.TabsPageModule;
         });
       }
-    }, {
-      path: 'preview-modal',
+    }, // {
+    //   path: 'preview-modal',
+    //   loadChildren: () => import('./preview-modal/preview-modal.module').then( m => m.PreviewModalPageModule)
+    // },
+    // {
+    //   path: 'upload-modal',
+    //   loadChildren: () => import('./upload-modal/upload-modal.module').then( m => m.UploadModalPageModule)
+    // },
+    {
+      path: 'products-upload',
       loadChildren: function loadChildren() {
-        return Promise.resolve().then(__webpack_require__.bind(null,
-        /*! ./preview-modal/preview-modal.module */
-        "./src/app/preview-modal/preview-modal.module.ts")).then(function (m) {
-          return m.PreviewModalPageModule;
+        return __webpack_require__.e(
+        /*! import() | products-upload-products-upload-module */
+        "products-upload-products-upload-module").then(__webpack_require__.bind(null,
+        /*! ./products-upload/products-upload.module */
+        "./src/app/products-upload/products-upload.module.ts")).then(function (m) {
+          return m.ProductsUploadPageModule;
         });
       }
     }, {
-      path: 'upload-modal',
+      path: 'orderview/:id',
       loadChildren: function loadChildren() {
         return Promise.resolve().then(__webpack_require__.bind(null,
-        /*! ./upload-modal/upload-modal.module */
-        "./src/app/upload-modal/upload-modal.module.ts")).then(function (m) {
-          return m.UploadModalPageModule;
+        /*! ./orderview/orderview.module */
+        "./src/app/orderview/orderview.module.ts")).then(function (m) {
+          return m.OrderviewPageModule;
+        });
+      }
+    }, {
+      path: 'login',
+      loadChildren: function loadChildren() {
+        return __webpack_require__.e(
+        /*! import() | login-login-module */
+        "login-login-module").then(__webpack_require__.bind(null,
+        /*! ./login/login.module */
+        "./src/app/login/login.module.ts")).then(function (m) {
+          return m.LoginPageModule;
+        });
+      }
+    }, {
+      path: 'register',
+      loadChildren: function loadChildren() {
+        return __webpack_require__.e(
+        /*! import() | register-register-module */
+        "register-register-module").then(__webpack_require__.bind(null,
+        /*! ./register/register.module */
+        "./src/app/register/register.module.ts")).then(function (m) {
+          return m.RegisterPageModule;
+        });
+      }
+    }, {
+      path: 'new-orders',
+      loadChildren: function loadChildren() {
+        return __webpack_require__.e(
+        /*! import() | new-orders-new-orders-module */
+        "new-orders-new-orders-module").then(__webpack_require__.bind(null,
+        /*! ./new-orders/new-orders.module */
+        "./src/app/new-orders/new-orders.module.ts")).then(function (m) {
+          return m.NewOrdersPageModule;
         });
       }
     }];
@@ -954,14 +997,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @ionic-native/status-bar/ngx */
     "./node_modules/@ionic-native/status-bar/ngx/index.js");
+    /* harmony import */
+
+
+    var _authservice_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ./authservice.service */
+    "./src/app/authservice.service.ts");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
 
     var AppComponent = /*#__PURE__*/function () {
-      function AppComponent(platform, splashScreen, statusBar) {
+      function AppComponent(platform, splashScreen, auth, statusBar, router) {
         _classCallCheck(this, AppComponent);
 
         this.platform = platform;
         this.splashScreen = splashScreen;
+        this.auth = auth;
         this.statusBar = statusBar;
+        this.router = router;
         this.initializeApp();
       }
 
@@ -974,6 +1031,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _this.statusBar.styleDefault();
 
             _this.splashScreen.hide();
+
+            _this.auth.authenticationState.subscribe(function (state) {
+              if (state) {
+                _this.router.navigate(['./tabs/tab1']);
+              } else {
+                _this.router.navigate(['./login']);
+              }
+            });
           });
         }
       }]);
@@ -987,7 +1052,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         type: _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"]
       }, {
+        type: _authservice_service__WEBPACK_IMPORTED_MODULE_5__["AuthserviceService"]
+      }, {
         type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]
       }];
     };
 
@@ -999,7 +1068,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./app.component.scss */
       "./src/app/app.component.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"]])], AppComponent);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"], _authservice_service__WEBPACK_IMPORTED_MODULE_5__["AuthserviceService"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]])], AppComponent);
     /***/
   },
 
@@ -1009,13 +1078,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     !*** ./src/app/app.module.ts ***!
     \*******************************/
 
-  /*! exports provided: AppModule */
+  /*! exports provided: jwtOptionsFactory, AppModule */
 
   /***/
   function srcAppAppModuleTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "jwtOptionsFactory", function () {
+      return jwtOptionsFactory;
+    });
     /* harmony export (binding) */
 
 
@@ -1067,67 +1142,610 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _app_routing_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    var _ionic_storage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @ionic/storage */
+    "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+    /* harmony import */
+
+
+    var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! @auth0/angular-jwt */
+    "./node_modules/@auth0/angular-jwt/fesm2015/auth0-angular-jwt.js");
+    /* harmony import */
+
+
+    var _app_routing_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
     /*! ./app-routing.module */
     "./src/app/app-routing.module.ts");
     /* harmony import */
 
 
-    var _app_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    var _app_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
     /*! ./app.component */
     "./src/app/app.component.ts");
     /* harmony import */
 
 
-    var _products_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    var _products_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
     /*! ./products.service */
     "./src/app/products.service.ts");
     /* harmony import */
 
 
-    var _angular_common_http__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    var _angular_common_http__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
     /*! @angular/common/http */
     "./node_modules/@angular/common/fesm2015/http.js");
     /* harmony import */
 
 
-    var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
     /*! @ionic-native/camera/ngx */
     "./node_modules/@ionic-native/camera/ngx/index.js");
     /* harmony import */
 
 
-    var _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    var _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
     /*! @ionic-native/file-transfer/ngx */
     "./node_modules/@ionic-native/file-transfer/ngx/index.js");
     /* harmony import */
 
 
-    var _preview_modal_preview_modal_module__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    var _preview_modal_preview_modal_module__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
     /*! ./preview-modal/preview-modal.module */
     "./src/app/preview-modal/preview-modal.module.ts");
     /* harmony import */
 
 
-    var _upload_modal_upload_modal_module__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
-    /*! ./upload-modal/upload-modal.module */
-    "./src/app/upload-modal/upload-modal.module.ts");
+    var _orderview_orderview_module__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    /*! ./orderview/orderview.module */
+    "./src/app/orderview/orderview.module.ts"); // import { UploadModalPageModule } from './upload-modal/upload-modal.module';
+
+
+    function jwtOptionsFactory(storage) {
+      return {
+        tokenGetter: function tokenGetter() {
+          return storage.get('access_token');
+        },
+        whitelistedDomains: ['192.168.137.1:500', '192.168.0.105:8080', '192.168.0.122:501', '192.168.0.109:501', '192.168.200.154:500', '192.168.200.187:500', '192.168.200.135:5000', '192.168.100.35:501', '192.168.137.1:500', '192.168.0.118:500', '192.168.200.142:5000', '192.168.200.129:500', '192.168.100.35:5000', '192.168.0.106:500', '192.168.8.118:500', '192.168.200.140:500', '192.168.100.11:500', '192.168.0.136:501']
+      };
+    }
 
     var AppModule = function AppModule() {
       _classCallCheck(this, AppModule);
     };
 
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_6__["NgModule"])({
-      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]],
+      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"]],
       entryComponents: [],
-      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_10__["HttpClientModule"], _upload_modal_upload_modal_module__WEBPACK_IMPORTED_MODULE_14__["UploadModalPageModule"], _preview_modal_preview_modal_module__WEBPACK_IMPORTED_MODULE_13__["PreviewModalPageModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_7__["AppRoutingModule"]],
+      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_12__["HttpClientModule"], _orderview_orderview_module__WEBPACK_IMPORTED_MODULE_16__["OrderviewPageModule"], // UploadModalPageModule,
+      _preview_modal_preview_modal_module__WEBPACK_IMPORTED_MODULE_15__["PreviewModalPageModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"], _ionic_storage__WEBPACK_IMPORTED_MODULE_7__["IonicStorageModule"].forRoot(), _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_8__["JwtModule"].forRoot({
+        jwtOptionsProvider: {
+          provide: _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_8__["JWT_OPTIONS"],
+          useFactory: jwtOptionsFactory,
+          deps: [_ionic_storage__WEBPACK_IMPORTED_MODULE_7__["Storage"]]
+        }
+      })],
       providers: [_ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_5__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_4__["SplashScreen"], // {provide: ErrorHandler},
-      _products_service__WEBPACK_IMPORTED_MODULE_9__["ProductsService"], _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_11__["Camera"], _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_12__["FileTransfer"], {
+      _products_service__WEBPACK_IMPORTED_MODULE_11__["ProductsService"], _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_13__["Camera"], _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_14__["FileTransfer"], {
         provide: _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouteReuseStrategy"],
         useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["IonicRouteStrategy"]
       }],
-      bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
+      bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"]]
     })], AppModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/authservice.service.ts":
+  /*!****************************************!*\
+    !*** ./src/app/authservice.service.ts ***!
+    \****************************************/
+
+  /*! exports provided: AuthserviceService */
+
+  /***/
+  function srcAppAuthserviceServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "AuthserviceService", function () {
+      return AuthserviceService;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! rxjs */
+    "./node_modules/rxjs/_esm2015/index.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
+    /* harmony import */
+
+
+    var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @auth0/angular-jwt */
+    "./node_modules/@auth0/angular-jwt/fesm2015/auth0-angular-jwt.js");
+    /* harmony import */
+
+
+    var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @angular/common/http */
+    "./node_modules/@angular/common/fesm2015/http.js");
+    /* harmony import */
+
+
+    var src_environments_environment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! src/environments/environment */
+    "./src/environments/environment.ts");
+    /* harmony import */
+
+
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! rxjs/operators */
+    "./node_modules/rxjs/_esm2015/operators/index.js");
+    /* harmony import */
+
+
+    var _ionic_storage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! @ionic/storage */
+    "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+
+    var TOKEN_KEY = 'access_token';
+
+    var AuthserviceService = /*#__PURE__*/function () {
+      // helper:any;
+      function AuthserviceService(alertController, http, storage, plt, helper) {
+        var _this2 = this;
+
+        _classCallCheck(this, AuthserviceService);
+
+        this.alertController = alertController;
+        this.http = http;
+        this.storage = storage;
+        this.plt = plt;
+        this.helper = helper;
+        this.authenticationState = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](false);
+        this.user = null;
+        this.url = src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].url;
+        this.helper = new _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__["JwtHelperService"]();
+        this.plt.ready().then(function () {
+          _this2.checkToken();
+        });
+      }
+
+      _createClass(AuthserviceService, [{
+        key: "login",
+        value: function login(credentials) {
+          var _this3 = this;
+
+          return this.http.post('/api/loginInternal', credentials).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["tap"])(function (res) {
+            _this3.storage.set(TOKEN_KEY, res['token']);
+
+            _this3.user = _this3.helper.decodeToken(res['token']);
+
+            _this3.authenticationState.next(true);
+          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
+            _this3.showAlert(e.error.msg);
+
+            throw new Error(e);
+          }));
+        }
+      }, {
+        key: "logout",
+        value: function logout() {
+          var _this4 = this;
+
+          this.storage.remove(TOKEN_KEY).then(function () {
+            _this4.authenticationState.next(false);
+          });
+        }
+      }, {
+        key: "register",
+        value: function register(credentials) {
+          var _this5 = this;
+
+          // if(credentials){
+          //   console.log(credentials);
+          // }
+          return this.http.post('/api/registerInternal', credentials).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
+            _this5.showAlert(e.error.msg);
+
+            throw new Error(e);
+          }));
+        }
+      }, {
+        key: "checkToken",
+        value: function checkToken() {
+          var _this6 = this;
+
+          this.storage.get(TOKEN_KEY).then(function (token) {
+            if (token) {
+              var decoded = _this6.helper.decodeToken(token);
+
+              var isExpired = _this6.helper.isTokenExpired(token);
+
+              if (!isExpired) {
+                _this6.user = decoded;
+
+                _this6.authenticationState.next(true);
+              } else {
+                _this6.storage.remove(TOKEN_KEY);
+              }
+            }
+          });
+        }
+      }, {
+        key: "getCategories",
+        value: function getCategories() {
+          return this.http.get('/api/fetchCategories').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(function (response) {
+            return response;
+          }));
+        }
+      }, {
+        key: "showAlert",
+        value: function showAlert(msg) {
+          var alert = this.alertController.create({
+            message: msg,
+            header: 'Network Error, Please try again after a few minutes',
+            buttons: ['OK']
+          });
+          alert.then(function (alert) {
+            return alert.present();
+          });
+        }
+      }]);
+
+      return AuthserviceService;
+    }();
+
+    AuthserviceService.ctorParameters = function () {
+      return [{
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"]
+      }, {
+        type: _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"]
+      }, {
+        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_8__["Storage"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Platform"]
+      }, {
+        type: _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__["JwtHelperService"]
+      }];
+    };
+
+    AuthserviceService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+      providedIn: 'root'
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"], _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"], _ionic_storage__WEBPACK_IMPORTED_MODULE_8__["Storage"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Platform"], _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__["JwtHelperService"]])], AuthserviceService);
+    /***/
+  },
+
+  /***/
+  "./src/app/orderview/orderview-routing.module.ts":
+  /*!*******************************************************!*\
+    !*** ./src/app/orderview/orderview-routing.module.ts ***!
+    \*******************************************************/
+
+  /*! exports provided: OrderviewPageRoutingModule */
+
+  /***/
+  function srcAppOrderviewOrderviewRoutingModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "OrderviewPageRoutingModule", function () {
+      return OrderviewPageRoutingModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _orderview_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./orderview.page */
+    "./src/app/orderview/orderview.page.ts");
+
+    var routes = [{
+      path: '',
+      component: _orderview_page__WEBPACK_IMPORTED_MODULE_3__["OrderviewPage"]
+    }];
+
+    var OrderviewPageRoutingModule = function OrderviewPageRoutingModule() {
+      _classCallCheck(this, OrderviewPageRoutingModule);
+    };
+
+    OrderviewPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
+      exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
+    })], OrderviewPageRoutingModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/orderview/orderview.module.ts":
+  /*!***********************************************!*\
+    !*** ./src/app/orderview/orderview.module.ts ***!
+    \***********************************************/
+
+  /*! exports provided: OrderviewPageModule */
+
+  /***/
+  function srcAppOrderviewOrderviewModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "OrderviewPageModule", function () {
+      return OrderviewPageModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
+    /* harmony import */
+
+
+    var _orderview_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ./orderview-routing.module */
+    "./src/app/orderview/orderview-routing.module.ts");
+    /* harmony import */
+
+
+    var _orderview_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ./orderview.page */
+    "./src/app/orderview/orderview.page.ts"); // const routes: Routes = [
+    //   {
+    //     path: '',
+    //     component: OrderviewPage
+    //   }
+    // ];
+
+
+    var OrderviewPageModule = function OrderviewPageModule() {
+      _classCallCheck(this, OrderviewPageModule);
+    };
+
+    OrderviewPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _orderview_routing_module__WEBPACK_IMPORTED_MODULE_5__["OrderviewPageRoutingModule"]],
+      declarations: [_orderview_page__WEBPACK_IMPORTED_MODULE_6__["OrderviewPage"]]
+    })], OrderviewPageModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/orderview/orderview.page.scss":
+  /*!***********************************************!*\
+    !*** ./src/app/orderview/orderview.page.scss ***!
+    \***********************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppOrderviewOrderviewPageScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = ".detailsStyle {\n  font-weight: bold;\n  font-family: Open Sans;\n  color: #fff;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvb3JkZXJ2aWV3L0M6XFxVc2Vyc1xcQXR0YWluXFxkZXNrdG9wXFxwcm9qZWN0c1xccHJldHNhbC1hZG1pblxcYXBwYXJlbC1lY29tbWVyY2UtYWRtaW4vc3JjXFxhcHBcXG9yZGVydmlld1xcb3JkZXJ2aWV3LnBhZ2Uuc2NzcyIsInNyYy9hcHAvb3JkZXJ2aWV3L29yZGVydmlldy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxpQkFBQTtFQUNBLHNCQUFBO0VBQ0EsV0FBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvb3JkZXJ2aWV3L29yZGVydmlldy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZGV0YWlsc1N0eWxle1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICBmb250LWZhbWlseTogT3BlbiBTYW5zO1xyXG4gICAgY29sb3I6ICNmZmZcclxufSIsIi5kZXRhaWxzU3R5bGUge1xuICBmb250LXdlaWdodDogYm9sZDtcbiAgZm9udC1mYW1pbHk6IE9wZW4gU2FucztcbiAgY29sb3I6ICNmZmY7XG59Il19 */";
+    /***/
+  },
+
+  /***/
+  "./src/app/orderview/orderview.page.ts":
+  /*!*********************************************!*\
+    !*** ./src/app/orderview/orderview.page.ts ***!
+    \*********************************************/
+
+  /*! exports provided: OrderviewPage */
+
+  /***/
+  function srcAppOrderviewOrderviewPageTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "OrderviewPage", function () {
+      return OrderviewPage;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
+    /* harmony import */
+
+
+    var _products_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../products.service */
+    "./src/app/products.service.ts");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+
+    var OrderviewPage = /*#__PURE__*/function () {
+      function OrderviewPage(popoverController, router, activatedRoute, orders) {
+        _classCallCheck(this, OrderviewPage);
+
+        this.popoverController = popoverController;
+        this.router = router;
+        this.activatedRoute = activatedRoute;
+        this.orders = orders;
+        this.payment = [];
+        this.delivery = [];
+        this.dday = [];
+        this.user = [];
+        this.amount = [];
+        this.items = []; // this.order = this.navParams.get('order');
+
+        this.getAllOrders(); // this.getOrderDetails();
+      }
+
+      _createClass(OrderviewPage, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          this.order = this.activatedRoute.snapshot.paramMap.get('id'); // console.log("Ndo ii order id finally", this.orderDetails);
+        }
+      }, {
+        key: "getAllOrders",
+        value: function getAllOrders() {
+          var _this7 = this;
+
+          this.orders.getSalesActivities().subscribe(function (res) {
+            _this7.orderDetails = res;
+            console.log("These are all orders", _this7.orderDetails);
+          }); //   this.orderDetail = this.orderDetails.filter(orders=>{
+          //     return orders._id === this.order
+          //  }
+          //  );
+        }
+      }, {
+        key: "getDetails",
+        value: function getDetails() {
+          var _this8 = this;
+
+          this.orderDetail = this.orderDetails.filter(function (orders) {
+            return orders._id == _this8.order; // console.log("This is the obj", orders);
+          }); // this.router.navigate(['/orderview/', this.order]);
+
+          this.orderDetail.forEach(function (order) {
+            _this8.payment.push(order.payment_status);
+
+            _this8.delivery.push(order.delivery_status);
+
+            _this8.amount.push(order.amount);
+
+            _this8.dday.push(order.buying_date);
+
+            _this8.user.push(order.user_id);
+
+            _this8.items.push(order.description); // order.delivery_status = this.delivery;
+            // order.buying_date = this.dday;
+            // order.amount = this.amount;
+
+
+            console.log("Returned payment", _this8.payment);
+          });
+        }
+      }, {
+        key: "getUserDetails",
+        value: function getUserDetails() {
+          this.orders.postUser(this.user);
+        }
+      }, {
+        key: "closePopover",
+        value: function closePopover() {
+          this.popoverController.dismiss();
+        }
+      }]);
+
+      return OrderviewPage;
+    }();
+
+    OrderviewPage.ctorParameters = function () {
+      return [{
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"]
+      }, {
+        type: _products_service__WEBPACK_IMPORTED_MODULE_3__["ProductsService"]
+      }];
+    };
+
+    OrderviewPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-orderview',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./orderview.page.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/orderview/orderview.page.html")).default,
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./orderview.page.scss */
+      "./src/app/orderview/orderview.page.scss")).default]
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"], _products_service__WEBPACK_IMPORTED_MODULE_3__["ProductsService"]])], OrderviewPage);
     /***/
   },
 
@@ -1280,7 +1898,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "page-preview-modal .img-info {\n  padding-left: 20px;\n  background: #fff;\n}\npage-preview-modal .desc-text {\n  font-weight: 500;\n  font-size: larger;\n  padding-bottom: 15px;\n}\npage-preview-modal .content-ios {\n  background: rgba(44, 39, 45, 0.84) !important;\n}\npage-preview-modal .content-md {\n  background: rgba(44, 39, 45, 0.84) !important;\n}\npage-preview-modal .close-fake {\n  background: transparent;\n  font-size: 3rem;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcHJldmlldy1tb2RhbC9DOlxcVXNlcnNcXEF0dGFpblxcRGVza3RvcFxcUHJvamVjdHNcXHByZXRzYWwtYWRtaW5cXGFwcGFyZWwtZWNvbW1lcmNlLWFkbWluL3NyY1xcYXBwXFxwcmV2aWV3LW1vZGFsXFxwcmV2aWV3LW1vZGFsLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcHJldmlldy1tb2RhbC9wcmV2aWV3LW1vZGFsLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDSTtFQUNJLGtCQUFBO0VBQ0EsZ0JBQUE7QUNBUjtBREVJO0VBQ0ssZ0JBQUE7RUFDQSxpQkFBQTtFQUNBLG9CQUFBO0FDQVQ7QURJRTtFQUNFLDZDQUFBO0FDRko7QURLRTtFQUNFLDZDQUFBO0FDSEo7QURNRTtFQUNJLHVCQUFBO0VBRUEsZUFBQTtBQ0xOIiwiZmlsZSI6InNyYy9hcHAvcHJldmlldy1tb2RhbC9wcmV2aWV3LW1vZGFsLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbInBhZ2UtcHJldmlldy1tb2RhbCB7XHJcbiAgICAuaW1nLWluZm8ge1xyXG4gICAgICAgIHBhZGRpbmctbGVmdDogMjBweDtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjZmZmO1xyXG4gICAgfVxyXG4gICAgLmRlc2MtdGV4dCB7XHJcbiAgICAgICAgIGZvbnQtd2VpZ2h0OiA1MDA7XHJcbiAgICAgICAgIGZvbnQtc2l6ZTogbGFyZ2VyO1xyXG4gICAgICAgICBwYWRkaW5nLWJvdHRvbTogMTVweDtcclxuICAgICAgICAgLy9jb2xvcjogY29sb3IoJGNvbG9ycywgZGFyayk7XHJcbiAgICB9XHJcbiBcclxuICAuY29udGVudC1pb3Mge1xyXG4gICAgYmFja2dyb3VuZDogcmdiYSg0NCwgMzksIDQ1LCAwLjg0KSAhaW1wb3J0YW50O1xyXG4gIH1cclxuIFxyXG4gIC5jb250ZW50LW1kIHtcclxuICAgIGJhY2tncm91bmQ6IHJnYmEoNDQsIDM5LCA0NSwgMC44NCkgIWltcG9ydGFudDtcclxuICB9XHJcbiBcclxuICAuY2xvc2UtZmFrZSB7XHJcbiAgICAgIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50O1xyXG4gICAgIC8vIGNvbG9yOiBjb2xvcigkY29sb3JzLCBsaWdodCk7XHJcbiAgICAgIGZvbnQtc2l6ZTogM3JlbTtcclxuICB9XHJcbn0iLCJwYWdlLXByZXZpZXctbW9kYWwgLmltZy1pbmZvIHtcbiAgcGFkZGluZy1sZWZ0OiAyMHB4O1xuICBiYWNrZ3JvdW5kOiAjZmZmO1xufVxucGFnZS1wcmV2aWV3LW1vZGFsIC5kZXNjLXRleHQge1xuICBmb250LXdlaWdodDogNTAwO1xuICBmb250LXNpemU6IGxhcmdlcjtcbiAgcGFkZGluZy1ib3R0b206IDE1cHg7XG59XG5wYWdlLXByZXZpZXctbW9kYWwgLmNvbnRlbnQtaW9zIHtcbiAgYmFja2dyb3VuZDogcmdiYSg0NCwgMzksIDQ1LCAwLjg0KSAhaW1wb3J0YW50O1xufVxucGFnZS1wcmV2aWV3LW1vZGFsIC5jb250ZW50LW1kIHtcbiAgYmFja2dyb3VuZDogcmdiYSg0NCwgMzksIDQ1LCAwLjg0KSAhaW1wb3J0YW50O1xufVxucGFnZS1wcmV2aWV3LW1vZGFsIC5jbG9zZS1mYWtlIHtcbiAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7XG4gIGZvbnQtc2l6ZTogM3JlbTtcbn0iXX0= */";
+    __webpack_exports__["default"] = "page-preview-modal .img-info {\n  padding-left: 20px;\n  background: #fff;\n}\npage-preview-modal .desc-text {\n  font-weight: bolder;\n  font-size: larger;\n  padding-bottom: 15px;\n}\npage-preview-modal .content-ios {\n  background: rgba(44, 39, 45, 0.84) !important;\n}\npage-preview-modal .content-md {\n  background: rgba(44, 39, 45, 0.84) !important;\n}\npage-preview-modal .close-fake {\n  background: transparent;\n  font-size: 3rem;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcHJldmlldy1tb2RhbC9DOlxcVXNlcnNcXEF0dGFpblxcZGVza3RvcFxccHJvamVjdHNcXHByZXRzYWwtYWRtaW5cXGFwcGFyZWwtZWNvbW1lcmNlLWFkbWluL3NyY1xcYXBwXFxwcmV2aWV3LW1vZGFsXFxwcmV2aWV3LW1vZGFsLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcHJldmlldy1tb2RhbC9wcmV2aWV3LW1vZGFsLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDSTtFQUNJLGtCQUFBO0VBQ0EsZ0JBQUE7QUNBUjtBREVJO0VBQ0ssbUJBQUE7RUFDQSxpQkFBQTtFQUNBLG9CQUFBO0FDQVQ7QURJRTtFQUNFLDZDQUFBO0FDRko7QURLRTtFQUNFLDZDQUFBO0FDSEo7QURNRTtFQUNJLHVCQUFBO0VBRUEsZUFBQTtBQ0xOIiwiZmlsZSI6InNyYy9hcHAvcHJldmlldy1tb2RhbC9wcmV2aWV3LW1vZGFsLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbInBhZ2UtcHJldmlldy1tb2RhbCB7XHJcbiAgICAuaW1nLWluZm8ge1xyXG4gICAgICAgIHBhZGRpbmctbGVmdDogMjBweDtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjZmZmO1xyXG4gICAgfVxyXG4gICAgLmRlc2MtdGV4dCB7XHJcbiAgICAgICAgIGZvbnQtd2VpZ2h0OiBib2xkZXI7XHJcbiAgICAgICAgIGZvbnQtc2l6ZTogbGFyZ2VyO1xyXG4gICAgICAgICBwYWRkaW5nLWJvdHRvbTogMTVweDtcclxuICAgICAgICAgLy9jb2xvcjogY29sb3IoJGNvbG9ycywgZGFyayk7XHJcbiAgICB9XHJcbiBcclxuICAuY29udGVudC1pb3Mge1xyXG4gICAgYmFja2dyb3VuZDogcmdiYSg0NCwgMzksIDQ1LCAwLjg0KSAhaW1wb3J0YW50O1xyXG4gIH1cclxuIFxyXG4gIC5jb250ZW50LW1kIHtcclxuICAgIGJhY2tncm91bmQ6IHJnYmEoNDQsIDM5LCA0NSwgMC44NCkgIWltcG9ydGFudDtcclxuICB9XHJcbiBcclxuICAuY2xvc2UtZmFrZSB7XHJcbiAgICAgIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50O1xyXG4gICAgIC8vIGNvbG9yOiBjb2xvcigkY29sb3JzLCBsaWdodCk7XHJcbiAgICAgIGZvbnQtc2l6ZTogM3JlbTtcclxuICB9XHJcbn0iLCJwYWdlLXByZXZpZXctbW9kYWwgLmltZy1pbmZvIHtcbiAgcGFkZGluZy1sZWZ0OiAyMHB4O1xuICBiYWNrZ3JvdW5kOiAjZmZmO1xufVxucGFnZS1wcmV2aWV3LW1vZGFsIC5kZXNjLXRleHQge1xuICBmb250LXdlaWdodDogYm9sZGVyO1xuICBmb250LXNpemU6IGxhcmdlcjtcbiAgcGFkZGluZy1ib3R0b206IDE1cHg7XG59XG5wYWdlLXByZXZpZXctbW9kYWwgLmNvbnRlbnQtaW9zIHtcbiAgYmFja2dyb3VuZDogcmdiYSg0NCwgMzksIDQ1LCAwLjg0KSAhaW1wb3J0YW50O1xufVxucGFnZS1wcmV2aWV3LW1vZGFsIC5jb250ZW50LW1kIHtcbiAgYmFja2dyb3VuZDogcmdiYSg0NCwgMzksIDQ1LCAwLjg0KSAhaW1wb3J0YW50O1xufVxucGFnZS1wcmV2aWV3LW1vZGFsIC5jbG9zZS1mYWtlIHtcbiAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7XG4gIGZvbnQtc2l6ZTogM3JlbTtcbn0iXX0= */";
     /***/
   },
 
@@ -1330,6 +1948,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.navParams = navParams;
         this.viewCtrl = viewCtrl;
         this.img = this.navParams.get('img');
+        console.log(this.img.description);
       }
 
       _createClass(PreviewModalPage, [{
@@ -1407,33 +2026,107 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! rxjs/operators */
+    "./node_modules/rxjs/_esm2015/operators/index.js");
+    /* harmony import */
+
+
+    var _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @ionic-native/file-transfer/ngx */
     "./node_modules/@ionic-native/file-transfer/ngx/index.js");
+    /* harmony import */
+
+
+    var src_environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! src/environments/environment */
+    "./src/environments/environment.ts");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
 
     var ProductsService = /*#__PURE__*/function () {
-      function ProductsService(http, transfer) {
+      function ProductsService(http, transfer, alertController) {
         _classCallCheck(this, ProductsService);
 
         this.http = http;
         this.transfer = transfer;
-        this.apiURL = 'http://192.168.100.35:500/api';
+        this.alertController = alertController; // apiURL = 'http://192.168.0.122:501/api';
+
+        this.apiURL = src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].url + '/api';
       }
 
       _createClass(ProductsService, [{
+        key: "getNewOrders",
+        value: function getNewOrders() {
+          return this.http.get('/api/getNewOrders');
+        }
+      }, {
         key: "getImages",
         value: function getImages() {
-          return this.http.get(this.apiURL + '/images');
+          return this.http.get('/api/images');
+        }
+      }, {
+        key: "getSalesActivities",
+        value: function getSalesActivities() {
+          return this.http.get('/api/getOrders');
+        }
+      }, {
+        key: "getSalesActivity",
+        value: function getSalesActivity() {
+          return this.http.get('/api/getOrders').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (response) {
+            return response;
+          }));
+        }
+      }, {
+        key: "getOrder",
+        value: function getOrder() {
+          return this.http.get('/api/getOrder/:id').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (res) {
+            console.log("This is the specific order", res);
+          }));
+        }
+      }, {
+        key: "confirmViewerShip",
+        value: function confirmViewerShip(confirm) {
+          return this.http.patch('/api/confirmView', confirm);
         }
       }, {
         key: "deleteImage",
         value: function deleteImage(img) {
-          return this.http.delete(this.apiURL + '/images/' + img._id);
+          return this.http.delete('/api/images/' + img._id);
         }
       }, {
         key: "sendtext",
         value: function sendtext() {
           return this.http.get("".concat(this.apiURL, "/sendtexts"));
+        }
+      }, {
+        key: "postUser",
+        value: function postUser(user) {
+          return this.http.post('/api/userdetails/', user);
+        }
+      }, {
+        key: "uploadProducts",
+        value: function uploadProducts(products) {
+          return this.http.post('/api/images', products, {
+            reportProgress: true,
+            observe: 'events'
+          });
+        }
+      }, {
+        key: "showAlert",
+        value: function showAlert(msg) {
+          var alert = this.alertController.create({
+            message: msg,
+            header: 'Network Error, Please try again after a few minutes',
+            buttons: ['OK']
+          });
+          alert.then(function (alert) {
+            return alert.present();
+          });
         }
       }, {
         key: "uploadImage",
@@ -1463,267 +2156,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return [{
         type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]
       }, {
-        type: _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_3__["FileTransfer"]
+        type: _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_4__["FileTransfer"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"]
       }];
     };
 
     ProductsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
       providedIn: 'root'
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_3__["FileTransfer"]])], ProductsService);
-    /***/
-  },
-
-  /***/
-  "./src/app/upload-modal/upload-modal-routing.module.ts":
-  /*!*************************************************************!*\
-    !*** ./src/app/upload-modal/upload-modal-routing.module.ts ***!
-    \*************************************************************/
-
-  /*! exports provided: UploadModalPageRoutingModule */
-
-  /***/
-  function srcAppUploadModalUploadModalRoutingModuleTs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "UploadModalPageRoutingModule", function () {
-      return UploadModalPageRoutingModule;
-    });
-    /* harmony import */
-
-
-    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! tslib */
-    "./node_modules/tslib/tslib.es6.js");
-    /* harmony import */
-
-
-    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! @angular/core */
-    "./node_modules/@angular/core/fesm2015/core.js");
-    /* harmony import */
-
-
-    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! @angular/router */
-    "./node_modules/@angular/router/fesm2015/router.js");
-    /* harmony import */
-
-
-    var _upload_modal_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./upload-modal.page */
-    "./src/app/upload-modal/upload-modal.page.ts");
-
-    var routes = [{
-      path: '',
-      component: _upload_modal_page__WEBPACK_IMPORTED_MODULE_3__["UploadModalPage"]
-    }];
-
-    var UploadModalPageRoutingModule = function UploadModalPageRoutingModule() {
-      _classCallCheck(this, UploadModalPageRoutingModule);
-    };
-
-    UploadModalPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-      imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
-      exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
-    })], UploadModalPageRoutingModule);
-    /***/
-  },
-
-  /***/
-  "./src/app/upload-modal/upload-modal.module.ts":
-  /*!*****************************************************!*\
-    !*** ./src/app/upload-modal/upload-modal.module.ts ***!
-    \*****************************************************/
-
-  /*! exports provided: UploadModalPageModule */
-
-  /***/
-  function srcAppUploadModalUploadModalModuleTs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "UploadModalPageModule", function () {
-      return UploadModalPageModule;
-    });
-    /* harmony import */
-
-
-    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! tslib */
-    "./node_modules/tslib/tslib.es6.js");
-    /* harmony import */
-
-
-    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! @angular/core */
-    "./node_modules/@angular/core/fesm2015/core.js");
-    /* harmony import */
-
-
-    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! @angular/common */
-    "./node_modules/@angular/common/fesm2015/common.js");
-    /* harmony import */
-
-
-    var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! @angular/forms */
-    "./node_modules/@angular/forms/fesm2015/forms.js");
-    /* harmony import */
-
-
-    var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! @ionic/angular */
-    "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
-    /* harmony import */
-
-
-    var _upload_modal_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-    /*! ./upload-modal-routing.module */
-    "./src/app/upload-modal/upload-modal-routing.module.ts");
-    /* harmony import */
-
-
-    var _upload_modal_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-    /*! ./upload-modal.page */
-    "./src/app/upload-modal/upload-modal.page.ts");
-
-    var UploadModalPageModule = function UploadModalPageModule() {
-      _classCallCheck(this, UploadModalPageModule);
-    };
-
-    UploadModalPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _upload_modal_routing_module__WEBPACK_IMPORTED_MODULE_5__["UploadModalPageRoutingModule"]],
-      declarations: [_upload_modal_page__WEBPACK_IMPORTED_MODULE_6__["UploadModalPage"]]
-    })], UploadModalPageModule);
-    /***/
-  },
-
-  /***/
-  "./src/app/upload-modal/upload-modal.page.scss":
-  /*!*****************************************************!*\
-    !*** ./src/app/upload-modal/upload-modal.page.scss ***!
-    \*****************************************************/
-
-  /*! exports provided: default */
-
-  /***/
-  function srcAppUploadModalUploadModalPageScss(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony default export */
-
-
-    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3VwbG9hZC1tb2RhbC91cGxvYWQtbW9kYWwucGFnZS5zY3NzIn0= */";
-    /***/
-  },
-
-  /***/
-  "./src/app/upload-modal/upload-modal.page.ts":
-  /*!***************************************************!*\
-    !*** ./src/app/upload-modal/upload-modal.page.ts ***!
-    \***************************************************/
-
-  /*! exports provided: UploadModalPage */
-
-  /***/
-  function srcAppUploadModalUploadModalPageTs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "UploadModalPage", function () {
-      return UploadModalPage;
-    });
-    /* harmony import */
-
-
-    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! tslib */
-    "./node_modules/tslib/tslib.es6.js");
-    /* harmony import */
-
-
-    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! @angular/core */
-    "./node_modules/@angular/core/fesm2015/core.js");
-    /* harmony import */
-
-
-    var _products_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ../products.service */
-    "./src/app/products.service.ts");
-    /* harmony import */
-
-
-    var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! @ionic/angular */
-    "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
-
-    var UploadModalPage = /*#__PURE__*/function () {
-      function UploadModalPage(navCtrl, viewCtrl, imagesProvider) {
-        _classCallCheck(this, UploadModalPage);
-
-        this.navCtrl = navCtrl;
-        this.viewCtrl = viewCtrl;
-        this.imagesProvider = imagesProvider;
-      }
-
-      _createClass(UploadModalPage, [{
-        key: "ngOnInit",
-        value: function ngOnInit() {}
-      }, {
-        key: "saveImage",
-        value: function saveImage() {
-          var _this2 = this;
-
-          this.imagesProvider.uploadImage(this.imageData, this.desc).then(function (res) {
-            _this2.viewCtrl.dismiss({
-              reload: true
-            });
-          }, function (err) {
-            _this2.dismiss();
-          });
-        }
-      }, {
-        key: "dismiss",
-        value: function dismiss() {
-          this.viewCtrl.dismiss();
-        }
-      }]);
-
-      return UploadModalPage;
-    }();
-
-    UploadModalPage.ctorParameters = function () {
-      return [{
-        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"]
-      }, {
-        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"]
-      }, {
-        type: _products_service__WEBPACK_IMPORTED_MODULE_2__["ProductsService"]
-      }];
-    };
-
-    UploadModalPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-      selector: 'app-upload-modal',
-      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
-      /*! raw-loader!./upload-modal.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/upload-modal/upload-modal.page.html")).default,
-      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
-      /*! ./upload-modal.page.scss */
-      "./src/app/upload-modal/upload-modal.page.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"], _products_service__WEBPACK_IMPORTED_MODULE_2__["ProductsService"]])], UploadModalPage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_4__["FileTransfer"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"]])], ProductsService);
     /***/
   },
 
@@ -1757,7 +2198,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
     var environment = {
-      production: false
+      production: false,
+      // url: 'http://192.168.100.35:501',
+      url: 'http://192.168.0.105:8080'
     };
     /*
      * For easier debugging in development mode, you can import the following file
@@ -1836,7 +2279,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! C:\Users\Attain\Desktop\Projects\pretsal-admin\apparel-ecommerce-admin\src\main.ts */
+    /*! C:\Users\Attain\desktop\projects\pretsal-admin\apparel-ecommerce-admin\src\main.ts */
     "./src/main.ts");
     /***/
   }

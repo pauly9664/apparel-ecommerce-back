@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-title>\n      Tab 2\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\">\n  <ion-header collapse=\"condense\">\n    <ion-toolbar>\n      <ion-title size=\"large\">Tab 2</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n <button (click)=\"sendtexts()\">Send texts</button>\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<!-- <ion-header [translucent]=\"true\">\r\n  <ion-toolbar>\r\n    <ion-title>\r\n      Tab 2\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header> -->\r\n\r\n<ion-content [fullscreen]=\"true\" >\r\n  <ion-header collapse=\"condense\">\r\n    <ion-toolbar>\r\n      <ion-title size=\"large\">Communications</ion-title>\r\n    </ion-toolbar>\r\n  </ion-header>\r\n  <ion-grid>\r\n    <ion-row>\r\n      <img src=\"/assets/PreetiLogo.png\" style=\"height:140px; width: 140px; margin-left: 40%\" />\r\n      <!-- <h2 text center style=\"font-family: Open Sans;\">App Center</h2> -->\r\n    </ion-row>\r\n    <ion-row >\r\n      <ion-col class=\"cell-class\" size-sm=\"6\" size-md=\"6\" size-lg=\"6\" style=\"margin-top: 5%;\">\r\n        <ion-icon style=\"font-size: 50px; color: pink\" tappable name=\"chatbox-outline\"  routerLink=\"/tabs/tab1\"></ion-icon>\r\n        <ion-label style=\"font-family: Open Sans; color:#000; font-weight: bold\">Items List</ion-label>\r\n      </ion-col>\r\n      <ion-col class=\"cell-class\" size-sm=\"6\" size-md=\"6\" size-lg=\"6\" style=\"margin-top: 5%;\">\r\n        <ion-icon style=\"font-size: 50px;  color:blue\" tappable name=\"camera\" routerLink=\"/products-upload\"></ion-icon>\r\n        <ion-label style=\"font-family: Open Sans; color:#000; font-weight: bold\">Products Upload</ion-label>\r\n      </ion-col>\r\n    </ion-row>\r\n    <ion-row>\r\n      <ion-col class=\"cell-class\" size-sm=\"6\" size-md=\"6\" size-lg=\"6\">\r\n        <ion-icon style=\"font-size: 50px; color: yellow\" tappable name=\"wallet-outline\"  routerLink=\"/tabs/tab3\"></ion-icon>\r\n        <ion-label style=\"font-family: Open Sans; color:#000; font-weight: bold\">All Orders</ion-label>\r\n      </ion-col>\r\n      <ion-col  class=\"cell-class\" size-sm=\"6\" size-md=\"6\" size-lg=\"6\">\r\n        <ion-icon style=\"font-size: 50px;  color:green\" tappable name=\"basket-outline\"  routerLink=\"/new-orders\"></ion-icon>\r\n        <ion-label  routerLink=\"/new-orders\" style=\"font-family: Open Sans; color:#000; font-weight: bold\">New Orders <ion-badge color=\"success\" >{{news}}</ion-badge></ion-label>\r\n      </ion-col>\r\n    </ion-row>\r\n    \r\n  </ion-grid>\r\n</ion-content>\r\n");
 
 /***/ }),
 
@@ -67,7 +67,7 @@ Tab2PageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("ion-content ion-toolbar {\n  --background: translucent;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdGFiMi9DOlxcVXNlcnNcXEF0dGFpblxcRGVza3RvcFxcUHJvamVjdHNcXHByZXRzYWwtYWRtaW5cXGFwcGFyZWwtZWNvbW1lcmNlLWFkbWluL3NyY1xcYXBwXFx0YWIyXFx0YWIyLnBhZ2Uuc2NzcyIsInNyYy9hcHAvdGFiMi90YWIyLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHlCQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC90YWIyL3RhYjIucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWNvbnRlbnQgaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHRyYW5zbHVjZW50O1xufSIsImlvbi1jb250ZW50IGlvbi10b29sYmFyIHtcbiAgLS1iYWNrZ3JvdW5kOiB0cmFuc2x1Y2VudDtcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-content ion-toolbar {\n  --background: translucent;\n}\n\n.cell-class {\n  border-color: black;\n  margin-bottom: 10%;\n}\n\n.bg-image {\n  background-image: url(\"/assets/wall_back.jpg\");\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdGFiMi9DOlxcVXNlcnNcXEF0dGFpblxcZGVza3RvcFxccHJvamVjdHNcXHByZXRzYWwtYWRtaW5cXGFwcGFyZWwtZWNvbW1lcmNlLWFkbWluL3NyY1xcYXBwXFx0YWIyXFx0YWIyLnBhZ2Uuc2NzcyIsInNyYy9hcHAvdGFiMi90YWIyLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHlCQUFBO0FDQ0Y7O0FEQ0E7RUFDRSxtQkFBQTtFQUdDLGtCQUFBO0FDQUg7O0FER0E7RUFDRSw4Q0FBQTtBQ0FGIiwiZmlsZSI6InNyYy9hcHAvdGFiMi90YWIyLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1jb250ZW50IGlvbi10b29sYmFyIHtcbiAgLS1iYWNrZ3JvdW5kOiB0cmFuc2x1Y2VudDtcbn1cbi5jZWxsLWNsYXNzIHtcbiAgYm9yZGVyLWNvbG9yOiBibGFjazsgXG4gIC8vIGJvcmRlci13aWR0aDogLjAxZW07IFxuICAvLyBib3JkZXItc3R5bGU6c29saWQ7IFxuICAgbWFyZ2luLWJvdHRvbSA6IDEwJTtcblxufVxuLmJnLWltYWdle1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIvYXNzZXRzL3dhbGxfYmFjay5qcGdcIik7XG59IiwiaW9uLWNvbnRlbnQgaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHRyYW5zbHVjZW50O1xufVxuXG4uY2VsbC1jbGFzcyB7XG4gIGJvcmRlci1jb2xvcjogYmxhY2s7XG4gIG1hcmdpbi1ib3R0b206IDEwJTtcbn1cblxuLmJnLWltYWdlIHtcbiAgYmFja2dyb3VuZC1pbWFnZTogdXJsKFwiL2Fzc2V0cy93YWxsX2JhY2suanBnXCIpO1xufSJdfQ== */");
 
 /***/ }),
 
@@ -90,9 +90,14 @@ __webpack_require__.r(__webpack_exports__);
 let Tab2Page = class Tab2Page {
     constructor(textProvider) {
         this.textProvider = textProvider;
+        this.news = [];
+        this.getOrdersCount();
     }
-    sendtexts() {
-        this.textProvider.sendtext().subscribe();
+    getOrdersCount() {
+        this.textProvider.getNewOrders().subscribe(res => {
+            this.news = res;
+            console.log("Count", this.news);
+        });
     }
 };
 Tab2Page.ctorParameters = () => [

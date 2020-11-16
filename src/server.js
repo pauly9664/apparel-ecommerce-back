@@ -38,8 +38,14 @@ var storage = multer.diskStorage({
 var app = express();
 
  app.use(express.static(UPLOAD_PATH));
- app.use(express.static('public'));
- app.use("/menu/home", express.static("public"))
+ app.use( express.static('public2'));
+//  app.use(express.static('public'));
+ app.use("/login", express.static("public2"))
+ app.use("/products-upload", express.static("public2"))
+ app.use("/tabs/tab1", express.static("public2"))
+//  app.use("/menu/shoppers-cart", express.static("public"))
+//  app.use("/menu/accountslanding", express.static("public"))
+ 
  app.use(cookieParser( config.cookieSecret));
  app.use(session({secret: "akjjkjnisaiuu8998323jdkadsih892rhoisdfasl", resave: true,
  saveUninitialized: true,}));

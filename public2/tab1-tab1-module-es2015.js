@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-title>\n      Tab 1\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content [fullscreen]=\"true\">\n  <h3 [hidden]=\"images.length !== 0\" text-center>No Images found!</h3>\n \n  <ion-list>\n    <ion-item-sliding *ngFor=\"let img of images\">\n \n      <ion-item tappable (click)=\"openImage(img)\">\n        <ion-thumbnail item-start>\n          <img [src]=\"img.url\">\n        </ion-thumbnail>\n        <h2>{{ img.desc }}</h2>\n        <button ion-button clear icon-only item-end> <ion-icon name=\"arrow-forward\"></ion-icon></button>\n      </ion-item>\n \n      <ion-item-options slot=\"end\">\n        <button ion-button icon-only color=\"danger\" (click)=\"deleteImage(img)\">\n        <ion-icon name=\"trash\"></ion-icon>\n      </button>\n      </ion-item-options>\n \n    </ion-item-sliding>\n  </ion-list>\n \n  <ion-fab right bottom>\n    <button ion-fab (click)=\"presentActionSheet()\"><ion-icon name=\"camera\"></ion-icon></button>\n  </ion-fab>\n  <!-- <app-explore-container name=\"Tab 1 page\"></app-explore-container> -->\n </ion-content> -->");
+/* harmony default export */ __webpack_exports__["default"] = ("\r\n<ion-content >\r\n\r\n  <div class=\"bg-image\">\r\n  <img src=\"/assets/PreetiLogo.png\" style=\"height:140px; width: 140px; margin-left: 40%\" />\r\n  <h2 text center style=\"font-family: Open Sans; margin-left: 40%\">Products List</h2>\r\n  <ion-button color=\"danger\" size=\"small\"(click)=\"logout()\" routerLink=\"/login\" style=\"margin-top: -5%;margin-left: 80%\"><ion-icon slot=\"start\" name=\"log-out\"></ion-icon>Logout</ion-button>\r\n</div>\r\n <p style=\"font-weight: bold; font-family: Open Sans; margin-left: 40%; margin-bottom: -3%\"> Search by name</p> \r\n    <ion-searchbar style=\"max-width:50%; margin-left: 50%; margin-top: -1%;\" (ionChange)=\"FilterArrayObjects($event)\" (ionClear)=\" reloadImages()\"></ion-searchbar>  \r\n    <!-- <p style=\"font-family: Open Sans;font-weight: bold; margin-top: 5%\">Actions</p>  -->\r\n    <ion-icon  style=\"font-size: 30px; margin-top: -8%; margin-left: 7%;\"  (click)=\"presentActionSheet()\" name=\"camera\"></ion-icon>\r\n  <h3 [hidden]=\"images.length !== 0\" text-center>No Items found!</h3>\r\n\r\n  \r\n  <ion-list>\r\n    <ion-item-sliding  *ngFor=\"let img of images\">\r\n \r\n      <ion-item tappable (click)=\"openImage(img)\" lines=\"none\">\r\n        <ion-thumbnail item-start>\r\n          <img [src]=\"img.url\">\r\n        </ion-thumbnail>\r\n        <p class=\"styling\"><span style=\"font-weight:bold\">{{ img.description }}</span><br>\r\n        {{img.category}}<br>\r\n        <span style=\"color: green; font-weight: bold;\"><i>KES {{img.price}}</i></span></p>\r\n\r\n        <button ion-button clear icon-only item-end> <ion-icon name=\"arrow-forward\"></ion-icon></button>\r\n      </ion-item>\r\n \r\n      <ion-item-options slot=\"end\">\r\n        <button ion-button icon-only color=\"danger\" (click)=\"deleteImage(img)\">\r\n        <ion-icon name=\"cancel\"></ion-icon>\r\n      </button>\r\n      </ion-item-options>\r\n \r\n    </ion-item-sliding>\r\n  </ion-list>\r\n \r\n \r\n  <!-- <app-explore-container name=\"Tab 1 page\"></app-explore-container> -->\r\n </ion-content>");
 
 /***/ }),
 
@@ -47,6 +47,7 @@ Tab1PageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["IonicModule"],
             _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_5__["ReactiveFormsModule"],
             _explore_container_explore_container_module__WEBPACK_IMPORTED_MODULE_7__["ExploreContainerComponentModule"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild([{ path: '', component: _tab1_page__WEBPACK_IMPORTED_MODULE_6__["Tab1Page"] }])
         ],
@@ -67,7 +68,7 @@ Tab1PageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("ion-content ion-toolbar {\n  --background: translucent;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdGFiMS9DOlxcVXNlcnNcXEF0dGFpblxcRGVza3RvcFxcUHJvamVjdHNcXHByZXRzYWwtYWRtaW5cXGFwcGFyZWwtZWNvbW1lcmNlLWFkbWluL3NyY1xcYXBwXFx0YWIxXFx0YWIxLnBhZ2Uuc2NzcyIsInNyYy9hcHAvdGFiMS90YWIxLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHlCQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC90YWIxL3RhYjEucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWNvbnRlbnQgaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6IHRyYW5zbHVjZW50O1xufSIsImlvbi1jb250ZW50IGlvbi10b29sYmFyIHtcbiAgLS1iYWNrZ3JvdW5kOiB0cmFuc2x1Y2VudDtcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-content ion-toolbar {\n  --background: translucent;\n}\n\n.styling {\n  font-family: Open Sans;\n}\n\n.align-logo {\n  margin-left: auto;\n  margin-right: auto;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdGFiMS9DOlxcVXNlcnNcXEF0dGFpblxcZGVza3RvcFxccHJvamVjdHNcXHByZXRzYWwtYWRtaW5cXGFwcGFyZWwtZWNvbW1lcmNlLWFkbWluL3NyY1xcYXBwXFx0YWIxXFx0YWIxLnBhZ2Uuc2NzcyIsInNyYy9hcHAvdGFiMS90YWIxLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHlCQUFBO0FDQ0Y7O0FEQ0E7RUFDRSxzQkFBQTtBQ0VGOztBREFBO0VBQ0UsaUJBQUE7RUFDQSxrQkFBQTtBQ0dGIiwiZmlsZSI6InNyYy9hcHAvdGFiMS90YWIxLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1jb250ZW50IGlvbi10b29sYmFyIHtcbiAgLS1iYWNrZ3JvdW5kOiB0cmFuc2x1Y2VudDtcbn1cbi5zdHlsaW5ne1xuICBmb250LWZhbWlseTogT3BlbiBTYW5zO1xufVxuLmFsaWduLWxvZ297XG4gIG1hcmdpbi1sZWZ0OiBhdXRvO1xuICBtYXJnaW4tcmlnaHQ6IGF1dG87XG59XG4vLyAuYmctaW1hZ2V7XG4vLyAgIGJhY2tncm91bmQtY29sb3I6IGJsYW5jaGVkYWxtb25kO1xuLy8gfSIsImlvbi1jb250ZW50IGlvbi10b29sYmFyIHtcbiAgLS1iYWNrZ3JvdW5kOiB0cmFuc2x1Y2VudDtcbn1cblxuLnN0eWxpbmcge1xuICBmb250LWZhbWlseTogT3BlbiBTYW5zO1xufVxuXG4uYWxpZ24tbG9nbyB7XG4gIG1hcmdpbi1sZWZ0OiBhdXRvO1xuICBtYXJnaW4tcmlnaHQ6IGF1dG87XG59Il19 */");
 
 /***/ }),
 
@@ -87,27 +88,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
 /* harmony import */ var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/camera/ngx */ "./node_modules/@ionic-native/camera/ngx/index.js");
 /* harmony import */ var _preview_modal_preview_modal_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../preview-modal/preview-modal.page */ "./src/app/preview-modal/preview-modal.page.ts");
-/* harmony import */ var _upload_modal_upload_modal_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../upload-modal/upload-modal.page */ "./src/app/upload-modal/upload-modal.page.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _authservice_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../authservice.service */ "./src/app/authservice.service.ts");
 
 
 
 
 
+
+// import { UploadModalPage } from '../upload-modal/upload-modal.page';
 
 
 let Tab1Page = class Tab1Page {
-    constructor(navCtrl, imagesProvider, camera, actionSheetCtrl, modalCtrl) {
+    constructor(navCtrl, authService, imagesProvider, router, camera, actionSheetCtrl, modalCtrl) {
         this.navCtrl = navCtrl;
+        this.authService = authService;
         this.imagesProvider = imagesProvider;
+        this.router = router;
         this.camera = camera;
         this.actionSheetCtrl = actionSheetCtrl;
         this.modalCtrl = modalCtrl;
         this.images = [];
         this.reloadImages();
     }
+    FilterArrayObjects(ev) {
+        this.prods = ev.target.value;
+        console.log("event data", this.prods);
+        if (this.prods && this.prods.trim() != '') {
+            this.images = this.images.filter((item) => {
+                // this.productCategory.push(item.category);
+                return (item.description.toLowerCase().indexOf(this.prods.toLowerCase()) > -1);
+            });
+        }
+    }
     reloadImages() {
         this.imagesProvider.getImages().subscribe(data => {
             this.images = data;
+            console.log(this.images);
         });
     }
     deleteImage(img) {
@@ -117,6 +134,7 @@ let Tab1Page = class Tab1Page {
     }
     openImage(img) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            console.log("This is the image", img);
             let modal = yield this.modalCtrl.create({
                 component: _preview_modal_preview_modal_page__WEBPACK_IMPORTED_MODULE_5__["PreviewModalPage"],
                 componentProps: {
@@ -126,23 +144,27 @@ let Tab1Page = class Tab1Page {
             modal.present();
         });
     }
+    logout() {
+        this.authService.logout();
+    }
     presentActionSheet() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
             let actionSheet = yield this.actionSheetCtrl.create({
                 // title: 'Select Image Source',
                 buttons: [
                     {
-                        text: 'Load from Library',
+                        text: 'Upload new items',
                         handler: () => {
-                            this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
+                            this.router.navigate(["/products-upload"]);
+                            //this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
                         }
                     },
-                    {
-                        text: 'Use Camera',
-                        handler: () => {
-                            this.takePicture(this.camera.PictureSourceType.CAMERA);
-                        }
-                    },
+                    // {
+                    //   text: 'Use Camera',
+                    //   handler: () => {
+                    //     this.takePicture(this.camera.PictureSourceType.CAMERA);
+                    //   }
+                    // },
                     {
                         text: 'Cancel',
                         role: 'cancel'
@@ -152,37 +174,12 @@ let Tab1Page = class Tab1Page {
             actionSheet.present();
         });
     }
-    takePicture(sourceType) {
-        // Create options for the Camera Dialog
-        var options = {
-            quality: 100,
-            destinationType: this.camera.DestinationType.FILE_URI,
-            sourceType: sourceType,
-            saveToPhotoAlbum: false,
-            correctOrientation: true
-        };
-        // Get the data of an image
-        this.camera.getPicture(options).then((imagePath) => {
-            let modal = this.modalCtrl.create({
-                component: _upload_modal_upload_modal_page__WEBPACK_IMPORTED_MODULE_6__["UploadModalPage"],
-                componentProps: {
-                    data: imagePath
-                }
-            });
-            //modal.present();
-            // modal.onDidDismiss(data => {
-            //   if (data && data.reload) {
-            //     this.reloadImages();
-            //   }
-            // });
-        }, (err) => {
-            console.log('Error: ', err);
-        });
-    }
 };
 Tab1Page.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"] },
+    { type: _authservice_service__WEBPACK_IMPORTED_MODULE_7__["AuthserviceService"] },
     { type: _products_service__WEBPACK_IMPORTED_MODULE_2__["ProductsService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] },
     { type: _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_4__["Camera"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ActionSheetController"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"] }
@@ -193,7 +190,7 @@ Tab1Page = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./tab1.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/tab1/tab1.page.html")).default,
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./tab1.page.scss */ "./src/app/tab1/tab1.page.scss")).default]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"], _products_service__WEBPACK_IMPORTED_MODULE_2__["ProductsService"], _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_4__["Camera"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ActionSheetController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"], _authservice_service__WEBPACK_IMPORTED_MODULE_7__["AuthserviceService"], _products_service__WEBPACK_IMPORTED_MODULE_2__["ProductsService"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"], _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_4__["Camera"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ActionSheetController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"]])
 ], Tab1Page);
 
 

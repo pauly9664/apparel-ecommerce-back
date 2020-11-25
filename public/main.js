@@ -863,7 +863,7 @@ function jwtOptionsFactory(storage) {
         tokenGetter: function () {
             return storage.get('access_token');
         },
-        whitelistedDomains: ['192.168.0.121:501', '192.168.0.117:501', '192.168.137.1:500', '192.168.0.109:501', '192.168.0.122:501', '192.168.200.154:500', '192.168.200.187:500', '192.168.200.135:5000', '192.168.100.35:501', '192.168.137.1:500', '192.168.0.118:500', '192.168.200.142:5000', '192.168.200.129:500', '192.168.100.35:5000', '192.168.0.106:500', '192.168.8.118:500', '192.168.200.140:500', '192.168.100.11:500']
+        whitelistedDomains: ['192.168.0.121:501', '192.168.0.117:501', '192.168.137.1:500', '192.168.0.109:501', '192.168.0.122:501', '192.168.200.154:500', '192.168.200.187:500', '192.168.200.135:5000', '192.168.100.35:8080', '192.168.137.1:500', '192.168.0.118:500', '192.168.200.142:5000', '192.168.200.129:500', '192.168.100.35:5000', '192.168.0.106:500', '192.168.8.118:500', '192.168.200.140:500', '192.168.100.11:500']
     };
 }
 var AppModule = /** @class */ (function () {
@@ -1252,7 +1252,7 @@ var ConfirmationModalPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-content padding>\n  Delivery Details: {{ passedDelivery }}\n\n  Payment Details: {{ passedPayment }}\n</ion-content>\n<ion-footer>\n  <ion-toolbar color=\"primary\">\n    <ion-button expand=\"medium\" fill=\"outline\" (click)=\"closeModal()\">\n      Close\n    </ion-button>\n  </ion-toolbar>\n</ion-footer>"
+module.exports = "<ion-content padding>\n  <h2 text-center><i>Oops!</i></h2>\n  <div style=\"margin-top: 10%\">\n  <p >You need to login/create a new account to checkoout successfully</p>\n  <ion-button style=\"margin-left: 30%;\" size=\"small\" routerLink=\"/menu/login\" (click)=\"closePopover()\">\n    LOGIN/REGISTER\n  </ion-button>\n</div>\n</ion-content>\n\n   \n"
 
 /***/ }),
 
@@ -1284,14 +1284,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ConfirmationModalPage = /** @class */ (function () {
-    function ConfirmationModalPage(modalController, navParams) {
-        this.modalController = modalController;
-        this.navParams = navParams;
-        this.passedDelivery = null;
-        this.passedPayment = null;
+    function ConfirmationModalPage(popovercontroller) {
+        this.popovercontroller = popovercontroller;
     }
     ConfirmationModalPage.prototype.ngOnInit = function () {
-        this.passedDelivery = this.navParams.get('custom_id');
+    };
+    ConfirmationModalPage.prototype.closePopover = function () {
+        this.popovercontroller.dismiss();
     };
     ConfirmationModalPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1299,7 +1298,7 @@ var ConfirmationModalPage = /** @class */ (function () {
             template: __webpack_require__(/*! ./confirmation-modal.page.html */ "./src/app/confirmation-modal/confirmation-modal.page.html"),
             styles: [__webpack_require__(/*! ./confirmation-modal.page.scss */ "./src/app/confirmation-modal/confirmation-modal.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["PopoverController"]])
     ], ConfirmationModalPage);
     return ConfirmationModalPage;
 }());
@@ -1378,7 +1377,7 @@ module.exports = "<img src=\"/assets/PreetiLogo.png\" style=\"height:70px; width
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".form-orients {\n  margin-left: 20%; }\n\n.highlight-content {\n  font-weight: bold; }\n\n.labelStyler {\n  margin-right: 50%;\n  max-width: 10em;\n  font-family: Open Sans; }\n\nform {\n  font-family: Open Sans; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29uZmlybWF0aW9uLXBvcG92ZXIvQzpcXFVzZXJzXFxBdHRhaW5cXERlc2t0b3BcXFByb2plY3RzXFxhcFxcYXBwYXJlbC1lY29tbWVyY2Uvc3JjXFxhcHBcXGNvbmZpcm1hdGlvbi1wb3BvdmVyXFxjb25maXJtYXRpb24tcG9wb3Zlci5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFFSSxnQkFBZ0IsRUFBQTs7QUFLcEI7RUFDSSxpQkFBaUIsRUFBQTs7QUFFckI7RUFDSSxpQkFBaUI7RUFFakIsZUFBZTtFQUNmLHNCQUFzQixFQUFBOztBQUUxQjtFQUNJLHNCQUFzQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvY29uZmlybWF0aW9uLXBvcG92ZXIvY29uZmlybWF0aW9uLXBvcG92ZXIucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmZvcm0tb3JpZW50c3tcclxuICAgIC8vIG1hcmdpbi10b3A6IDIwJTtcclxuICAgIG1hcmdpbi1sZWZ0OiAyMCU7XHJcbiAgICAvLyBtYXJnaW4tcmlnaHQ6IGF1dG87XHJcbiAgICAvLyBtYXJnaW4tcmlnaHQ6IGF1dG87XHJcbiAgICAvLyB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuLmhpZ2hsaWdodC1jb250ZW50e1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbn1cclxuLmxhYmVsU3R5bGVye1xyXG4gICAgbWFyZ2luLXJpZ2h0OiA1MCU7XHJcbiAgICAvLyBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICBtYXgtd2lkdGg6IDEwZW07XHJcbiAgICBmb250LWZhbWlseTogT3BlbiBTYW5zO1xyXG59XHJcbmZvcm17XHJcbiAgICBmb250LWZhbWlseTogT3BlbiBTYW5zO1xyXG59Il19 */"
+module.exports = ".form-orients {\n  margin-left: 20%; }\n\n.highlight-content {\n  font-weight: bold; }\n\n.labelStyler {\n  margin-right: 50%;\n  max-width: 10em;\n  font-family: Open Sans; }\n\nform {\n  font-family: Open Sans; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29uZmlybWF0aW9uLXBvcG92ZXIvQzpcXFVzZXJzXFxBdHRhaW5cXGRlc2t0b3BcXHByb2plY3RzXFxhcFxcYXBwYXJlbC1lY29tbWVyY2Uvc3JjXFxhcHBcXGNvbmZpcm1hdGlvbi1wb3BvdmVyXFxjb25maXJtYXRpb24tcG9wb3Zlci5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFFSSxnQkFBZ0IsRUFBQTs7QUFLcEI7RUFDSSxpQkFBaUIsRUFBQTs7QUFFckI7RUFDSSxpQkFBaUI7RUFFakIsZUFBZTtFQUNmLHNCQUFzQixFQUFBOztBQUUxQjtFQUNJLHNCQUFzQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvY29uZmlybWF0aW9uLXBvcG92ZXIvY29uZmlybWF0aW9uLXBvcG92ZXIucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmZvcm0tb3JpZW50c3tcclxuICAgIC8vIG1hcmdpbi10b3A6IDIwJTtcclxuICAgIG1hcmdpbi1sZWZ0OiAyMCU7XHJcbiAgICAvLyBtYXJnaW4tcmlnaHQ6IGF1dG87XHJcbiAgICAvLyBtYXJnaW4tcmlnaHQ6IGF1dG87XHJcbiAgICAvLyB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuLmhpZ2hsaWdodC1jb250ZW50e1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbn1cclxuLmxhYmVsU3R5bGVye1xyXG4gICAgbWFyZ2luLXJpZ2h0OiA1MCU7XHJcbiAgICAvLyBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICBtYXgtd2lkdGg6IDEwZW07XHJcbiAgICBmb250LWZhbWlseTogT3BlbiBTYW5zO1xyXG59XHJcbmZvcm17XHJcbiAgICBmb250LWZhbWlseTogT3BlbiBTYW5zO1xyXG59Il19 */"
 
 /***/ }),
 
@@ -2048,7 +2047,7 @@ var ShoppersCartPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n        <ion-back-button (click)=\"closePopover()\" defaultHref=\"/\"></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title style=\"font-weight: bold\">myCart</ion-title>\r\n    <ion-buttons slot=\"end\">\r\n      <ion-button  (click)=\"closePopover()\">Close</ion-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-list>\r\n    <ion-item *ngFor=\"let item of cart\" lines=\"none\">\r\n      <ion-thumbnail> <img src= '{{ item.url }}' /> </ion-thumbnail>\r\n      <p> {{ item.amount }} x {{ item.description }}</p>\r\n      \r\n      <ion-label slot=\"end\" text-right style=\"font-family: Open Sans;color: green\"> <p tappable (click)=\"removeFromCart(p)\">Remove </p>{{ (item.price * item.amount) | currency: 'KES': 'KES ' }}</ion-label> \r\n    </ion-item>\r\n    <ion-item>\r\n      <span style=\"font-weight: bold;\">Total:</span> <span slot=\"end\" style=\"font-weight: bolder;\">{{  getTotal() | currency:'KES ' }}</span>\r\n    </ion-item>\r\n  </ion-list>\r\n <div class=\"align-button\"> <ion-button color=\"danger\"  style=\"color: #fff\"size=\"default\" [routerLink]=\"['/menu/checkout', getTotal()] \" routerDirection=\"forward\" (click)=\"closePopover()\" >Proceed to checkout</ion-button></div>\r\n</ion-content>\r\n"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n        <ion-back-button (click)=\"closePopover()\" defaultHref=\"/\"></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title style=\"font-weight: bold\">myCart</ion-title>\r\n    <ion-buttons slot=\"end\">\r\n      <ion-button  (click)=\"closePopover()\">Close</ion-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-list>\r\n    <ion-item *ngFor=\"let item of cart\" lines=\"none\">\r\n      <ion-thumbnail> <img src= '{{ item.url }}' /> </ion-thumbnail>\r\n      <p> {{ item.amount }} x {{ item.description }}</p>\r\n      \r\n      <ion-label slot=\"end\" text-right style=\"font-family: Open Sans;color: green\"> <p tappable (click)=\"removeFromCart(p)\">Remove </p>{{ (item.price * item.amount) | currency: 'KES': 'KES ' }}</ion-label> \r\n    </ion-item>\r\n    <ion-item>\r\n      <span style=\"font-weight: bold;\">Total:</span> <span slot=\"end\" style=\"font-weight: bolder;\">{{  getTotal() | currency:'KES ' }}</span>\r\n    </ion-item>\r\n  </ion-list>\r\n <div class=\"align-button\"> <ion-button color=\"danger\"  style=\"color: #fff\"size=\"default\" [routerLink]=\"['/menu/checkout', getTotal()] \" routerDirection=\"forward\" (click)=\"checkAuthent()\" (click)=\"closePopover()\" >Proceed to checkout</ion-button></div>\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -2059,7 +2058,7 @@ module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"sta
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".align-button {\n  width: 300px;\n  margin-left: auto;\n  margin-right: auto; }\n\nion-item {\n  font-family: Open Sans; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hvcHBlcnMtY2FydC9DOlxcVXNlcnNcXEF0dGFpblxcRGVza3RvcFxcUHJvamVjdHNcXGFwXFxhcHBhcmVsLWVjb21tZXJjZS9zcmNcXGFwcFxcc2hvcHBlcnMtY2FydFxcc2hvcHBlcnMtY2FydC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxZQUFZO0VBQ1osaUJBQWdCO0VBQ2hCLGtCQUFrQixFQUFBOztBQUV0QjtFQUNJLHNCQUFzQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvc2hvcHBlcnMtY2FydC9zaG9wcGVycy1jYXJ0LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5hbGlnbi1idXR0b24ge1xyXG4gICAgd2lkdGg6IDMwMHB4OyBcclxuICAgIG1hcmdpbi1sZWZ0OmF1dG87IFxyXG4gICAgbWFyZ2luLXJpZ2h0OiBhdXRvO1xyXG59XHJcbmlvbi1pdGVte1xyXG4gICAgZm9udC1mYW1pbHk6IE9wZW4gU2FucztcclxufSJdfQ== */"
+module.exports = ".align-button {\n  width: 300px;\n  margin-left: auto;\n  margin-right: auto; }\n\nion-item {\n  font-family: Open Sans; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hvcHBlcnMtY2FydC9DOlxcVXNlcnNcXEF0dGFpblxcZGVza3RvcFxccHJvamVjdHNcXGFwXFxhcHBhcmVsLWVjb21tZXJjZS9zcmNcXGFwcFxcc2hvcHBlcnMtY2FydFxcc2hvcHBlcnMtY2FydC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxZQUFZO0VBQ1osaUJBQWdCO0VBQ2hCLGtCQUFrQixFQUFBOztBQUV0QjtFQUNJLHNCQUFzQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvc2hvcHBlcnMtY2FydC9zaG9wcGVycy1jYXJ0LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5hbGlnbi1idXR0b24ge1xyXG4gICAgd2lkdGg6IDMwMHB4OyBcclxuICAgIG1hcmdpbi1sZWZ0OmF1dG87IFxyXG4gICAgbWFyZ2luLXJpZ2h0OiBhdXRvO1xyXG59XHJcbmlvbi1pdGVte1xyXG4gICAgZm9udC1mYW1pbHk6IE9wZW4gU2FucztcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -2084,6 +2083,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../auth.service */ "./src/app/auth.service.ts");
+/* harmony import */ var _confirmation_modal_confirmation_modal_page__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../confirmation-modal/confirmation-modal.page */ "./src/app/confirmation-modal/confirmation-modal.page.ts");
+
 
 
 
@@ -2096,8 +2097,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ShoppersCartPage = /** @class */ (function () {
-    function ShoppersCartPage(cartService, popoverController, modalCtrl, authenticatedUser, nav, router, etcService, bagService, shoeService, suitsService) {
+    function ShoppersCartPage(cartService, authService, popoverController, modalCtrl, authenticatedUser, nav, router, etcService, bagService, shoeService, suitsService) {
         this.cartService = cartService;
+        this.authService = authService;
         this.popoverController = popoverController;
         this.modalCtrl = modalCtrl;
         this.authenticatedUser = authenticatedUser;
@@ -2115,6 +2117,8 @@ var ShoppersCartPage = /** @class */ (function () {
         this.cart = [];
     }
     ShoppersCartPage.prototype.ngOnInit = function () {
+        this.checkAuth = this.authService.authenticationState.value;
+        // console.log("Auth Val:", this.checkAuth);
         // this.authenticatedUser.authenticationState.subscribe(state => {
         //   if(state) {
         //     this.router.navigate(['menu/checkout']);
@@ -2231,13 +2235,32 @@ var ShoppersCartPage = /** @class */ (function () {
     ShoppersCartPage.prototype.closePopover = function () {
         this.modalCtrl.dismiss();
     };
+    ShoppersCartPage.prototype.checkAuthent = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var modal;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!(this.checkAuth === false)) return [3 /*break*/, 2];
+                        return [4 /*yield*/, this.popoverController.create({
+                                component: _confirmation_modal_confirmation_modal_page__WEBPACK_IMPORTED_MODULE_11__["ConfirmationModalPage"],
+                            })];
+                    case 1:
+                        modal = _a.sent();
+                        modal.present();
+                        _a.label = 2;
+                    case 2: return [2 /*return*/];
+                }
+            });
+        });
+    };
     ShoppersCartPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-shoppers-cart',
             template: __webpack_require__(/*! ./shoppers-cart.page.html */ "./src/app/shoppers-cart/shoppers-cart.page.html"),
             styles: [__webpack_require__(/*! ./shoppers-cart.page.scss */ "./src/app/shoppers-cart/shoppers-cart.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_shoppers_cart_service__WEBPACK_IMPORTED_MODULE_2__["ShoppersCartService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["PopoverController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["ModalController"], _auth_service__WEBPACK_IMPORTED_MODULE_10__["AuthService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["NavController"], _angular_router__WEBPACK_IMPORTED_MODULE_9__["Router"], _etc_service_service__WEBPACK_IMPORTED_MODULE_6__["EtcServiceService"], _bag_service_service__WEBPACK_IMPORTED_MODULE_3__["BagServiceService"], _shoe_service_service__WEBPACK_IMPORTED_MODULE_5__["ShoeServiceService"], _suits_service_service__WEBPACK_IMPORTED_MODULE_4__["SuitsServiceService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_shoppers_cart_service__WEBPACK_IMPORTED_MODULE_2__["ShoppersCartService"], _auth_service__WEBPACK_IMPORTED_MODULE_10__["AuthService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["PopoverController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["ModalController"], _auth_service__WEBPACK_IMPORTED_MODULE_10__["AuthService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["NavController"], _angular_router__WEBPACK_IMPORTED_MODULE_9__["Router"], _etc_service_service__WEBPACK_IMPORTED_MODULE_6__["EtcServiceService"], _bag_service_service__WEBPACK_IMPORTED_MODULE_3__["BagServiceService"], _shoe_service_service__WEBPACK_IMPORTED_MODULE_5__["ShoeServiceService"], _suits_service_service__WEBPACK_IMPORTED_MODULE_4__["SuitsServiceService"]])
     ], ShoppersCartPage);
     return ShoppersCartPage;
 }());
@@ -2385,7 +2408,7 @@ module.exports = "<ion-header>\r\n  <ion-toolbar color=\"dark\">\r\n      <ion-b
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".selected-product {\n  max-width: 350px;\n  max-height: 100%; }\n\n.float-items {\n  margin-right: auto;\n  margin-left: auto; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdmlldy1wcm9kdWN0L0M6XFxVc2Vyc1xcQXR0YWluXFxEZXNrdG9wXFxQcm9qZWN0c1xcYXBcXGFwcGFyZWwtZWNvbW1lcmNlL3NyY1xcYXBwXFx2aWV3LXByb2R1Y3RcXHZpZXctcHJvZHVjdC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxnQkFBZ0I7RUFDaEIsZ0JBQWdCLEVBQUE7O0FBRXBCO0VBRUksa0JBQWtCO0VBQ2xCLGlCQUFpQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvdmlldy1wcm9kdWN0L3ZpZXctcHJvZHVjdC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc2VsZWN0ZWQtcHJvZHVjdHtcclxuICAgIG1heC13aWR0aDogMzUwcHg7XHJcbiAgICBtYXgtaGVpZ2h0OiAxMDAlO1xyXG59XHJcbi5mbG9hdC1pdGVtc3tcclxuICAgIC8vIGZsb2F0OiByaWdodDtcclxuICAgIG1hcmdpbi1yaWdodDogYXV0bztcclxuICAgIG1hcmdpbi1sZWZ0OiBhdXRvO1xyXG59Il19 */"
+module.exports = ".selected-product {\n  max-width: 350px;\n  max-height: 100%; }\n\n.float-items {\n  margin-right: auto;\n  margin-left: auto; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdmlldy1wcm9kdWN0L0M6XFxVc2Vyc1xcQXR0YWluXFxkZXNrdG9wXFxwcm9qZWN0c1xcYXBcXGFwcGFyZWwtZWNvbW1lcmNlL3NyY1xcYXBwXFx2aWV3LXByb2R1Y3RcXHZpZXctcHJvZHVjdC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxnQkFBZ0I7RUFDaEIsZ0JBQWdCLEVBQUE7O0FBRXBCO0VBRUksa0JBQWtCO0VBQ2xCLGlCQUFpQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvdmlldy1wcm9kdWN0L3ZpZXctcHJvZHVjdC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc2VsZWN0ZWQtcHJvZHVjdHtcclxuICAgIG1heC13aWR0aDogMzUwcHg7XHJcbiAgICBtYXgtaGVpZ2h0OiAxMDAlO1xyXG59XHJcbi5mbG9hdC1pdGVtc3tcclxuICAgIC8vIGZsb2F0OiByaWdodDtcclxuICAgIG1hcmdpbi1yaWdodDogYXV0bztcclxuICAgIG1hcmdpbi1sZWZ0OiBhdXRvO1xyXG59Il19 */"
 
 /***/ }),
 
@@ -2487,8 +2510,7 @@ __webpack_require__.r(__webpack_exports__);
 var environment = {
     production: false,
     kurl: 'http://192.168.200.129:500',
-    // url: 'http://192.168.100.35:501',
-    url: 'http://192.168.0.117:501',
+    url: 'http://192.168.100.35:8080',
     wurl: 'http://192.168.200.142:500',
     eurl: 'http://192.168.0.106:500',
     hurl: 'http://192.168.0.122:500',
@@ -2573,7 +2595,7 @@ var MediaFilesService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Attain\Desktop\Projects\ap\apparel-ecommerce\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Attain\desktop\projects\ap\apparel-ecommerce\src\main.ts */"./src/main.ts");
 
 
 /***/ })

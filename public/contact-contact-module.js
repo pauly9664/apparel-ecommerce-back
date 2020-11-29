@@ -48,7 +48,7 @@ var ContactService = /** @class */ (function () {
     // }
     ContactService.prototype.saveFeedback = function (contact) {
         var _this = this;
-        return this.http.post(this.url + "/api/contact", contact)
+        return this.http.post('/api/contact', contact)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(function (e) {
             _this.showAlert('Error');
             _this.authenticator.next(false);
@@ -129,7 +129,7 @@ var ContactPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button defaultHref=\"/\"></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title text-center>\r\n      Contact\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n<ion-content>\r\n    <div class=\"bg-image\"></div>\r\n    <div class=\"bg-text\">\r\n        <ion-grid fixed>\r\n            <ion-row>\r\n            <ion-col size-sm=\"6\" size-md=\"6\">\r\n                    <form [formGroup]=\"contactForm\" (ngSubmit)=\"onReply()\">\r\n                <div class= \"diagonal3\">\r\n                  <div class=\"inside\">\r\n                  <ion-list>\r\n                    <ion-item class=\"staythere\" lines=\"none\">\r\n                      <ion-label position=\"fixed\" style=\"font-family: Open Sans; font-weight: bold;\">Name...</ion-label>\r\n                      <input class=\"style-input\" type=\"text\" formControlName=\"name\"/>\r\n                    </ion-item>\r\n          \r\n                    <ion-item class=\"staythere\" lines=\"none\">\r\n                      <ion-label position=\"fixed\" style=\"font-family: Open Sans; font-weight: bold\">Number.. </ion-label>\r\n                      <input class=\"style-input\"type=\"tel\" formControlName=\"cell\"/>\r\n                    </ion-item>\r\n          \r\n                    <ion-item class=\"staythere\" lines=\"none\">\r\n                      <ion-label position=\"fixed\" style=\"font-family: Open Sans;font-weight: bold\">Feedback..</ion-label>\r\n                      <input class=\"style-input\" type=\"text\" formControlName=\"feedback\"/>\r\n                    </ion-item>\r\n                  </ion-list>\r\n                <ion-button color=\"danger\"  (click)=\"onReply()\" type=\"button\" style=\"color: white\"size=\"default\">Submit</ion-button>\r\n              </div>\r\n            </div>\r\n              </form>\r\n            </ion-col>  \r\n           <ion-col size-md=\"6\" size-sm=\"6\">\r\n              <div class= \"diagonal3\">\r\n                  <div class=\"inside\">\r\n                  <!-- <div class=\"details\"> -->\r\n                  <!-- <h3 text-left style=\"padding-right: 28px;\">Contact us.. <br></h3> -->\r\n                <!-- </div> -->\r\n                  <div class=\"align-left\">\r\n                    <ion-icon name=\"logo-facebook\" style=\"font-size:2em\"></ion-icon>\r\n                    <ion-icon name=\"logo-instagram\" style=\"font-size: 2em\"></ion-icon>\r\n                    <ion-icon name=\"logo-pinterest\" style=\"font-size: 2em\"></ion-icon>\r\n                    \r\n                    <p> Telephone Lines: 0737200842, 0722932275</p>  \r\n                  </div>\r\n                  </div>\r\n                  </div>\r\n           </ion-col>\r\n         </ion-row> \r\n      </ion-grid>\r\n      </div>\r\n</ion-content>"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button defaultHref=\"/\"></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title text-center>\r\n      Contact\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n<ion-content>\r\n    <div class=\"bg-image\"></div>\r\n    <div class=\"bg-text\">\r\n        <ion-grid fixed>\r\n            <ion-row>\r\n            <ion-col size-sm=\"6\" size-md=\"6\">\r\n                    <form [formGroup]=\"contactForm\" (ngSubmit)=\"onReply()\">\r\n                <div class= \"diagonal3\">\r\n                  <div class=\"inside\">\r\n                  <ion-list>\r\n                    <ion-item class=\"staythere\" lines=\"none\">\r\n                      <ion-label position=\"fixed\" style=\"font-family: Open Sans; font-weight: bold;\">Name...</ion-label>\r\n                      <input class=\"style-input\" type=\"text\" formControlName=\"name\"/>\r\n                    </ion-item>\r\n          \r\n                    <ion-item class=\"staythere\" lines=\"none\">\r\n                      <ion-label position=\"fixed\" style=\"font-family: Open Sans; font-weight: bold\">Number.. </ion-label>\r\n                      <input class=\"style-input\"type=\"tel\" formControlName=\"cell\"/>\r\n                    </ion-item>\r\n          \r\n                    <ion-item class=\"staythere\" lines=\"none\">\r\n                      <ion-label position=\"fixed\" style=\"font-family: Open Sans;font-weight: bold\">Feedback..</ion-label>\r\n                      <input class=\"style-input\" type=\"text\" formControlName=\"feedback\"/>\r\n                    </ion-item>\r\n                  </ion-list>\r\n                <ion-button color=\"danger\"  (click)=\"onReply()\" (click)=\"feedbackSent()\" type=\"button\" style=\"color: white\"size=\"default\">Submit</ion-button>\r\n              </div>\r\n            </div>\r\n              </form>\r\n            </ion-col>  \r\n           <ion-col size-md=\"6\" size-sm=\"6\">\r\n              <div class= \"diagonal3\">\r\n                  <div class=\"inside\">\r\n                  <!-- <div class=\"details\"> -->\r\n                  <!-- <h3 text-left style=\"padding-right: 28px;\">Contact us.. <br></h3> -->\r\n                <!-- </div> -->\r\n                  <div class=\"align-left\">\r\n                    <ion-icon name=\"logo-facebook\" style=\"font-size:2em\"></ion-icon>\r\n                    <ion-icon name=\"logo-instagram\" style=\"font-size: 2em\"></ion-icon>\r\n                    <ion-icon name=\"logo-pinterest\" style=\"font-size: 2em\"></ion-icon>\r\n                    \r\n                    <p> Telephone Lines: 0737200842, 0722932275</p>  \r\n                  </div>\r\n                  </div>\r\n                  </div>\r\n           </ion-col>\r\n         </ion-row> \r\n      </ion-grid>\r\n      </div>\r\n</ion-content>"
 
 /***/ }),
 
@@ -169,8 +169,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ContactPage = /** @class */ (function () {
-    function ContactPage(formBuilder, alertController, contactService, authService) {
+    function ContactPage(formBuilder, alertCtrl, alertController, contactService, authService) {
         this.formBuilder = formBuilder;
+        this.alertCtrl = alertCtrl;
         this.alertController = alertController;
         this.contactService = contactService;
         this.authService = authService;
@@ -188,13 +189,31 @@ var ContactPage = /** @class */ (function () {
         console.log(this.contactForm.value);
         return this.contactService.saveFeedback(this.contactForm.value).subscribe();
     };
+    ContactPage.prototype.feedbackSent = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var alert;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.alertCtrl.create({
+                            header: 'Thanks for your Feedback!',
+                            message: 'Feedback sent',
+                            buttons: ['OK']
+                        })];
+                    case 1:
+                        alert = _a.sent();
+                        alert.present();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
     ContactPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-contact',
             template: __webpack_require__(/*! ./contact.page.html */ "./src/app/contact/contact.page.html"),
             styles: [__webpack_require__(/*! ./contact.page.scss */ "./src/app/contact/contact.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["AlertController"], _contact_service__WEBPACK_IMPORTED_MODULE_3__["ContactService"], _auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["AlertController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["AlertController"], _contact_service__WEBPACK_IMPORTED_MODULE_3__["ContactService"], _auth_service__WEBPACK_IMPORTED_MODULE_6__["AuthService"]])
     ], ContactPage);
     return ContactPage;
 }());

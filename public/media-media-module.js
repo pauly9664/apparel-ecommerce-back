@@ -59,7 +59,7 @@ var MediaPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <!-- <ion-title text-center>Shop</ion-title> -->\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button (click)=\"closePopover()\" defaultHref=\"/\"></ion-back-button>\r\n  </ion-buttons>\r\n    <img src=\"/assets/PreetiLogo.png\" style=\"height:75px; width: 100px; margin-left: 40%;\"/>\r\n  </ion-toolbar>\r\n \r\n</ion-header>\r\n\r\n<ion-content>\r\n  <!-- <p text-center style=\"color: skyblue;\"> Filter using Item name</p>  -->\r\n   <!-- <ion-searchbar [formControl]=\"searchControl\" style=\"max-width:50%\" (ionChange)=\"FilterArrayObjects($event)\"></ion-searchbar> -->\r\n <!-- <div>\r\n   <ion-list >\r\n     <ion-item (click)= \"selectedProduct(prods)\" *ngFor=\"let product of products\">{{product.description}}</ion-item>\r\n   </ion-list>\r\n </div> -->\r\n \r\n <div style=\"background-color: whitesmoke;\">\r\n  <!-- <ion-grid>\r\n    <ion-row>\r\n<ion-col size-sm=\"12\" size-lg=\"12\" size-md=\"12\"> -->\r\n  <label style=\"font-weight: bold; font-size: 12px\">Categories</label> <select (change)=\"filterItems($event)\" type = \"text\"  style=\"max-width:100px; margin-left: 1%;\" ><option *ngFor=\"let category of productCategory\" [value]=\"category\">{{category}}</option></select>\r\n\r\n  <!-- <ion-button size=\"small\" color=\"danger\" style=\"color:#fff;margin-bottom: 1%; margin-left: 3%;\" (click)=\"queryOnBrowse()\"><span> Reset Category</span></ion-button>  -->\r\n<!-- </ion-col> -->\r\n<!-- <ion-col size-sm=\"12\" size-lg=\"12\" size-md=\"12\"> -->\r\n\r\n  <label style=\" margin-left: 10%;font-size: 12px; font-weight:bold \">Price Filter</label> \r\n\r\n  <input id =\"price-range\" (input)=\"filterByPrice($event.target.value)\" type=\"range\" min=\"100\" max=\"25000\" style=\"margin-left: 1%;\" /><p style=\"font-weight: bold\" style=\"margin-left: 50%;font-size: 12px; color: red\"><span style=\"font-size: 13px; font-weight: bolder;\"> Max Price Limit: </span> KES {{price}}</p>\r\n\r\n<!-- <p>Hey{{price}}</p> -->\r\n<!-- </ion-col>\r\n</ion-row>\r\n</ion-grid> -->\r\n</div>\r\n<div class=\"row\">\r\n <div *ngFor=\"let img of produce\" >\r\n   <!-- <div *ngIf=\"produce.length === 0\"><p>No category selected</p> -->\r\n  <!-- <div *ngIf=\"produce === undefined\"><p>Please select a category</p></div> -->\r\n  <!-- <ion-card> -->\r\n <!-- <div class=\"row\">\r\n  <div class=\"column\"> -->\r\n  \r\n    <!-- <ion-grid>\r\n      <ion-col size-sm=\"4\" size-md=\"8\" size-lg=\"12\"> -->\r\n        <img style=\"max-width: 200px;\" [src]='img.url'>\r\n        <div>\r\n        <p style=\"font-family: Open Sans; font-weight: bold\"> {{img.description}}<br></p>\r\n        <!-- <p><span class=\"styler\">Item category</span>: {{img.category}}<br></p> -->\r\n        <p><span style=\"background-color: #fff;color: #000; font-size: 13px;\"><i> KES {{img.price}}</i></span><br></p>\r\n        <ion-button size=\"small\" color=\"light\" style='color: #000;' (click)=\"openImage(img)\"><ion-icon  name=\"information\"></ion-icon>VIEW MORE</ion-button>    \r\n      </div>    \r\n      <!-- </ion-col>\r\n    </ion-grid>  -->\r\n  \r\n       <!-- <p><span class=\"styler\">Availability</span>: In Stock<br></p>  -->\r\n  <!-- </div> \r\n</div> -->\r\n<!-- </ion-card> -->\r\n<!-- </div> -->\r\n</div>\r\n</div>\r\n\r\n</ion-content>\r\n"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <!-- <ion-title text-center>Shop</ion-title> -->\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button (click)=\"closePopover()\" defaultHref=\"/\"></ion-back-button>\r\n  </ion-buttons>\r\n    <img src=\"/assets/PreetiLogo.png\" style=\"height:75px; width: 100px; margin-left: 40%;\"/>\r\n  </ion-toolbar>\r\n  <ion-fab vertical=\"top\" horizontal=\"end\">\r\n    <ion-button color=\"danger\" (click)=\"openCart()\">\r\n      <ion-badge  *ngIf=\"cart.length > 0\">{{ cart.length }}</ion-badge>\r\n      <ion-icon name=\"cart\" slot=\"icon-only\"></ion-icon>\r\n    </ion-button>\r\n  </ion-fab>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <!-- <p text-center style=\"color: skyblue;\"> Filter using Item name</p>  -->\r\n   <!-- <ion-searchbar [formControl]=\"searchControl\" style=\"max-width:50%\" (ionChange)=\"FilterArrayObjects($event)\"></ion-searchbar> -->\r\n <!-- <div>\r\n   <ion-list >\r\n     <ion-item (click)= \"selectedProduct(prods)\" *ngFor=\"let product of products\">{{product.description}}</ion-item>\r\n   </ion-list>\r\n </div> -->\r\n \r\n <div style=\"background-color: whitesmoke;\">\r\n  <!-- <ion-grid>\r\n    <ion-row>\r\n<ion-col size-sm=\"12\" size-lg=\"12\" size-md=\"12\"> -->\r\n  <label style=\"font-weight: bold; font-size: 12px\">Categories</label> <select (change)=\"filterItems($event)\" type = \"text\"  style=\"max-width:100px; margin-left: 1%;\" ><option *ngFor=\"let category of productCategory\" [value]=\"category\">{{category}}</option></select>\r\n\r\n  <!-- <ion-button size=\"small\" color=\"danger\" style=\"color:#fff;margin-bottom: 1%; margin-left: 3%;\" (click)=\"queryOnBrowse()\"><span> Reset Category</span></ion-button>  -->\r\n<!-- </ion-col> -->\r\n<!-- <ion-col size-sm=\"12\" size-lg=\"12\" size-md=\"12\"> -->\r\n\r\n  <label style=\" margin-left: 10%;font-size: 12px; font-weight:bold \">Price Range</label> \r\n\r\n  <input id =\"price-range\" (input)=\"filterByPrice($event.target.value)\" type=\"range\" min=\"100\" max=\"25000\" style=\"margin-left: 1%;\" /><p style=\"font-weight: bold\" style=\"margin-left: 50%;font-size: 12px; color: red\"><span style=\"font-size: 13px; font-weight: bolder;\"> Max Price Limit: </span> KES {{price}}</p>\r\n\r\n<!-- <p>Hey{{price}}</p> -->\r\n<!-- </ion-col>\r\n</ion-row>\r\n</ion-grid> -->\r\n</div>\r\n<div class=\"row\">\r\n <div *ngFor=\"let img of produce\" >\r\n   <!-- <div *ngIf=\"produce.length === 0\"><p>No category selected</p> -->\r\n  <!-- <div *ngIf=\"produce === undefined\"><p>Please select a category</p></div> -->\r\n  <!-- <ion-card> -->\r\n <!-- <div class=\"row\">\r\n  <div class=\"column\"> -->\r\n  \r\n    <!-- <ion-grid>\r\n      <ion-col size-sm=\"4\" size-md=\"8\" size-lg=\"12\"> -->\r\n        <img style=\"max-width: 200px;\" [src]='img.url'>\r\n        <div>\r\n        <p style=\"font-family: Open Sans; font-weight: bold\"> {{img.description}}<br></p>\r\n        <!-- <p><span class=\"styler\">Item category</span>: {{img.category}}<br></p> -->\r\n        <p><span style=\"background-color: #fff;color: #000; font-size: 13px;\"><i> KES {{img.price}}</i></span><br></p>\r\n        <ion-button size=\"small\" color=\"light\" style='color: #000;' (click)=\"openImage(img)\"><ion-icon  name=\"information\"></ion-icon>VIEW MORE</ion-button>    \r\n      </div>    \r\n      <!-- </ion-col>\r\n    </ion-grid>  -->\r\n  \r\n       <!-- <p><span class=\"styler\">Availability</span>: In Stock<br></p>  -->\r\n  <!-- </div> \r\n</div> -->\r\n<!-- </ion-card> -->\r\n<!-- </div> -->\r\n</div>\r\n</div>\r\n\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -90,6 +90,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _shoppers_cart_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../shoppers-cart.service */ "./src/app/shoppers-cart.service.ts");
 /* harmony import */ var _view_product_view_product_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../view-product/view-product.page */ "./src/app/view-product/view-product.page.ts");
+/* harmony import */ var _shoppers_cart_shoppers_cart_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../shoppers-cart/shoppers-cart.page */ "./src/app/shoppers-cart/shoppers-cart.page.ts");
+
 
 
 
@@ -98,8 +100,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var MediaPage = /** @class */ (function () {
-    function MediaPage(productsService, modalCtrl, loadingController) {
+    function MediaPage(productsService, alertCtrl, cartService, modalCtrl, loadingController) {
         this.productsService = productsService;
+        this.alertCtrl = alertCtrl;
+        this.cartService = cartService;
         this.modalCtrl = modalCtrl;
         this.loadingController = loadingController;
         this.products = [];
@@ -109,13 +113,33 @@ var MediaPage = /** @class */ (function () {
         this.items = [];
         this.categorySelected = null;
         this.pricesCart = [];
+        this.cart = [];
         //  this.queryProductsData();
         this.filterAgain();
         //  this.FilterArrayObjects(Event);
         this.searchControl = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]();
     }
     MediaPage.prototype.ngOnInit = function () {
+        this.cartItemCount = this.cartService.getCartItemCount();
+        this.cart = this.cartService.getCart();
         this.queryOnBrowse();
+        this.mediaLaunch();
+    };
+    MediaPage.prototype.openCart = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var modal;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.modalCtrl.create({
+                            component: _shoppers_cart_shoppers_cart_page__WEBPACK_IMPORTED_MODULE_6__["ShoppersCartPage"],
+                        })];
+                    case 1:
+                        modal = _a.sent();
+                        modal.present();
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
     MediaPage.prototype.FilterArrayObjects = function (ev) {
         var _this = this;
@@ -236,13 +260,31 @@ var MediaPage = /** @class */ (function () {
             });
         });
     };
+    MediaPage.prototype.mediaLaunch = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var alert;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.alertCtrl.create({
+                            header: 'Shopping Page',
+                            message: 'Please select a category first or use the price range option to set max price limit',
+                            buttons: ['OK']
+                        })];
+                    case 1:
+                        alert = _a.sent();
+                        alert.present();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
     MediaPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-media',
             template: __webpack_require__(/*! ./media.page.html */ "./src/app/media/media.page.html"),
             styles: [__webpack_require__(/*! ./media.page.scss */ "./src/app/media/media.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_shoppers_cart_service__WEBPACK_IMPORTED_MODULE_4__["ShoppersCartService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_shoppers_cart_service__WEBPACK_IMPORTED_MODULE_4__["ShoppersCartService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"], _shoppers_cart_service__WEBPACK_IMPORTED_MODULE_4__["ShoppersCartService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"]])
     ], MediaPage);
     return MediaPage;
 }());

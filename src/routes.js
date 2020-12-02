@@ -274,19 +274,19 @@ routes.post('/forgot',(req, res)=>{
    let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'gichaga1996@gmail.com',
-      pass: 'G#719312830'
+      user: 'preetifashions90@gmail.com',
+      pass: 'spasp2020'
     }
   });
 
   var mailOptions = {
-    from: 'gichaga1996@gmail.com',
+    from: 'preetifashions90@gmail.com',
     to: thisUser,
     subject: 'Preeti Fashions',
     attachments: [
       {filename: 'preetiLogo1.png', path:'./src/preetiLogo1.png'}
     ],
-     html: `<h3>Hi <br>To reset your password, please click on this link which http://192.168.100.35:8100/menu/sendmail-reset/${id}, which will direct you to the reset password page</h3>`,
+     html: `<h3>Hi <br>To reset your password, please click on this link which https://preeti-fashion.herokuapp.com/menu/sendmail-reset/${id}, which will direct you to the reset password page</h3>`,
   };
   
   transporter.sendMail(mailOptions, function(error, info){

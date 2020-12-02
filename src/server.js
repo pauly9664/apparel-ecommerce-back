@@ -53,6 +53,7 @@ var app = express();
 app.use(express.static('public'));
 app.use('/menu/sendmail-reset', express.static("public"))
 app.use('/menu/home', express.static("public"))
+app.use('/menu/reset-password', express.static("public"));
 app.use('/menu/contact', express.static("public"))
 app.use('/menu/accountslanding', express.static("public"))
 app.use('/menu/shoppers-cart', express.static("public"))

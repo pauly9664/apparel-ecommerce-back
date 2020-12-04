@@ -50,17 +50,24 @@ var app = express();
 //  app.use("/menu/shoppers-cart", express.static("public"))
 //  app.use("/menu/accountslanding", express.static("public"))
  
-app.use(express.static('public'));
-app.use('/menu/sendmail-reset/:id', express.static("public"))
-app.use('/menu/home', express.static("public"))
-app.use('/menu/reset-password', express.static("public"));
-app.use('/menu/contact', express.static("public"))
-app.use('/menu/accountslanding', express.static("public"))
-app.use('/menu/shoppers-cart', express.static("public"))
-app.use('/menu/checkout', express.static("public"))
-app.use('/menu/media', express.static("public"))
-app.use('/menu/login', express.static("public"))
-app.use('/menu/register', express.static("public"))
+app.use(express.static('public2'));
+app.use("/products-upload", express.static("public2"));
+app.use("/tabs/tab1", express.static("public2"));
+app.use("/tabs/tab2", express.static("public2"));
+app.use("/tabs/tab3", express.static("public2"));
+app.use("/", express.static("public2"));
+app.use("/new-orders", express.static("public2"));
+app.use("/products-upload", express.static("public2"));
+// app.use('/menu/sendmail-reset/:id', express.static("public"))
+// app.use('/menu/home', express.static("public"))
+// app.use('/menu/reset-password', express.static("public"));
+// app.use('/menu/contact', express.static("public"))
+// app.use('/menu/accountslanding', express.static("public"))
+// app.use('/menu/shoppers-cart', express.static("public"))
+// app.use('/menu/checkout', express.static("public"))
+// app.use('/menu/media', express.static("public"))
+// app.use('/menu/login', express.static("public"))
+// app.use('/menu/register', express.static("public"))
 
  app.use(cookieParser( config.cookieSecret));
  app.use(session({secret: "akjjkjnisaiuu8998323jdkadsih892rhoisdfasl", resave: true,

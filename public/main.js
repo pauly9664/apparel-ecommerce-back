@@ -985,7 +985,7 @@ var AuthService = /** @class */ (function () {
         // if(credentials){
         //   console.log(credentials);
         // }
-        return this.http.post('/api/register', credentials).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
+        return this.http.post('https://preeti-fashion.herokuapp.com/api/register', credentials).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
             _this.showAlert(e.error.msg);
             throw new Error(e);
         }));
@@ -993,7 +993,7 @@ var AuthService = /** @class */ (function () {
     AuthService.prototype.resetPassword = function (pass) {
         var _this = this;
         console.log(pass);
-        return this.http.patch('/api/reset', pass).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
+        return this.http.patch('https://preeti-fashion.herokuapp.com/api/reset', pass).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
             _this.showAlert(e.error.msg);
             throw new Error(e);
         }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["tap"])(function (res) {
@@ -1006,7 +1006,7 @@ var AuthService = /** @class */ (function () {
     };
     AuthService.prototype.forgotPassword = function (creds) {
         var _this = this;
-        return this.http.post('/api/forgot', creds).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
+        return this.http.post('https://preeti-fashion.herokuapp.com/api/forgot', creds).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
             _this.showAlert(e.error.msg);
             throw new Error(e);
         }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["tap"])(function (res) {
@@ -1015,7 +1015,7 @@ var AuthService = /** @class */ (function () {
     };
     AuthService.prototype.login = function (credentials) {
         var _this = this;
-        return this.http.post('/api/login', credentials).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["tap"])(function (res) {
+        return this.http.post('https://preeti-fashion.herokuapp.com/api/login', credentials).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["tap"])(function (res) {
             _this.storage.set(TOKEN_KEY, res['token']);
             _this.user = _this.helper.decodeToken(res['token']);
             _this.authenticationState.next(true);
@@ -1035,7 +1035,7 @@ var AuthService = /** @class */ (function () {
     };
     AuthService.prototype.updateSales = function (sale) {
         var _this = this;
-        return this.http.post('/api/postSales', sale).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
+        return this.http.post('https://preeti-fashion.herokuapp.com/api/postSales', sale).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
             _this.showAlert(e.error.msg);
             throw new Error(e);
         }));
@@ -1075,7 +1075,7 @@ var AuthService = /** @class */ (function () {
     };
     AuthService.prototype.getSpecialData = function () {
         var _this = this;
-        return this.http.get('/api/special').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
+        return this.http.get('https://preeti-fashion.herokuapp.com/api/special').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
             var status = e.status;
             if (status == 401) {
                 _this.showAlert('Please login first');
@@ -1090,7 +1090,7 @@ var AuthService = /** @class */ (function () {
     };
     AuthService.prototype.getSalesActivities = function () {
         var _this = this;
-        return this.http.get('/api/getPastActivities').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
+        return this.http.get('https://preeti-fashion.herokuapp.com/api/getPastActivities').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
             var status = e.status;
             if (status == 401) {
                 _this.showAlert('Please login first');
@@ -1101,7 +1101,7 @@ var AuthService = /** @class */ (function () {
         }));
     };
     AuthService.prototype.getSalesActivity = function () {
-        return this.http.get('/api/getOrders');
+        return this.http.get('https://preeti-fashion.herokuapp.com/api/getOrders');
     };
     AuthService.prototype.showAlert = function (msg) {
         var alert = this.alertController.create({
@@ -1891,7 +1891,7 @@ var ShoppersCartService = /** @class */ (function () {
         //       return this.items;
         //      }));
         // }
-        return this.http.get('/api/images').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (response) { return response; }));
+        return this.http.get('https://preeti-fashion.herokuapp.com/api/images').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (response) { return response; }));
         // getProducts() {
         //    return this.data;
     };
@@ -1899,7 +1899,7 @@ var ShoppersCartService = /** @class */ (function () {
         return this.http.get('/api/images');
     };
     ShoppersCartService.prototype.getCategories = function () {
-        return this.http.get('/api/fetchCategories').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (response) { return response; }));
+        return this.http.get('https://preeti-fashion.herokuapp.com/api/fetchCategories').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (response) { return response; }));
     };
     ShoppersCartService.prototype.showAlert = function (msg) {
         var alert = this.alertController.create({

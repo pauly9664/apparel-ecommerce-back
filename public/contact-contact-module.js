@@ -48,7 +48,7 @@ var ContactService = /** @class */ (function () {
     // }
     ContactService.prototype.saveFeedback = function (contact) {
         var _this = this;
-        return this.http.post('/api/contact', contact)
+        return this.http.post('https://preeti-fashion.herokuapp.com/api/contact', contact)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(function (e) {
             _this.showAlert('Error');
             _this.authenticator.next(false);

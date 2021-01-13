@@ -1910,7 +1910,7 @@ var ShoppersCartService = /** @class */ (function () {
         alert.then(function (alert) { return alert.present(); });
     };
     ShoppersCartService.prototype.postCart = function (order) {
-        return this.http.post('/api/postSales', order);
+        return this.http.post('https://preeti-fashion.herokuapp.com/api/postSales', order);
         // .pipe(
         //   catchError(e => {
         //     this.showAlert(e.error.msg);

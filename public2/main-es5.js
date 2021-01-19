@@ -1337,7 +1337,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function login(credentials) {
           var _this3 = this;
 
-          return this.http.post('/api/loginInternal', credentials).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["tap"])(function (res) {
+          return this.http.post('https://preeti-fashions-ad.herokuapp.com/api/loginInternal', credentials).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["tap"])(function (res) {
             _this3.storage.set(TOKEN_KEY, res['token']);
 
             _this3.user = _this3.helper.decodeToken(res['token']);
@@ -1366,7 +1366,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           // if(credentials){
           //   console.log(credentials);
           // }
-          return this.http.post('/api/registerInternal', credentials).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
+          return this.http.post('https://preeti-fashions-ad.herokuapp.com/api/registerInternal', credentials).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
             _this5.showAlert(e.error.msg);
 
             throw new Error(e);
@@ -1396,7 +1396,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getCategories",
         value: function getCategories() {
-          return this.http.get('/api/fetchCategories').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(function (response) {
+          return this.http.get('https://preeti-fashions-ad.herokuapp.com/api/fetchCategories').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(function (response) {
             return response;
           }));
         }
@@ -2054,7 +2054,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         this.http = http;
         this.transfer = transfer;
-        this.alertController = alertController; // apiURL = 'http://192.168.0.122:501/api';
+        this.alertController = alertController; // apiURL = 'http://192.168.100.35:8080/api';
 
         this.apiURL = src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].url + '/api';
       }
@@ -2062,41 +2062,41 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(ProductsService, [{
         key: "getNewOrders",
         value: function getNewOrders() {
-          return this.http.get('/api/getNewOrders');
+          return this.http.get('https://preeti-fashions-ad.herokuapp.com/api/getNewOrders');
         }
       }, {
         key: "getImages",
         value: function getImages() {
-          return this.http.get('/api/images');
+          return this.http.get('https://preeti-fashions-ad.herokuapp.com/api/images');
         }
       }, {
         key: "getSalesActivities",
         value: function getSalesActivities() {
-          return this.http.get('/api/getOrders');
+          return this.http.get('https://preeti-fashions-ad.herokuapp.com/api/getOrders');
         }
       }, {
         key: "getSalesActivity",
         value: function getSalesActivity() {
-          return this.http.get('/api/getOrders').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (response) {
+          return this.http.get('https://preeti-fashions-ad.herokuapp.com/api/getOrders').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (response) {
             return response;
           }));
         }
       }, {
         key: "getOrder",
         value: function getOrder() {
-          return this.http.get('/api/getOrder/:id').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (res) {
+          return this.http.get('https://preeti-fashions-ad.herokuapp.com/api/getOrder/:id').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (res) {
             console.log("This is the specific order", res);
           }));
         }
       }, {
         key: "confirmViewerShip",
         value: function confirmViewerShip(confirm) {
-          return this.http.patch('/api/confirmView', confirm);
+          return this.http.patch('https://preeti-fashions-ad.herokuapp.com/api/confirmView', confirm);
         }
       }, {
         key: "deleteImage",
         value: function deleteImage(img) {
-          return this.http.delete('/api/images/' + img._id);
+          return this.http.delete('https://preeti-fashions-ad.herokuapp.com/api/images/' + img._id);
         }
       }, {
         key: "sendtext",
@@ -2106,12 +2106,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "postUser",
         value: function postUser(user) {
-          return this.http.post('/api/userdetails/', user);
+          return this.http.post('https://preeti-fashions-ad.herokuapp.com/api/userdetails/', user);
         }
       }, {
         key: "uploadProducts",
         value: function uploadProducts(products) {
-          return this.http.post('/api/images', products, {
+          return this.http.post("".concat(this.apiURL, "/images"), products, {
             reportProgress: true,
             observe: 'events'
           });
@@ -2200,7 +2200,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var environment = {
       production: false,
       // url: 'http://192.168.100.35:501',
-      url: 'http://192.168.0.105:8080'
+      url: 'http://192.168.100.35:8080'
     };
     /*
      * For easier debugging in development mode, you can import the following file

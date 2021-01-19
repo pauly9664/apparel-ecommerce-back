@@ -1006,7 +1006,7 @@ let AuthserviceService = class AuthserviceService {
         });
     }
     login(credentials) {
-        return this.http.post('/api/loginInternal', credentials).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["tap"])(res => {
+        return this.http.post('https://preeti-fashions-ad.herokuapp.com/api/loginInternal', credentials).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["tap"])(res => {
             this.storage.set(TOKEN_KEY, res['token']);
             this.user = this.helper.decodeToken(res['token']);
             this.authenticationState.next(true);
@@ -1024,7 +1024,7 @@ let AuthserviceService = class AuthserviceService {
         // if(credentials){
         //   console.log(credentials);
         // }
-        return this.http.post('/api/registerInternal', credentials).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(e => {
+        return this.http.post('https://preeti-fashions-ad.herokuapp.com/api/registerInternal', credentials).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(e => {
             this.showAlert(e.error.msg);
             throw new Error(e);
         }));
@@ -1045,7 +1045,7 @@ let AuthserviceService = class AuthserviceService {
         });
     }
     getCategories() {
-        return this.http.get('/api/fetchCategories').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])((response) => response));
+        return this.http.get('https://preeti-fashions-ad.herokuapp.com/api/fetchCategories').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])((response) => response));
     }
     showAlert(msg) {
         let alert = this.alertController.create({
@@ -1437,40 +1437,40 @@ let ProductsService = class ProductsService {
         this.http = http;
         this.transfer = transfer;
         this.alertController = alertController;
-        // apiURL = 'http://192.168.0.122:501/api';
+        // apiURL = 'http://192.168.100.35:8080/api';
         this.apiURL = src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].url + '/api';
     }
     getNewOrders() {
-        return this.http.get('/api/getNewOrders');
+        return this.http.get('https://preeti-fashions-ad.herokuapp.com/api/getNewOrders');
     }
     getImages() {
-        return this.http.get('/api/images');
+        return this.http.get('https://preeti-fashions-ad.herokuapp.com/api/images');
     }
     getSalesActivities() {
-        return this.http.get('/api/getOrders');
+        return this.http.get('https://preeti-fashions-ad.herokuapp.com/api/getOrders');
     }
     getSalesActivity() {
-        return this.http.get('/api/getOrders').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((response) => response));
+        return this.http.get('https://preeti-fashions-ad.herokuapp.com/api/getOrders').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])((response) => response));
     }
     getOrder() {
-        return this.http.get('/api/getOrder/:id').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(res => {
+        return this.http.get('https://preeti-fashions-ad.herokuapp.com/api/getOrder/:id').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(res => {
             console.log("This is the specific order", res);
         }));
     }
     confirmViewerShip(confirm) {
-        return this.http.patch('/api/confirmView', confirm);
+        return this.http.patch('https://preeti-fashions-ad.herokuapp.com/api/confirmView', confirm);
     }
     deleteImage(img) {
-        return this.http.delete('/api/images/' + img._id);
+        return this.http.delete('https://preeti-fashions-ad.herokuapp.com/api/images/' + img._id);
     }
     sendtext() {
         return this.http.get(`${this.apiURL}/sendtexts`);
     }
     postUser(user) {
-        return this.http.post('/api/userdetails/', user);
+        return this.http.post('https://preeti-fashions-ad.herokuapp.com/api/userdetails/', user);
     }
     uploadProducts(products) {
-        return this.http.post('/api/images', products, {
+        return this.http.post(`${this.apiURL}/images`, products, {
             reportProgress: true,
             observe: 'events'
         });
@@ -1533,7 +1533,7 @@ __webpack_require__.r(__webpack_exports__);
 const environment = {
     production: false,
     // url: 'http://192.168.100.35:501',
-    url: 'http://192.168.0.105:8080'
+    url: 'http://192.168.100.35:8080'
 };
 /*
  * For easier debugging in development mode, you can import the following file

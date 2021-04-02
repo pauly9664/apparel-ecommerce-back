@@ -186,7 +186,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "\n<ion-content>\n    <img src=\"/assets/PreetiLogo.png\" style=\"height:140px; width: 140px; margin-left: 40%\" />\n  <ion-card style=\"margin-top: 10%;background-image: url('/assets/wood.jpg') ;\">\n    <ion-card-header>\n      <span style=\"font-weight: bold;color: #fff\">Order Details #{{order}}</span>\n    </ion-card-header>\n    <ion-card-content>\n\n      <!-- <p>Payment Option -> {{order.payment_status}}</p><br> \n      <p>Delivery Option ->  {{order.delivery_status}}</p><br>\n      <p>Order Date -> {{order.buying_date | date}}</p>\n      <p></p><br> -->\n      <ion-button color=\"success\" style=\"margin-left: 50%;\" (click)=\"getDetails()\" >View Details</ion-button>\n      <div *ngIf=\"orderDetail;\">  \n    \n        <!-- <ng-template #orderDetail> -->\n          <ion-input></ion-input>\n    \n      <p><span class=\"detailsStyle\">Items Ordered</span></p><br>\n        <p *ngFor=\"let item of items\" style=\"color:#fff\">{{item}}</p><br>\n        <!-- <p><span class=\"detailsStyle\">Customer</span> ->{{user}} <ion-button  size=\"small\" fill=\"outline\" (click)=\"getUser\">USER DETAILS</ion-button></p> <br>  -->\n        <div *ngIf=\"userDetails\">\n          <p><span class=\"detailsStyle\">Name</span> -> {{name}}</p><br>    \n          <p><span class=\"detailsStyle\">Cell</span> -> {{number}}</p><br>\n          <p><span class=\"detailsStyle\">Email</span> -> {{email}}</p><br>        \n        </div>\n      <p><span class=\"detailsStyle\">Amount -> KES {{amount}}</span> </p><br>    \n      <p><span class=\"detailsStyle\">Payment Option -> {{payment}}</span></p><br> \n      <p><span class=\"detailsStyle\">Delivery Option -> {{delivery}}</span></p><br>\n      <p><span class=\"detailsStyle\">Order Date -> {{dday}}</span></p>\n    <!-- </ng-template> -->\n  </div>\n\n    </ion-card-content>\n    \n  </ion-card>\n  <ion-button color=\"danger\" size=\"small\" style=\"margin-right: auto; margin-left: auto; color: blanchedalmond;\" routerLink=\"/tabs/tab3\">BACK</ion-button>\n\n</ion-content>\n";
+    __webpack_exports__["default"] = "\n<ion-content>\n    <img src=\"/assets/PreetiLogo.png\" style=\"height:140px; width: 140px; margin-left: 40%\" />\n  <ion-card style=\"margin-top: 10%;background-image: url('/assets/wood.jpg') ;\">\n    <ion-card-header>\n      <span style=\"font-weight: bold;color: #fff\">Order Details #{{order}}</span>\n    </ion-card-header>\n    <ion-card-content>\n\n      <!-- <p>Payment Option -> {{order.payment_status}}</p><br> \n      <p>Delivery Option ->  {{order.delivery_status}}</p><br>\n      <p>Order Date -> {{order.buying_date | date}}</p>\n      <p></p><br> -->\n      <ion-button color=\"success\" style=\"margin-left: 50%;\" (click)=\"getDetails()\" >View Details</ion-button>\n      <div *ngIf=\"orderDetail;\">  \n    \n        <!-- <ng-template #orderDetail> -->\n          <ion-input></ion-input>\n    \n      <p><span class=\"detailsStyle\">Items Ordered</span></p><br>\n        <p *ngFor=\"let item of items\" style=\"color:#fff\">{{item}}</p><br>\n        <!-- <p><span class=\"detailsStyle\">Customer</span> ->{{user}} <ion-button  size=\"small\" fill=\"outline\" (click)=\"getUser\">USER DETAILS</ion-button></p> <br>  -->\n        <div *ngIf=\"userDetails\">\n          <p><span class=\"detailsStyle\">Name</span> -> {{name}}</p><br>    \n          <p><span class=\"detailsStyle\">Cell</span> -> {{number}}</p><br>\n          <p><span class=\"detailsStyle\">Email</span> -> {{email}}</p><br>        \n        </div>\n      <p><span class=\"detailsStyle\">Amount -> KES {{amount}}</span> </p><br>    \n      <p><span class=\"detailsStyle\">Customer Name -> {{cust_name}}</span> </p><br>  \n      <p><span class=\"detailsStyle\">Customer Cell -> {{cust_cell}}</span> </p><br>  \n      <p><span class=\"detailsStyle\">Payment Option -> {{payment}}</span></p><br> \n      <p><span class=\"detailsStyle\">Delivery Option -> {{delivery}}</span></p><br>\n      <p><span class=\"detailsStyle\">Order Date -> {{dday}}</span></p>\n    <!-- </ng-template> -->\n  </div>\n\n    </ion-card-content>\n    \n  </ion-card>\n  <ion-button color=\"danger\" size=\"small\" style=\"margin-right: auto; margin-left: auto; color: blanchedalmond;\" routerLink=\"/tabs/tab3\">BACK</ion-button>\n\n</ion-content>\n";
     /***/
   },
 
@@ -1206,7 +1206,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         tokenGetter: function tokenGetter() {
           return storage.get('access_token');
         },
-        whitelistedDomains: ['192.168.137.1:500', '192.168.0.105:8080', '192.168.0.122:501', '192.168.0.109:501', '192.168.200.154:500', '192.168.200.187:500', '192.168.200.135:5000', '192.168.100.35:501', '192.168.137.1:500', '192.168.0.118:500', '192.168.200.142:5000', '192.168.200.129:500', '192.168.100.35:5000', '192.168.0.106:500', '192.168.8.118:500', '192.168.200.140:500', '192.168.100.11:500', '192.168.0.136:501']
+        whitelistedDomains: ['192.168.137.1:500', '192.168.0.118:8080', '192.168.0.105:8080', '192.168.0.122:501', '192.168.0.109:501', '192.168.200.154:500', '192.168.200.187:500', '192.168.200.135:5000', '192.168.100.35:501', '192.168.137.1:500', '192.168.0.118:500', '192.168.200.142:5000', '192.168.200.129:500', '192.168.100.35:5000', '192.168.0.106:500', '192.168.8.118:500', '192.168.200.140:500', '192.168.100.11:500', '192.168.0.136:501']
       };
     }
 
@@ -1592,7 +1592,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".detailsStyle {\n  font-weight: bold;\n  font-family: Open Sans;\n  color: #fff;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvb3JkZXJ2aWV3L0M6XFxVc2Vyc1xcQXR0YWluXFxkZXNrdG9wXFxwcm9qZWN0c1xccHJldHNhbC1hZG1pblxcYXBwYXJlbC1lY29tbWVyY2UtYWRtaW4vc3JjXFxhcHBcXG9yZGVydmlld1xcb3JkZXJ2aWV3LnBhZ2Uuc2NzcyIsInNyYy9hcHAvb3JkZXJ2aWV3L29yZGVydmlldy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxpQkFBQTtFQUNBLHNCQUFBO0VBQ0EsV0FBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvb3JkZXJ2aWV3L29yZGVydmlldy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZGV0YWlsc1N0eWxle1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICBmb250LWZhbWlseTogT3BlbiBTYW5zO1xyXG4gICAgY29sb3I6ICNmZmZcclxufSIsIi5kZXRhaWxzU3R5bGUge1xuICBmb250LXdlaWdodDogYm9sZDtcbiAgZm9udC1mYW1pbHk6IE9wZW4gU2FucztcbiAgY29sb3I6ICNmZmY7XG59Il19 */";
+    __webpack_exports__["default"] = ".detailsStyle {\n  font-weight: bold;\n  font-family: Open Sans;\n  color: #fff;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvb3JkZXJ2aWV3L0M6XFxVc2Vyc1xcQXR0YWluXFxEZXNrdG9wXFxQcm9qZWN0c1xccHJldHNhbC1hZG1pblxcYXBwYXJlbC1lY29tbWVyY2UtYWRtaW4vc3JjXFxhcHBcXG9yZGVydmlld1xcb3JkZXJ2aWV3LnBhZ2Uuc2NzcyIsInNyYy9hcHAvb3JkZXJ2aWV3L29yZGVydmlldy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxpQkFBQTtFQUNBLHNCQUFBO0VBQ0EsV0FBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvb3JkZXJ2aWV3L29yZGVydmlldy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZGV0YWlsc1N0eWxle1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICBmb250LWZhbWlseTogT3BlbiBTYW5zO1xyXG4gICAgY29sb3I6ICNmZmZcclxufSIsIi5kZXRhaWxzU3R5bGUge1xuICBmb250LXdlaWdodDogYm9sZDtcbiAgZm9udC1mYW1pbHk6IE9wZW4gU2FucztcbiAgY29sb3I6ICNmZmY7XG59Il19 */";
     /***/
   },
 
@@ -1657,6 +1657,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.payment = [];
         this.delivery = [];
         this.dday = [];
+        this.cust_name = [];
+        this.cust_cell = [];
         this.user = [];
         this.amount = [];
         this.items = []; // this.order = this.navParams.get('order');
@@ -1701,6 +1703,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _this8.dday.push(order.buying_date);
 
             _this8.user.push(order.user_id);
+
+            _this8.cust_cell.push(order.customer_contact);
+
+            _this8.cust_name.push(order.cust_name);
 
             _this8.items.push(order.description); // order.delivery_status = this.delivery;
             // order.buying_date = this.dday;
@@ -1898,7 +1904,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "page-preview-modal .img-info {\n  padding-left: 20px;\n  background: #fff;\n}\npage-preview-modal .desc-text {\n  font-weight: bolder;\n  font-size: larger;\n  padding-bottom: 15px;\n}\npage-preview-modal .content-ios {\n  background: rgba(44, 39, 45, 0.84) !important;\n}\npage-preview-modal .content-md {\n  background: rgba(44, 39, 45, 0.84) !important;\n}\npage-preview-modal .close-fake {\n  background: transparent;\n  font-size: 3rem;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcHJldmlldy1tb2RhbC9DOlxcVXNlcnNcXEF0dGFpblxcZGVza3RvcFxccHJvamVjdHNcXHByZXRzYWwtYWRtaW5cXGFwcGFyZWwtZWNvbW1lcmNlLWFkbWluL3NyY1xcYXBwXFxwcmV2aWV3LW1vZGFsXFxwcmV2aWV3LW1vZGFsLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcHJldmlldy1tb2RhbC9wcmV2aWV3LW1vZGFsLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDSTtFQUNJLGtCQUFBO0VBQ0EsZ0JBQUE7QUNBUjtBREVJO0VBQ0ssbUJBQUE7RUFDQSxpQkFBQTtFQUNBLG9CQUFBO0FDQVQ7QURJRTtFQUNFLDZDQUFBO0FDRko7QURLRTtFQUNFLDZDQUFBO0FDSEo7QURNRTtFQUNJLHVCQUFBO0VBRUEsZUFBQTtBQ0xOIiwiZmlsZSI6InNyYy9hcHAvcHJldmlldy1tb2RhbC9wcmV2aWV3LW1vZGFsLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbInBhZ2UtcHJldmlldy1tb2RhbCB7XHJcbiAgICAuaW1nLWluZm8ge1xyXG4gICAgICAgIHBhZGRpbmctbGVmdDogMjBweDtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjZmZmO1xyXG4gICAgfVxyXG4gICAgLmRlc2MtdGV4dCB7XHJcbiAgICAgICAgIGZvbnQtd2VpZ2h0OiBib2xkZXI7XHJcbiAgICAgICAgIGZvbnQtc2l6ZTogbGFyZ2VyO1xyXG4gICAgICAgICBwYWRkaW5nLWJvdHRvbTogMTVweDtcclxuICAgICAgICAgLy9jb2xvcjogY29sb3IoJGNvbG9ycywgZGFyayk7XHJcbiAgICB9XHJcbiBcclxuICAuY29udGVudC1pb3Mge1xyXG4gICAgYmFja2dyb3VuZDogcmdiYSg0NCwgMzksIDQ1LCAwLjg0KSAhaW1wb3J0YW50O1xyXG4gIH1cclxuIFxyXG4gIC5jb250ZW50LW1kIHtcclxuICAgIGJhY2tncm91bmQ6IHJnYmEoNDQsIDM5LCA0NSwgMC44NCkgIWltcG9ydGFudDtcclxuICB9XHJcbiBcclxuICAuY2xvc2UtZmFrZSB7XHJcbiAgICAgIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50O1xyXG4gICAgIC8vIGNvbG9yOiBjb2xvcigkY29sb3JzLCBsaWdodCk7XHJcbiAgICAgIGZvbnQtc2l6ZTogM3JlbTtcclxuICB9XHJcbn0iLCJwYWdlLXByZXZpZXctbW9kYWwgLmltZy1pbmZvIHtcbiAgcGFkZGluZy1sZWZ0OiAyMHB4O1xuICBiYWNrZ3JvdW5kOiAjZmZmO1xufVxucGFnZS1wcmV2aWV3LW1vZGFsIC5kZXNjLXRleHQge1xuICBmb250LXdlaWdodDogYm9sZGVyO1xuICBmb250LXNpemU6IGxhcmdlcjtcbiAgcGFkZGluZy1ib3R0b206IDE1cHg7XG59XG5wYWdlLXByZXZpZXctbW9kYWwgLmNvbnRlbnQtaW9zIHtcbiAgYmFja2dyb3VuZDogcmdiYSg0NCwgMzksIDQ1LCAwLjg0KSAhaW1wb3J0YW50O1xufVxucGFnZS1wcmV2aWV3LW1vZGFsIC5jb250ZW50LW1kIHtcbiAgYmFja2dyb3VuZDogcmdiYSg0NCwgMzksIDQ1LCAwLjg0KSAhaW1wb3J0YW50O1xufVxucGFnZS1wcmV2aWV3LW1vZGFsIC5jbG9zZS1mYWtlIHtcbiAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7XG4gIGZvbnQtc2l6ZTogM3JlbTtcbn0iXX0= */";
+    __webpack_exports__["default"] = "page-preview-modal .img-info {\n  padding-left: 20px;\n  background: #fff;\n}\npage-preview-modal .desc-text {\n  font-weight: bolder;\n  font-size: larger;\n  padding-bottom: 15px;\n}\npage-preview-modal .content-ios {\n  background: rgba(44, 39, 45, 0.84) !important;\n}\npage-preview-modal .content-md {\n  background: rgba(44, 39, 45, 0.84) !important;\n}\npage-preview-modal .close-fake {\n  background: transparent;\n  font-size: 3rem;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcHJldmlldy1tb2RhbC9DOlxcVXNlcnNcXEF0dGFpblxcRGVza3RvcFxcUHJvamVjdHNcXHByZXRzYWwtYWRtaW5cXGFwcGFyZWwtZWNvbW1lcmNlLWFkbWluL3NyY1xcYXBwXFxwcmV2aWV3LW1vZGFsXFxwcmV2aWV3LW1vZGFsLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcHJldmlldy1tb2RhbC9wcmV2aWV3LW1vZGFsLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDSTtFQUNJLGtCQUFBO0VBQ0EsZ0JBQUE7QUNBUjtBREVJO0VBQ0ssbUJBQUE7RUFDQSxpQkFBQTtFQUNBLG9CQUFBO0FDQVQ7QURJRTtFQUNFLDZDQUFBO0FDRko7QURLRTtFQUNFLDZDQUFBO0FDSEo7QURNRTtFQUNJLHVCQUFBO0VBRUEsZUFBQTtBQ0xOIiwiZmlsZSI6InNyYy9hcHAvcHJldmlldy1tb2RhbC9wcmV2aWV3LW1vZGFsLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbInBhZ2UtcHJldmlldy1tb2RhbCB7XHJcbiAgICAuaW1nLWluZm8ge1xyXG4gICAgICAgIHBhZGRpbmctbGVmdDogMjBweDtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjZmZmO1xyXG4gICAgfVxyXG4gICAgLmRlc2MtdGV4dCB7XHJcbiAgICAgICAgIGZvbnQtd2VpZ2h0OiBib2xkZXI7XHJcbiAgICAgICAgIGZvbnQtc2l6ZTogbGFyZ2VyO1xyXG4gICAgICAgICBwYWRkaW5nLWJvdHRvbTogMTVweDtcclxuICAgICAgICAgLy9jb2xvcjogY29sb3IoJGNvbG9ycywgZGFyayk7XHJcbiAgICB9XHJcbiBcclxuICAuY29udGVudC1pb3Mge1xyXG4gICAgYmFja2dyb3VuZDogcmdiYSg0NCwgMzksIDQ1LCAwLjg0KSAhaW1wb3J0YW50O1xyXG4gIH1cclxuIFxyXG4gIC5jb250ZW50LW1kIHtcclxuICAgIGJhY2tncm91bmQ6IHJnYmEoNDQsIDM5LCA0NSwgMC44NCkgIWltcG9ydGFudDtcclxuICB9XHJcbiBcclxuICAuY2xvc2UtZmFrZSB7XHJcbiAgICAgIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50O1xyXG4gICAgIC8vIGNvbG9yOiBjb2xvcigkY29sb3JzLCBsaWdodCk7XHJcbiAgICAgIGZvbnQtc2l6ZTogM3JlbTtcclxuICB9XHJcbn0iLCJwYWdlLXByZXZpZXctbW9kYWwgLmltZy1pbmZvIHtcbiAgcGFkZGluZy1sZWZ0OiAyMHB4O1xuICBiYWNrZ3JvdW5kOiAjZmZmO1xufVxucGFnZS1wcmV2aWV3LW1vZGFsIC5kZXNjLXRleHQge1xuICBmb250LXdlaWdodDogYm9sZGVyO1xuICBmb250LXNpemU6IGxhcmdlcjtcbiAgcGFkZGluZy1ib3R0b206IDE1cHg7XG59XG5wYWdlLXByZXZpZXctbW9kYWwgLmNvbnRlbnQtaW9zIHtcbiAgYmFja2dyb3VuZDogcmdiYSg0NCwgMzksIDQ1LCAwLjg0KSAhaW1wb3J0YW50O1xufVxucGFnZS1wcmV2aWV3LW1vZGFsIC5jb250ZW50LW1kIHtcbiAgYmFja2dyb3VuZDogcmdiYSg0NCwgMzksIDQ1LCAwLjg0KSAhaW1wb3J0YW50O1xufVxucGFnZS1wcmV2aWV3LW1vZGFsIC5jbG9zZS1mYWtlIHtcbiAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7XG4gIGZvbnQtc2l6ZTogM3JlbTtcbn0iXX0= */";
     /***/
   },
 
@@ -2200,7 +2206,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var environment = {
       production: false,
       // url: 'http://192.168.100.35:501',
-      url: 'http://192.168.100.35:8080'
+      url: 'http://192.168.0.118:8080'
     };
     /*
      * For easier debugging in development mode, you can import the following file
@@ -2279,7 +2285,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! C:\Users\Attain\desktop\projects\pretsal-admin\apparel-ecommerce-admin\src\main.ts */
+    /*! C:\Users\Attain\Desktop\Projects\pretsal-admin\apparel-ecommerce-admin\src\main.ts */
     "./src/main.ts");
     /***/
   }

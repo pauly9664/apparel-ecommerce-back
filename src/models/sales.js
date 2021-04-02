@@ -2,9 +2,10 @@ var mongoose = require('mongoose');
 
 var SaleSchema = new mongoose.Schema({
   
-    user_id: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'User '
-    },
+    // user_id: {
+    //     type: mongoose.Schema.Types.ObjectId, ref: 'User ',
+    //     required: false
+    // },
     // name: {
     //     type: String,
     //     required: false,
@@ -23,6 +24,14 @@ var SaleSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true
+    },
+    customer_name: {
+        type: String,
+        required: false
+    },
+    customer_contact:{
+        type: String,
+        required: true
     },
     delivery_status: {
         type: String,

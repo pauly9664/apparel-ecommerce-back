@@ -61,7 +61,7 @@ routes.post('/user_details', (req, res)=>{
     res.json(user);
 });
 })
-routes.post('/postSales', passport.authenticate('jwt', {session: false}), salesController.saveSale);
+routes.post('/postSales', salesController.saveSale);
 
 routes.all('/mpesa', passport.authenticate('jwt', { session: false }), (req, res, next) => {
 url = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"

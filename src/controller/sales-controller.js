@@ -19,21 +19,21 @@ exports.saveSale = (req, res, next) => {
         // newSale.delivery_status =req.body.delivery_status;
         // newSale.payment_status = req.body.payment_status;
 
-        // console.log(newSale);
+        console.log("object nod ii", newSale);
         newSale.save((err, sale) => {
           if(err) {
-            console.log("Noo")
-              // return res.status(400).json({ 'msg': err });
+            // console.log("Noo")
+              return res.status(400).json({ 'msg': err });
           }
-          console.log("yess")
-          // return res.status(201).json(sale);
+          // console.log("yess")
+          return res.status(201).json(sale);
 });
 const pdfDocument =require('pdfkit');
 const fs = require('fs');
 
 var doc = new pdfDocument();
 var curr = Date.now();
-doc.pipe(fs.createWriteStream('./invoices/' + req.body.user_id + '-' + curr + '.pdf'));
+doc.pipe(fs.createWriteStream('./invoices/' + curr + '.pdf'));
 // var imgData = '/src/p20.jpg'
 // doc.setFontSize(22);
 // doc.addImage(imgData, 'JPG', 15,40,80,80)
@@ -61,22 +61,23 @@ doc.fontSize(10).text('preeti@gmail.com', {
 doc.fontSize(10).text('0719843989', {
   align: 'right'
 })
-doc.fontSize(10).text('http://localhost:8100', {
+doc.fontSize(10).text('https://preeti-fashion.herokuapp.com/', {
   align: 'right'
 })
 doc.moveDown()
-doc.fontSize(10).text('BILL TO', {
+doc.fontSize(10).text('BILL TO ' +req.body.customer_name,  {
   align: 'left'
 })
-doc.fontSize(10).text(req.user.names , {
-  align: 'left'
-})
-doc.fontSize(10).text(req.user.email, {
-  align: 'left'
-})
-doc.fontSize(10).text(req.user.number , {
-  align: 'left'
-});
+// doc.fontSize(10).text(req.user.names , {
+//   align: 'left'
+// })
+// doc.fontSize(10).text(req.user.email, {
+//   align: 'left'
+// })
+// doc.fontSize(10).text(req.user.number , {
+//   align: 'left'
+// })
+;
 doc.moveDown();
 doc.fontSize(11).text('Items Ordered')
 // doc.fontSize(12).text('Order Details',25, 25,{
@@ -90,7 +91,7 @@ doc.moveDown();
 doc.fontSize(10).text('Delivery Details............' + req.body.delivery_status)
 doc.fontSize(10).text('Payment Details.............' + req.body.payment_status)
 doc.moveDown();
-doc.fontSize(12).text('Invoice Amount..............' + req.body.amount, {
+doc.fontSize(12).text('Invoice Amount.............. KES ' + req.body.amount, {
   align: 'right',
   fill: 'red'
 })
@@ -117,7 +118,7 @@ console.log("Gidhaa", curr);
 
 console.log('NDO II DATE', date);
 console.log("Ndo ii sale record", req.body)
-var filename = req.body.user_id +'-'+ curr + '.pdf';
+var filename = curr + '.pdf';
 // fs.writeFile(filename, doc.output(), function(err, data){
 //     if(err){
 //         console.log('Haijawork',err)
@@ -137,13 +138,13 @@ var filename = req.body.user_id +'-'+ curr + '.pdf';
           
           var mailOptions = {
             from: 'preetifashions90@gmail.com',
-            to: req.user.email,
+            to: req.body.customer_email,
             cc: 'preetifashions90@gmail.com',
             subject: 'Preeti Fashions',
             attachments: [
               {filename: filename, path:'./invoices/'+filename}
             ],
-             html: '<h3>Hi ' +req.user.names+'<br>Your order has been received and is being prepared for delivery. Your goods will be delivered in shortest time possible. Attached below is the invoice. Thanks</h3>',    
+             html: '<h3>Hi <br>Your order has been received and is being prepared for delivery. Your goods will be delivered in shortest time possible. Attached below is the invoice. Thanks</h3>',    
           };
           
           transporter.sendMail(mailOptions, function(error, info){

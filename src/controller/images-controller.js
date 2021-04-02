@@ -30,6 +30,7 @@ exports.savePost = (req, res) => {
      newPost.count = req.body.count;
      newPost.amount = req.body.amount;
      newPost.category = req.body.category;
+     newPost.sizes = req.body.sizes;
 
     newPost.save((err, posts) =>{
         if(err){

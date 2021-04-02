@@ -24,6 +24,9 @@ var ImageSchema = new mongoose.Schema({
     amount: {
         type: Number,
     },
+    sizes: {
+        type: String
+    },
     created_at: {
         type: Date,
         // required: true,

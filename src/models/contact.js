@@ -25,7 +25,7 @@ var ContactSchema = new mongoose.Schema({
 //console.log(ContactSchema);
 ContactSchema.pre('save', function (next) {
     //this.contact = this;
-    console.log('Details saved successfully saved.');
+    console.log('Details saved successfully.');
     next();
 });
 //var Contact = mongoose.model('Contact', ContactSchema);

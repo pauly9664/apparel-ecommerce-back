@@ -751,7 +751,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent(platform, splashScreen, statusBar, auth, router) {
+    function AppComponent(platform, 
+    // private oneSignal: OneSignal,
+    splashScreen, statusBar, auth, router) {
         this.platform = platform;
         this.splashScreen = splashScreen;
         this.statusBar = statusBar;
@@ -764,6 +766,9 @@ var AppComponent = /** @class */ (function () {
         this.platform.ready().then(function () {
             _this.statusBar.styleDefault();
             _this.splashScreen.hide();
+            // if (this.platform.is('cordova')) {
+            //   this.pushNot();
+            // }
             _this.auth.authenticationState.subscribe(function (state) {
                 if (state) {
                     _this.router.navigate(['menu/checkout']);
@@ -863,7 +868,7 @@ function jwtOptionsFactory(storage) {
         tokenGetter: function () {
             return storage.get('access_token');
         },
-        whitelistedDomains: ['preeti-fashion.herokuapp.com', '192.168.0.121:501', '192.168.0.117:501', '192.168.0.109:8080', '192.168.137.1:500', '192.168.0.109:501', '192.168.0.122:501', '192.168.200.154:500', '192.168.200.187:500', '192.168.200.135:5000', '192.168.100.35:8080', '192.168.137.1:500', '192.168.0.118:500', '192.168.200.142:5000', '192.168.200.129:500', '192.168.100.35:5000', '192.168.0.106:500', '192.168.8.118:500', '192.168.200.140:500', '192.168.100.11:500']
+        whitelistedDomains: ['preeti-fashion.herokuapp.com', '192.168.0.118:8080', '192.168.0.121:501', '192.168.0.117:501', '192.168.0.109:8080', '192.168.137.1:500', '192.168.0.109:501', '192.168.0.122:501', '192.168.200.154:500', '192.168.200.187:500', '192.168.200.135:5000', '192.168.100.35:8080', '192.168.137.1:500', '192.168.0.118:500', '192.168.200.142:5000', '192.168.200.129:500', '192.168.100.35:8080', '192.168.0.106:500', '192.168.8.118:500', '192.168.200.140:500', '192.168.100.11:500']
     };
 }
 var AppModule = /** @class */ (function () {
@@ -1027,7 +1032,7 @@ var AuthService = /** @class */ (function () {
     AuthService.prototype.saveFeedback = function (contact) {
         var _this = this;
         //console.log(contact);
-        return this.http.post(this.url + "/api/contact", contact).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
+        return this.http.post('https://preeti-fashion.herokuapp.com/api/contact', contact).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
             _this.showAlert(e.error.msg);
             //this.authenticationState.next(false);
             throw new Error(e);
@@ -1035,7 +1040,7 @@ var AuthService = /** @class */ (function () {
     };
     AuthService.prototype.updateSales = function (sale) {
         var _this = this;
-        return this.http.post('https://preeti-fashion.herokuapp.com/api/postSales', sale).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
+        return this.http.post('https://preeti-fashion.herokuapp.com/api/postSles', sale).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
             _this.showAlert(e.error.msg);
             throw new Error(e);
         }));
@@ -1074,14 +1079,13 @@ var AuthService = /** @class */ (function () {
         });
     };
     AuthService.prototype.getSpecialData = function () {
-        var _this = this;
         return this.http.get('https://preeti-fashion.herokuapp.com/api/special').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
             var status = e.status;
-            if (status == 401) {
-                _this.showAlert('Please login first');
-                // this.logout();  
-                _this.authenticationState.next(false);
-            }
+            // if (status == 401) {
+            //   this.showAlert('Please login first');
+            //   // this.logout();  
+            //   this.authenticationState.next(false);
+            // }
             throw new Error(e);
         }));
     };
@@ -1252,7 +1256,7 @@ var ConfirmationModalPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-content padding>\n  <h2 text-center><i>Oops!</i></h2>\n  <div style=\"margin-top: 10%\">\n  <p >You need to login/create a new account to checkoout successfully</p>\n  <ion-button style=\"margin-left: 30%;\" size=\"small\" routerLink=\"/menu/login\" (click)=\"closePopover()\">\n    LOGIN/REGISTER\n  </ion-button>\n</div>\n</ion-content>\n\n   \n"
+module.exports = "<ion-content padding>\r\n  <h2 text-center><i>Oops!</i></h2>\r\n  <div style=\"margin-top: 10%\">\r\n  <p >You need to login/create a new account to checkoout successfully</p>\r\n  <ion-button style=\"margin-left: 30%;\" size=\"small\" routerLink=\"/menu/login\" (click)=\"closePopover()\">\r\n    LOGIN/REGISTER\r\n  </ion-button>\r\n</div>\r\n</ion-content>\r\n\r\n   \r\n"
 
 /***/ }),
 
@@ -1366,7 +1370,7 @@ var ConfirmationPopoverPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<img src=\"/assets/PreetiLogo.png\" style=\"height:70px; width: 100px; margin-left: 40%;\"/>\r\n<div class = \"form-orients\">\r\n  <h3 style=\"margin-bottom: 4%; font-family: sans-serif; font-weight: bold;\"> Confirm Purchase</h3>\r\n         <form [formGroup]= \"salesForm\" (ngSubmit)=\"saleUpdate()\">\r\n         <!-- <label class=\"labelStyler\" for=\"User\" class=\"highlight-content\">User</label> -->\r\n         <!-- <input id=\"User\" type = \"text\" formControlName =\"user_id\"  style=\"max-width:50%; \"/><br> -->\r\n         <label class=\"labelStyler\" for=\"description\" class=\"highlight-content\">Items Bought</label>\r\n         <p *ngFor=\"let items of arrObj\">{{items}}</p>\r\n         <!-- <input id=\"description\" type = \"text\" style=\"max-width:50%; \" formControlName =\"description\"/><br> -->\r\n         <label class=\"labelStyler\" for=\"Total\" class=\"highlight-content\">Totals </label>\r\n         <input id=\"Total\" type = \"text\" formControlName =\"amount\"  style=\"max-width:50%;\"/><br>\r\n         <label class=\"labelStyler\" for=\"Delivery\" class=\"highlight-content\">Delivery Option </label>\r\n         <input id=\"Delivery\" type = \"text\" style=\"max-width:50%; \" formControlName =\"delivery_status\"/><br>\r\n         <label class=\"labelStyler\" for=\"Payment\" class=\"highlight-content\">Payment Option </label>\r\n         <input id=\"Payment\" type = \"text\" formControlName =\"payment_status\"  style=\"max-width:50%;\"/><br>\r\n  \r\n      </form>\r\n      <!-- <form [formGroup]= \"productsForm\">\r\n        <label>Description</label>\r\n        <input type=\"text\" formControlName=\"description\"/>\r\n      </form> -->\r\n        <ion-button  color=\"danger\" (click)=\"closePopover()\">\r\n          <ion-icon name=\"close\" slot=\"start\"></ion-icon>\r\n          Cancel\r\n        </ion-button>\r\n        <ion-button  color=\"success\" (click)=\"checkout()\" (click)=\"postToMail()\">\r\n          <ion-icon name=\"checkmark\" slot=\"start\"></ion-icon>\r\n          CONFIRM\r\n        </ion-button>\r\n       \r\n          <!-- <ion-button  color=\"success\" (click)=\"lipaNow()\">\r\n            <ion-icon name=\"checkmark\" slot=\"start\"></ion-icon>\r\n            Buy Mpesa\r\n          </ion-button> -->\r\n      </div>\r\n      <ion-footer>\r\n        <ion-grid>\r\n          <ion-row>\r\n            <ion-col>\r\n              <h3 class=\"footer-styling\"><ion-icon name=\"navigate\"></ion-icon>OUR LOCATION</h3>\r\n              <p class=\"footer-styling\">Moktar Daddar Street</p>\r\n            </ion-col>\r\n            <ion-col>\r\n              <h3 class=\"footer-styling\"><ion-icon name=\"time\"></ion-icon>WORKING HOURS</h3>\r\n              <p class=\"footer-styling\"><span>Mon-Sat:</span> Open from 8:30AM - 7:00PM</p><br>\r\n             \r\n            </ion-col>\r\n            <ion-col>\r\n              <h3 class=\"footer-styling\"><ion-icon name=\"call\"></ion-icon>CONTACT US</h3>\r\n              <p class=\"footer-styling\"><ion-icon name=\"logo-whatsapp\"></ion-icon>+254721397580</p>\r\n              <p class=\"footer-styling\">preetifashions90@gmail.com</p>\r\n            </ion-col>\r\n          </ion-row>\r\n        </ion-grid>\r\n      </ion-footer>\r\n\r\n"
+module.exports = "<img src=\"/assets/PreetiLogo.png\" style=\"height:70px; width: 100px; margin-left: 40%;\"/>\r\n<div class = \"form-orients\">\r\n  <h3 style=\" font-family: sans-serif; font-weight: bold;\"> Confirm Order Details</h3>\r\n         <form [formGroup]= \"salesForm\" (ngSubmit)=\"saleUpdate()\"  enctype=\"multipart/form-data\">\r\n         <!-- <label class=\"labelStyler\" for=\"User\" class=\"highlight-content\">User</label> -->\r\n         <!-- <input id=\"User\" type = \"text\" formControlName =\"user_id\"  style=\"max-width:50%; \"/><br> -->\r\n         <label class=\"labelStyler\" for=\"description\" class=\"highlight-content\">Items Bought</label>\r\n         <p *ngFor=\"let items of arrObj\">{{items}}</p>\r\n         <div *ngIf = \"arrObj.length === 0\">\r\n           <i>No items Selected</i>\r\n         </div>\r\n         <br>\r\n         <!-- <input id=\"description\" type = \"text\" style=\"max-width:50%; \" formControlName =\"description\"/><br> -->\r\n         <ion-item lines=\"none\">\r\n         <label for=\"Total\" class=\"highlight-content\">Totals </label>\r\n         <input id=\"Total\" type = \"text\" formControlName =\"amount\" disabled=\"true\" class=\"style-input\"/><br>\r\n        </ion-item>\r\n         <div *ngIf=\"checkAuth === false\">\r\n          <ion-item lines=\"none\">\r\n         <label for=\"Total\" class=\"highlight-content\">Customer Name</label>\r\n         <input id=\"Total\" type = \"text\" formControlName =\"customer_name\" class=\"style-input3\"/><br>\r\n        </ion-item>\r\n        <ion-item lines=\"none\">\r\n         <label  for=\"Total\" class=\"highlight-content\">Customer Cell</label>\r\n         <input id=\"Total\" type = \"text\" formControlName =\"customer_contact\" class=\"style-inputs\" /><br>\r\n        </ion-item>\r\n        <ion-item lines=\"none\">\r\n         <label for=\"Total\" class=\"highlight-content\">Customer Mail</label>\r\n         <input id=\"Total\" type = \"text\" formControlName =\"customer_email\" class=\"style-input1\" /><br>\r\n        </ion-item>\r\n        </div>\r\n        <ion-item lines=\"none\">\r\n         <label for=\"Delivery\" class=\"highlight-content\">Delivery Option </label>\r\n         <input id=\"Delivery\" type = \"text\" disabled=\"true\"  formControlName =\"delivery_status\" class=\"style-input2\"/><br>\r\n        </ion-item>\r\n        <ion-item lines=\"none\">\r\n         <label for=\"Payment\" class=\"highlight-content\">Payment Option </label>\r\n         <input id=\"Payment\" type = \"text\" formControlName =\"payment_status\" disabled=\"true\" class=\"style-input3\"/><br>\r\n        </ion-item>\r\n      </form>\r\n      <!-- <form [formGroup]= \"productsForm\">\r\n        <label>Description</label>\r\n        <input type=\"text\" formControlName=\"description\"/>\r\n      </form> -->\r\n        <ion-button  color=\"danger\" (click)=\"closePopover()\">\r\n          <ion-icon name=\"close\" slot=\"start\"></ion-icon>\r\n          Cancel\r\n        </ion-button>\r\n        <ion-button  color=\"success\" (click)=\"checkout()\" (click)=\"postToMail()\" [disabled]=\"!salesForm.valid\">\r\n          <ion-icon name=\"checkmark\" slot=\"start\"></ion-icon>\r\n          CONFIRM\r\n        </ion-button>\r\n       \r\n          <!-- <ion-button  color=\"success\" (click)=\"lipaNow()\">\r\n            <ion-icon name=\"checkmark\" slot=\"start\"></ion-icon>\r\n            Buy Mpesa\r\n          </ion-button> -->\r\n      </div>\r\n      <ion-footer>\r\n        <ion-grid>\r\n          <ion-row>\r\n            <ion-col>\r\n              <h3 class=\"footer-styling\"><ion-icon name=\"navigate\"></ion-icon>OUR LOCATION</h3>\r\n              <p class=\"footer-styling\">Moktar Daddar Street</p>\r\n            </ion-col>\r\n            <ion-col>\r\n              <h3 class=\"footer-styling\"><ion-icon name=\"time\"></ion-icon>WORKING HOURS</h3>\r\n              <p class=\"footer-styling\"><span>Mon-Sat:</span> Open from 8:30AM - 7:00PM</p><br>\r\n             \r\n            </ion-col>\r\n            <ion-col>\r\n              <h3 class=\"footer-styling\"><ion-icon name=\"call\"></ion-icon>CONTACT US</h3>\r\n              <p class=\"footer-styling\"><ion-icon name=\"logo-whatsapp\"></ion-icon>+254721397580</p>\r\n              <p class=\"footer-styling\">preetifashions90@gmail.com</p>\r\n            </ion-col>\r\n          </ion-row>\r\n        </ion-grid>\r\n      </ion-footer>\r\n\r\n"
 
 /***/ }),
 
@@ -1377,7 +1381,7 @@ module.exports = "<img src=\"/assets/PreetiLogo.png\" style=\"height:70px; width
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".form-orients {\n  margin-left: 20%; }\n\n.highlight-content {\n  font-weight: bold; }\n\n.labelStyler {\n  margin-right: 50%;\n  max-width: 10em;\n  font-family: Open Sans; }\n\nform {\n  font-family: Open Sans; }\n\n.footer-styling {\n  color: #fff;\n  font-family: Open Sans; }\n\nion-footer {\n  background-color: #000; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29uZmlybWF0aW9uLXBvcG92ZXIvQzpcXFVzZXJzXFxBdHRhaW5cXGRlc2t0b3BcXHByb2plY3RzXFxhcFxcYXBwYXJlbC1lY29tbWVyY2Uvc3JjXFxhcHBcXGNvbmZpcm1hdGlvbi1wb3BvdmVyXFxjb25maXJtYXRpb24tcG9wb3Zlci5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFFSSxnQkFBZ0IsRUFBQTs7QUFLcEI7RUFDSSxpQkFBaUIsRUFBQTs7QUFFckI7RUFDSSxpQkFBaUI7RUFFakIsZUFBZTtFQUNmLHNCQUFzQixFQUFBOztBQUUxQjtFQUNJLHNCQUFzQixFQUFBOztBQUUxQjtFQUNJLFdBQVc7RUFDWCxzQkFBc0IsRUFBQTs7QUFFMUI7RUFDSSxzQkFBc0IsRUFBQSIsImZpbGUiOiJzcmMvYXBwL2NvbmZpcm1hdGlvbi1wb3BvdmVyL2NvbmZpcm1hdGlvbi1wb3BvdmVyLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5mb3JtLW9yaWVudHN7XHJcbiAgICAvLyBtYXJnaW4tdG9wOiAyMCU7XHJcbiAgICBtYXJnaW4tbGVmdDogMjAlO1xyXG4gICAgLy8gbWFyZ2luLXJpZ2h0OiBhdXRvO1xyXG4gICAgLy8gbWFyZ2luLXJpZ2h0OiBhdXRvO1xyXG4gICAgLy8gdGV4dC1hbGlnbjogY2VudGVyO1xyXG59XHJcbi5oaWdobGlnaHQtY29udGVudHtcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG59XHJcbi5sYWJlbFN0eWxlcntcclxuICAgIG1hcmdpbi1yaWdodDogNTAlO1xyXG4gICAgLy8gcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgbWF4LXdpZHRoOiAxMGVtO1xyXG4gICAgZm9udC1mYW1pbHk6IE9wZW4gU2FucztcclxufVxyXG5mb3Jte1xyXG4gICAgZm9udC1mYW1pbHk6IE9wZW4gU2FucztcclxufVxyXG4uZm9vdGVyLXN0eWxpbmd7XHJcbiAgICBjb2xvcjogI2ZmZjtcclxuICAgIGZvbnQtZmFtaWx5OiBPcGVuIFNhbnM7XHJcbn1cclxuaW9uLWZvb3RlcntcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICMwMDA7XHJcbn0iXX0= */"
+module.exports = ".form-orients {\n  margin-left: 20%;\n  margin-right: auto;\n  text-align: center; }\n\n.highlight-content {\n  font-weight: bold; }\n\n.style-inputs {\n  margin-left: 5%; }\n\n.style-input1 {\n  margin-left: 5%; }\n\n.style-input2 {\n  margin-left: 5%; }\n\n.style-input3 {\n  margin-left: 5%; }\n\n.labelStyler {\n  font-family: Open Sans; }\n\nform {\n  font-family: Open Sans; }\n\n.footer-styling {\n  color: #fff;\n  font-family: Open Sans; }\n\nion-footer {\n  background-color: #000; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29uZmlybWF0aW9uLXBvcG92ZXIvQzpcXFVzZXJzXFxBdHRhaW5cXERlc2t0b3BcXFByb2plY3RzXFxhcHBhcmVsLWVjb21tZXJjZS9zcmNcXGFwcFxcY29uZmlybWF0aW9uLXBvcG92ZXJcXGNvbmZpcm1hdGlvbi1wb3BvdmVyLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUVJLGdCQUFnQjtFQUNoQixrQkFBa0I7RUFFbEIsa0JBQWtCLEVBQUE7O0FBRXRCO0VBQ0ksaUJBQWlCLEVBQUE7O0FBRXJCO0VBRUksZUFDRixFQUFBOztBQUNBO0VBQ0ksZUFBZSxFQUFBOztBQUVuQjtFQUNJLGVBQWUsRUFBQTs7QUFFbkI7RUFDSSxlQUFlLEVBQUE7O0FBRXJCO0VBSUksc0JBQXNCLEVBQUE7O0FBRzFCO0VBQ0ksc0JBQXNCLEVBQUE7O0FBRTFCO0VBQ0ksV0FBVztFQUNYLHNCQUFzQixFQUFBOztBQUUxQjtFQUNJLHNCQUFzQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvY29uZmlybWF0aW9uLXBvcG92ZXIvY29uZmlybWF0aW9uLXBvcG92ZXIucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmZvcm0tb3JpZW50c3tcclxuICAgIC8vIG1hcmdpbi10b3A6IDIwJTtcclxuICAgIG1hcmdpbi1sZWZ0OiAyMCU7XHJcbiAgICBtYXJnaW4tcmlnaHQ6IGF1dG87XHJcbiAgICAvLyBtYXJnaW4tcmlnaHQ6IGF1dG87XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuLmhpZ2hsaWdodC1jb250ZW50e1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbn1cclxuLnN0eWxlLWlucHV0c3tcclxuICAgIC8vIG1heC13aWR0aDogNTAlO1xyXG4gICAgbWFyZ2luLWxlZnQ6IDUlXHJcbiAgfVxyXG4gIC5zdHlsZS1pbnB1dDF7XHJcbiAgICAgIG1hcmdpbi1sZWZ0OiA1JTsgXHJcbiAgfVxyXG4gIC5zdHlsZS1pbnB1dDJ7XHJcbiAgICAgIG1hcmdpbi1sZWZ0OiA1JTtcclxuICB9XHJcbiAgLnN0eWxlLWlucHV0M3tcclxuICAgICAgbWFyZ2luLWxlZnQ6IDUlO1xyXG4gIH1cclxuLmxhYmVsU3R5bGVye1xyXG4gICAgLy8gbWFyZ2luLXJpZ2h0OiA1cHg7XHJcbiAgICAvLyBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICAvLyBtYXgtd2lkdGg6IDUwJTtcclxuICAgIGZvbnQtZmFtaWx5OiBPcGVuIFNhbnM7XHJcbn1cclxuXHJcbmZvcm17XHJcbiAgICBmb250LWZhbWlseTogT3BlbiBTYW5zO1xyXG59XHJcbi5mb290ZXItc3R5bGluZ3tcclxuICAgIGNvbG9yOiAjZmZmO1xyXG4gICAgZm9udC1mYW1pbHk6IE9wZW4gU2FucztcclxufVxyXG5pb24tZm9vdGVye1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzAwMDtcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -1414,6 +1418,9 @@ var ConfirmationPopoverPage = /** @class */ (function () {
         this.authService = authService;
         this.passedDelivery = null;
         this.passedPayment = null;
+        this.cust_name = null;
+        this.cust_num = null;
+        this.cust_email = null;
         this.totalCartItems = null;
         this.loggedInUser = null;
         this.acc_token = null;
@@ -1425,8 +1432,12 @@ var ConfirmationPopoverPage = /** @class */ (function () {
     }
     ConfirmationPopoverPage.prototype.ngOnInit = function () {
         var _this = this;
+        this.checkAuth = this.authService.authenticationState.value;
         this.passedDelivery = this.navParams.get('delivery_id');
         this.passedPayment = this.navParams.get('payment_id');
+        this.cust_name = this.navParams.get('cust_name');
+        this.cust_num = this.navParams.get('cust_num');
+        this.cust_email = this.navParams.get('cust_email');
         this.totalCartItems = this.navParams.get('total_id');
         this.loggedInUser = this.navParams.get('user_id');
         this.cart = this.shoppercart.getCart();
@@ -1461,6 +1472,10 @@ var ConfirmationPopoverPage = /** @class */ (function () {
             user_id: [this.loggedInUser],
             description: [this.arrObj],
             viewed_status: [this.viewer],
+            customer_name: [this.cust_name],
+            customer_contact: [this.cust_num, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].minLength(10)]],
+            customer_email: [this.cust_email]
+            // object_id: [this.arrArr]
         });
         this.productsForm = this.formBuild.group({
             description: [this.desc],
@@ -1481,6 +1496,7 @@ var ConfirmationPopoverPage = /** @class */ (function () {
         this.authService.updateSales(this.salesForm.value).subscribe();
     };
     ConfirmationPopoverPage.prototype.postToMail = function () {
+        console.log("SalesForm", this.salesForm.value);
         this.shoppercart.postCart(this.salesForm.value).subscribe();
         // const  productUpload = new FormData();
         // let gokart = JSON.stringify(this.cart);
@@ -1700,7 +1716,7 @@ var LoginPopoverPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-card>\n<ion-card-header>\n  Please Login/ create an account\n</ion-card-header>\n<ion-card-content><ion-button fill=\"outline\"routerLink=\"/menu/login\">Login/Register</ion-button></ion-card-content>\n</ion-card>"
+module.exports = "<ion-card>\r\n<ion-card-header>\r\n  Please Login/ create an account\r\n</ion-card-header>\r\n<ion-card-content><ion-button fill=\"outline\"routerLink=\"/menu/login\">Login/Register</ion-button></ion-card-content>\r\n</ion-card>"
 
 /***/ }),
 
@@ -2047,7 +2063,7 @@ var ShoppersCartPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n        <ion-back-button (click)=\"closePopover()\" defaultHref=\"/\"></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title style=\"font-weight: bold\">myCart</ion-title>\r\n    <ion-buttons slot=\"end\">\r\n      <ion-button  (click)=\"closePopover()\">Close</ion-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-list>\r\n    <ion-item *ngFor=\"let item of cart\" lines=\"none\">\r\n      <ion-thumbnail> <img src= '{{ item.url }}' /> </ion-thumbnail>\r\n      <p> {{ item.amount }} x {{ item.description }}</p>\r\n      \r\n      <ion-label slot=\"end\" text-right style=\"font-family: Open Sans;color: green\"> <p tappable (click)=\"removeFromCart(p)\">Remove </p>{{ (item.price * item.amount) | currency: 'KES': 'KES ' }}</ion-label> \r\n    </ion-item>\r\n    <ion-item>\r\n      <span style=\"font-weight: bold;\">Total:</span> <span slot=\"end\" style=\"font-weight: bolder;\">{{  getTotal() | currency:'KES ' }}</span>\r\n    </ion-item>\r\n  </ion-list>\r\n <div class=\"align-button\"> <ion-button color=\"danger\"  style=\"color: #fff\"size=\"default\" [routerLink]=\"['/menu/checkout', getTotal()] \" routerDirection=\"forward\" (click)=\"checkAuthent()\" (click)=\"closePopover()\" >Proceed to checkout</ion-button></div>\r\n</ion-content>\r\n"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n        <ion-back-button (click)=\"closePopover()\" defaultHref=\"/\"></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title style=\"font-weight: bold\">myCart</ion-title>\r\n    <ion-buttons slot=\"end\">\r\n      <ion-button  (click)=\"closePopover()\">Close</ion-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-list>\r\n    <ion-item *ngFor=\"let item of cart\" lines=\"none\">\r\n      <ion-thumbnail> <img src= '{{ item.url }}' /> </ion-thumbnail>\r\n      <p> {{ item.amount }} x {{ item.description }}</p>\r\n      \r\n      <ion-label slot=\"end\" text-right style=\"font-family: Open Sans;color: #000\"> <p tappable (click)=\"removeFromCart(p)\">Remove </p>{{ (item.price * item.amount) | currency: 'KES': 'KES ' }}</ion-label> \r\n    </ion-item>\r\n    <ion-item>\r\n      <span style=\"font-weight: bold;\">Total:</span> <span slot=\"end\" style=\"font-weight: bold;color: green\">{{  getTotal() | currency:'KES ' }}</span>\r\n    </ion-item>\r\n  </ion-list>\r\n <div class=\"align-button\"> <ion-button color=\"danger\"  style=\"color: #fff\"size=\"default\" [routerLink]=\"['/menu/checkout', getTotal()] \" routerDirection=\"forward\" (click)=\"closePopover()\" >Proceed to checkout</ion-button></div>\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -2058,7 +2074,7 @@ module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"sta
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".align-button {\n  width: 300px;\n  margin-left: auto;\n  margin-right: auto; }\n\nion-item {\n  font-family: Open Sans; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hvcHBlcnMtY2FydC9DOlxcVXNlcnNcXEF0dGFpblxcZGVza3RvcFxccHJvamVjdHNcXGFwXFxhcHBhcmVsLWVjb21tZXJjZS9zcmNcXGFwcFxcc2hvcHBlcnMtY2FydFxcc2hvcHBlcnMtY2FydC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxZQUFZO0VBQ1osaUJBQWdCO0VBQ2hCLGtCQUFrQixFQUFBOztBQUV0QjtFQUNJLHNCQUFzQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvc2hvcHBlcnMtY2FydC9zaG9wcGVycy1jYXJ0LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5hbGlnbi1idXR0b24ge1xyXG4gICAgd2lkdGg6IDMwMHB4OyBcclxuICAgIG1hcmdpbi1sZWZ0OmF1dG87IFxyXG4gICAgbWFyZ2luLXJpZ2h0OiBhdXRvO1xyXG59XHJcbmlvbi1pdGVte1xyXG4gICAgZm9udC1mYW1pbHk6IE9wZW4gU2FucztcclxufSJdfQ== */"
+module.exports = ".align-button {\n  width: 300px;\n  margin-left: auto;\n  margin-right: auto; }\n\nion-item {\n  font-family: Open Sans; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hvcHBlcnMtY2FydC9DOlxcVXNlcnNcXEF0dGFpblxcRGVza3RvcFxcUHJvamVjdHNcXGFwcGFyZWwtZWNvbW1lcmNlL3NyY1xcYXBwXFxzaG9wcGVycy1jYXJ0XFxzaG9wcGVycy1jYXJ0LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFlBQVk7RUFDWixpQkFBZ0I7RUFDaEIsa0JBQWtCLEVBQUE7O0FBRXRCO0VBQ0ksc0JBQXNCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9zaG9wcGVycy1jYXJ0L3Nob3BwZXJzLWNhcnQucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmFsaWduLWJ1dHRvbiB7XHJcbiAgICB3aWR0aDogMzAwcHg7IFxyXG4gICAgbWFyZ2luLWxlZnQ6YXV0bzsgXHJcbiAgICBtYXJnaW4tcmlnaHQ6IGF1dG87XHJcbn1cclxuaW9uLWl0ZW17XHJcbiAgICBmb250LWZhbWlseTogT3BlbiBTYW5zO1xyXG59Il19 */"
 
 /***/ }),
 
@@ -2397,7 +2413,7 @@ var ViewProductPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar color=\"dark\">\r\n      <ion-buttons slot=\"start\">\r\n          <ion-button  (click)=\"closePopover()\">Close</ion-button>\r\n        </ion-buttons>\r\n    <ion-title text-center>\r\n      Item\r\n    </ion-title>\r\n    <ion-buttons slot=\"end\">\r\n        <ion-button (click)=\"closePopover()\" (click)=\"openCart()\">\r\n          <ion-badge *ngIf=\"cart.length > 0\">{{ cart.length }}</ion-badge>\r\n          <ion-icon name=\"cart\" slot=\"icon-only\"></ion-icon>\r\n        </ion-button>\r\n      </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n<ion-content>\r\n  <!-- <div *ngFor=\"let pat of product\">  -->\r\n  <ion-card >\r\n    <ion-card-header text-center>Selected Product</ion-card-header>\r\n    <ion-card-content> \r\n        <ion-grid fixed>\r\n            <ion-row>\r\n      <div class = \"selected-product\">\r\n        <img [src]='img.url' />\r\n      </div>\r\n   \r\n  </ion-row>\r\n</ion-grid>\r\n    </ion-card-content>\r\n    <!-- <ion-card-content *ngFor=\"let jica of pat.products\"> {{jica.id}}  ></ion-card-content> -->\r\n  </ion-card>\r\n  <div class=\"float-items\">\r\n    <p><span style=\"font-weight: bold;\">Name</span>: {{img.description}}</p><br>\r\n    <p><span style=\"font-weight: bold;\">Category</span>: {{img.category}}</p><br>\r\n    <p><span style=\"font-weight: bold;\">Price</span>: <i>KES {{img.price}}</i></p> \r\n    <ion-button (click)=\"addToCart(product)\" fill=\"outline\" ><ion-icon name=\"cart\"></ion-icon> Add to Basket </ion-button>\r\n    <ion-button (click)=\"closePopover()\" fill=\"outline\">BACK</ion-button>\r\n    <!-- <ion-button (click)=\"addProduct(product)\" color=\"dark\" ><ion-icon name=\"add\"></ion-icon> Book Item </ion-button> -->\r\n  </div>\r\n  <!-- </div> -->\r\n</ion-content>\r\n"
+module.exports = "<ion-header>\r\n  <ion-toolbar color=\"dark\">\r\n      <ion-buttons slot=\"start\">\r\n          <ion-button  (click)=\"closePopover()\">Close</ion-button>\r\n        </ion-buttons>\r\n    <ion-title text-center>\r\n      Item\r\n    </ion-title>\r\n    <ion-buttons slot=\"end\">\r\n        <ion-button (click)=\"closePopover()\" (click)=\"openCart()\">\r\n          <ion-badge *ngIf=\"cart.length > 0\">{{ cart.length }}</ion-badge>\r\n          <ion-icon name=\"cart\" slot=\"icon-only\"></ion-icon>\r\n        </ion-button>\r\n      </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n<ion-content>\r\n  <!-- <div *ngFor=\"let pat of product\">  -->\r\n  <ion-card >\r\n    <ion-card-header text-center>Selected Product</ion-card-header>\r\n    <ion-card-content> \r\n        <ion-grid fixed>\r\n            <ion-row>\r\n      <div class = \"selected-product\">\r\n        <img [src]='img.url' />\r\n      </div>\r\n   \r\n  </ion-row>\r\n</ion-grid>\r\n    </ion-card-content>\r\n    <!-- <ion-card-content *ngFor=\"let jica of pat.products\"> {{jica.id}}  ></ion-card-content> -->\r\n  </ion-card>\r\n  <div class=\"float-items\">\r\n    <p><span style=\"font-weight: bold;\">Name</span>: {{img.description}}</p><br>\r\n    <p><span style=\"font-weight: bold;\">Category</span>: {{img.category}}</p><br>\r\n    <p><span style=\"font-weight: bold;\">Sizes</span>: {{img.sizes}}</p><br>\r\n    <p><span style=\"font-weight: bold;\">Price</span>: <i>KES {{img.price}}</i></p> \r\n    <ion-button (click)=\"addToCart(product)\" fill=\"outline\" ><ion-icon name=\"cart\"></ion-icon> Add to Basket </ion-button>\r\n    <ion-button (click)=\"closePopover()\" fill=\"outline\">BACK</ion-button>\r\n    <!-- <ion-button (click)=\"addProduct(product)\" color=\"dark\" ><ion-icon name=\"add\"></ion-icon> Book Item </ion-button> -->\r\n  </div>\r\n  <!-- </div> -->\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -2408,7 +2424,7 @@ module.exports = "<ion-header>\r\n  <ion-toolbar color=\"dark\">\r\n      <ion-b
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".selected-product {\n  max-width: 350px;\n  max-height: 100%; }\n\n.float-items {\n  margin-right: auto;\n  margin-left: auto; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdmlldy1wcm9kdWN0L0M6XFxVc2Vyc1xcQXR0YWluXFxkZXNrdG9wXFxwcm9qZWN0c1xcYXBcXGFwcGFyZWwtZWNvbW1lcmNlL3NyY1xcYXBwXFx2aWV3LXByb2R1Y3RcXHZpZXctcHJvZHVjdC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxnQkFBZ0I7RUFDaEIsZ0JBQWdCLEVBQUE7O0FBRXBCO0VBRUksa0JBQWtCO0VBQ2xCLGlCQUFpQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvdmlldy1wcm9kdWN0L3ZpZXctcHJvZHVjdC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc2VsZWN0ZWQtcHJvZHVjdHtcclxuICAgIG1heC13aWR0aDogMzUwcHg7XHJcbiAgICBtYXgtaGVpZ2h0OiAxMDAlO1xyXG59XHJcbi5mbG9hdC1pdGVtc3tcclxuICAgIC8vIGZsb2F0OiByaWdodDtcclxuICAgIG1hcmdpbi1yaWdodDogYXV0bztcclxuICAgIG1hcmdpbi1sZWZ0OiBhdXRvO1xyXG59Il19 */"
+module.exports = ".selected-product {\n  max-width: 350px;\n  max-height: 100%; }\n\n.float-items {\n  margin-right: auto;\n  margin-left: auto; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdmlldy1wcm9kdWN0L0M6XFxVc2Vyc1xcQXR0YWluXFxEZXNrdG9wXFxQcm9qZWN0c1xcYXBwYXJlbC1lY29tbWVyY2Uvc3JjXFxhcHBcXHZpZXctcHJvZHVjdFxcdmlldy1wcm9kdWN0LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGdCQUFnQjtFQUNoQixnQkFBZ0IsRUFBQTs7QUFFcEI7RUFFSSxrQkFBa0I7RUFDbEIsaUJBQWlCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC92aWV3LXByb2R1Y3Qvdmlldy1wcm9kdWN0LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5zZWxlY3RlZC1wcm9kdWN0e1xyXG4gICAgbWF4LXdpZHRoOiAzNTBweDtcclxuICAgIG1heC1oZWlnaHQ6IDEwMCU7XHJcbn1cclxuLmZsb2F0LWl0ZW1ze1xyXG4gICAgLy8gZmxvYXQ6IHJpZ2h0O1xyXG4gICAgbWFyZ2luLXJpZ2h0OiBhdXRvO1xyXG4gICAgbWFyZ2luLWxlZnQ6IGF1dG87XHJcbn0iXX0= */"
 
 /***/ }),
 
@@ -2510,7 +2526,7 @@ __webpack_require__.r(__webpack_exports__);
 var environment = {
     production: false,
     kurl: 'http://192.168.200.129:500',
-    url: 'http://192.168.100.35:8080',
+    url: 'http://192.168.0.118:8080',
     wurl: 'http://192.168.200.142:500',
     eurl: 'http://192.168.0.106:500',
     hurl: 'http://192.168.0.122:500',
@@ -2595,7 +2611,7 @@ var MediaFilesService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Attain\desktop\projects\ap\apparel-ecommerce\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Attain\Desktop\Projects\apparel-ecommerce\src\main.ts */"./src/main.ts");
 
 
 /***/ })

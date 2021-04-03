@@ -59,7 +59,7 @@ var ResetPasswordPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title text-center>Forgot Password</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n  <div class=\"styler\"> \n  <form [formGroup]=\"credentialsForm\" (ngSubmit)=\"onSubmit()\">\n    <ion-item style=\"margin-left: auto;margin-right: auto; margin-top: 100px;\" lines=\"none\">\n    <ion-label position=\"fixed\">Email</ion-label>\n    <input type=\"email\" formControlName=\"email\" />\n  </ion-item>\n  <ion-button color=\"danger\" size=\"small\" (click)=\"onSubmit()\" style=\"margin-left: 100px;\">Reset</ion-button>\n</form>\n</div>\n</ion-content>\n"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title text-center>Forgot Password</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n<ion-content>\r\n  <div class=\"styler\"> \r\n  <form [formGroup]=\"credentialsForm\" (ngSubmit)=\"onSubmit()\">\r\n    <ion-item style=\"margin-left: auto;margin-right: auto; margin-top: 100px;\" lines=\"none\">\r\n    <ion-label position=\"fixed\">Email</ion-label>\r\n    <input type=\"email\" formControlName=\"email\" />\r\n  </ion-item>\r\n  <ion-button color=\"danger\" size=\"small\" (click)=\"onSubmit()\" style=\"margin-left: 100px;\">Reset</ion-button>\r\n</form>\r\n</div>\r\n</ion-content>\r\n"
 
 /***/ }),
 
@@ -70,7 +70,7 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title text-center>Forg
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".styler {\n  margin-left: auto;\n  margin-right: auto; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcmVzZXQtcGFzc3dvcmQvQzpcXFVzZXJzXFxBdHRhaW5cXGRlc2t0b3BcXHByb2plY3RzXFxhcFxcYXBwYXJlbC1lY29tbWVyY2Uvc3JjXFxhcHBcXHJlc2V0LXBhc3N3b3JkXFxyZXNldC1wYXNzd29yZC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxpQkFBaUI7RUFDakIsa0JBQWtCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9yZXNldC1wYXNzd29yZC9yZXNldC1wYXNzd29yZC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc3R5bGVye1xyXG4gICAgbWFyZ2luLWxlZnQ6IGF1dG87XHJcbiAgICBtYXJnaW4tcmlnaHQ6IGF1dG87XHJcbn0iXX0= */"
+module.exports = ".styler {\n  margin-left: auto;\n  margin-right: auto; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcmVzZXQtcGFzc3dvcmQvQzpcXFVzZXJzXFxBdHRhaW5cXERlc2t0b3BcXFByb2plY3RzXFxhcHBhcmVsLWVjb21tZXJjZS9zcmNcXGFwcFxccmVzZXQtcGFzc3dvcmRcXHJlc2V0LXBhc3N3b3JkLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGlCQUFpQjtFQUNqQixrQkFBa0IsRUFBQSIsImZpbGUiOiJzcmMvYXBwL3Jlc2V0LXBhc3N3b3JkL3Jlc2V0LXBhc3N3b3JkLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5zdHlsZXJ7XHJcbiAgICBtYXJnaW4tbGVmdDogYXV0bztcclxuICAgIG1hcmdpbi1yaWdodDogYXV0bztcclxufSJdfQ== */"
 
 /***/ }),
 

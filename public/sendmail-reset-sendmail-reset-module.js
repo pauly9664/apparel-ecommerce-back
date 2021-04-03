@@ -43400,7 +43400,7 @@ var SendmailResetPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title text-center>Reset Password</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <form [formGroup]=\"credentialsForm\" (ngSubmit)=\"onSubmit()\">\n    <ion-item lines=\"none\">\n      <ion-label position=\"fixed\">Email</ion-label>\n      <input type=\"email\" formControlName=\"email\">\n    </ion-item>\n    <ion-item lines=\"none\">\n      <ion-label position=\"fixed\">New Password</ion-label>\n      <input type=\"password\" formControlName=\"password\" />\n    </ion-item>\n    <ion-button color=\"danger\" (click)=\"onSubmit()\">Change Password</ion-button>\n  </form>\n</ion-content>\n"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title text-center>Reset Password</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <form [formGroup]=\"credentialsForm\" (ngSubmit)=\"onSubmit()\">\r\n    <ion-item lines=\"none\">\r\n      <ion-label position=\"fixed\">Email</ion-label>\r\n      <input type=\"email\" formControlName=\"email\">\r\n    </ion-item>\r\n    <ion-item lines=\"none\">\r\n      <ion-label position=\"fixed\">New Password</ion-label>\r\n      <input type=\"password\" formControlName=\"password\" />\r\n    </ion-item>\r\n    <ion-button color=\"danger\" (click)=\"onSubmit()\">Change Password</ion-button>\r\n  </form>\r\n</ion-content>\r\n"
 
 /***/ }),
 

@@ -1040,7 +1040,7 @@ var AuthService = /** @class */ (function () {
     };
     AuthService.prototype.updateSales = function (sale) {
         var _this = this;
-        return this.http.post('https://preeti-fashion.herokuapp.com/api/postSles', sale).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
+        return this.http.post('/api/postSales', sale).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["catchError"])(function (e) {
             _this.showAlert(e.error.msg);
             throw new Error(e);
         }));
@@ -1907,7 +1907,7 @@ var ShoppersCartService = /** @class */ (function () {
         //       return this.items;
         //      }));
         // }
-        return this.http.get('https://preeti-fashion.herokuapp.com/api/images').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (response) { return response; }));
+        return this.http.get('/api/images').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (response) { return response; }));
         // getProducts() {
         //    return this.data;
     };
@@ -1915,7 +1915,7 @@ var ShoppersCartService = /** @class */ (function () {
         return this.http.get('/api/images');
     };
     ShoppersCartService.prototype.getCategories = function () {
-        return this.http.get('https://preeti-fashion.herokuapp.com/api/fetchCategories').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (response) { return response; }));
+        return this.http.get('/api/fetchCategories').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (response) { return response; }));
     };
     ShoppersCartService.prototype.showAlert = function (msg) {
         var alert = this.alertController.create({

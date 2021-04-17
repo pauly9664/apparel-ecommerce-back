@@ -37,7 +37,7 @@ var storage = multer.diskStorage({
 
 var app = express();
 
-//  app.use(express.static(UPLOAD_PATH));
+ app.use(express.static(UPLOAD_PATH));
 //  app.use(express.static('public2'));
 //  app.use("/login", express.static("public2"))
 // app.use("/products-upload", express.static("public2"));

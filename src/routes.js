@@ -350,7 +350,19 @@ routes.patch('/confirmView', (req,res)=>{
   })
 })
 routes.get('/images', (req, res, next)=>{
-    Image.find({}, '-_v').lean().exec((err, images)=>{
+  Image.find({}, '-_v').lean().exec((err, images)=>{
+      if(err){
+          return res.status(400);
+      }
+          for(let i = 0; i < images.length; i++){
+              var img = images[i];
+              img.url = req.protocol + '://' +req.get('host')  + '/' + img.filename;
+      } 
+      res.json(images);
+  });
+});
+routes.get('/images2', (req, res, next)=>{
+    Image.find({}, '-_v').lean().limit(10).sort({'created_at': -1}).exec((err, images)=>{
         if(err){
             return res.status(400);
         }
